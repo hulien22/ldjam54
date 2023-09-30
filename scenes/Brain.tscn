@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1hwh75rufqtn"]
+[gd_scene load_steps=4 format=3 uid="uid://bcagiv8ky6l6c"]
 
 [ext_resource type="Script" path="res://scripts/Brain.gd" id="1_pcbub"]
 [ext_resource type="Texture2D" uid="uid://c7vk23c2m4vqy" path="res://art/braingrid.png" id="2_lvhj0"]
