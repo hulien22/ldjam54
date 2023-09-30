@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccosysn4u6uvt"]
+
+[ext_resource type="Script" path="res://scenes/Tile.gd" id="1_4guc4"]
+
+[node name="Tile" type="Node2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_4guc4")
+
+[node name="TileImage" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
