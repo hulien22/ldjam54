@@ -16,7 +16,7 @@ config/icon="res://art/icon.svg"
 
 [autoload]
 
-Globals="*res://scripts/Globals.gd"
+Global="*res://scripts/Global.gd"
 
 [input]
 

@@ -10,7 +10,7 @@ var memories=[]
 
 func _ready():
 	var coreMem = Tile.instantiate()
-	coreMem.init("tactic-1",Globals.L,Vector2(0,0),0)
+	coreMem.init("tactic-1",Global.L,Vector2(0,0),0)
 	coreMem.set_global_position(Vector2(250,100))
 	add_child(coreMem)
 
