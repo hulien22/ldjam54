@@ -70,9 +70,11 @@ func _ready():
 	start.moved_to_location.connect(_on_moved_to_location)
 	
 	current_location = start
+	$PlayerMapMarker.position = start.position
 
 func _on_moved_to_location(location: Location):
 	for connection in current_location.connections:
 		connection.activate(false)
 	current_location = location
+	$PlayerMapMarker.position = location.position
 	print(location.position)
