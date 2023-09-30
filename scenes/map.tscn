@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://4vkd5e56t4hm"]
+
+[ext_resource type="Script" path="res://scripts/Map.gd" id="1_5iiuj"]
+[ext_resource type="PackedScene" uid="uid://bqj0ydbf1wtnw" path="res://scenes/PlayerMapMarker.tscn" id="2_ccopb"]
+
+[node name="map" type="Node2D"]
+script = ExtResource("1_5iiuj")
+length = 15
+width = 3
+left_margin = 200
+right_margin = 200
+top_margin = 200
+bottom_margin = 200
+
+[node name="PlayerMapMarker" parent="." instance=ExtResource("2_ccopb")]
+modulate = Color(0.772549, 0, 0.52549, 1)
+z_index = 100

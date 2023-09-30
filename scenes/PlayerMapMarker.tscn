@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqj0ydbf1wtnw"]
+
+[ext_resource type="Texture2D" uid="uid://caiiw0boachdi" path="res://art/icon.svg" id="1_xomq8"]
+
+[node name="PlayerMapMarker" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_xomq8")
