@@ -1,7 +1,7 @@
 class_name Location
 extends Control
 
-enum LOCATION {START, COMBAT, RECRUIT, LIBRARY, TRAINING, THERAPY, BOSS, RELAX}
+enum LOCATION {START, COMBAT, ORACLE, LIBRARY, UPGRADE, FORGE, BOSS}
 
 signal moved_to_location(Location)
 

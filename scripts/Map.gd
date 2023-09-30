@@ -10,6 +10,8 @@ extends Node
 
 @export var length_bias: float
 
+signal moved_to_location(Location)
+
 var current_location: Location
 var rng = RandomNumberGenerator.new()
 
@@ -20,15 +22,13 @@ func random_location() -> Location.LOCATION:
 	if value <= 30:
 		return Location.LOCATION.COMBAT
 	elif value <= 40:
-		return Location.LOCATION.LIBRARY
+		return Location.LOCATION.ORACLE
 	elif value <= 50:
-		return Location.LOCATION.RECRUIT
+		return Location.LOCATION.LIBRARY
 	elif value <= 70:
-		return Location.LOCATION.RELAX
-	elif value <= 80:
-		return Location.LOCATION.THERAPY
+		return Location.LOCATION.FORGE
 	else:
-		return Location.LOCATION.TRAINING
+		return Location.LOCATION.UPGRADE
 
 func _ready():
 	var total_length = get_viewport().get_visible_rect().size.x - right_margin - left_margin
@@ -77,4 +77,5 @@ func _on_moved_to_location(location: Location):
 		connection.activate(false)
 	current_location = location
 	$PlayerMapMarker.position = location.position
+	moved_to_location.emit(location)
 	print(location.position)
