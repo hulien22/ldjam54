@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2t66apu50q7i"]
+
+[ext_resource type="Script" path="res://scripts/AudioPlayer.gd" id="1_2bq1w"]
+[ext_resource type="AudioStream" uid="uid://bvge30pva76sy" path="res://audio/battle.ogg" id="2_tsi4l"]
+[ext_resource type="AudioStream" uid="uid://hyswgurcpq7r" path="res://audio/boss.ogg" id="3_dql21"]
+
+[node name="AudioPlayer" type="AudioStreamPlayer"]
+script = ExtResource("1_2bq1w")
+combat_music = ExtResource("2_tsi4l")
+boss_music = ExtResource("3_dql21")

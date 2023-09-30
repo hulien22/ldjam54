@@ -15,7 +15,6 @@ func _ready():
 	map = map_scene.instantiate()
 	map.connect("moved_to_location", _on_moved_to_location)
 
-
 func _on_button_pressed():
 	remove_child(current_node)
 	add_child(map)
