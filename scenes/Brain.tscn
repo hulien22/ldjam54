@@ -1,12 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1hwh75rufqtn"]
 
-[ext_resource type="Script" path="res://scenes/Brain.gd" id="1_ohy02"]
+[ext_resource type="Script" path="res://scripts/Brain.gd" id="1_pcbub"]
 [ext_resource type="Texture2D" uid="uid://c7vk23c2m4vqy" path="res://art/braingrid.png" id="2_lvhj0"]
-[ext_resource type="PackedScene" uid="uid://ccosysn4u6uvt" path="res://scenes/Tile.tscn" id="3_diyu5"]
+[ext_resource type="PackedScene" uid="uid://sx2gqphom8wy" path="res://scenes/WordTile.tscn" id="3_ks15g"]
 
 [node name="Brain" type="Node2D"]
-script = ExtResource("1_ohy02")
-Tile = ExtResource("3_diyu5")
+script = ExtResource("1_pcbub")
 
 [node name="Brain-Image" type="TextureRect" parent="."]
 offset_left = -142.0
@@ -15,3 +14,6 @@ offset_right = 1009.0
 offset_bottom = 566.0
 texture = ExtResource("2_lvhj0")
 stretch_mode = 2
+
+[node name="WordTile" parent="." instance=ExtResource("3_ks15g")]
+position = Vector2(116, 113)

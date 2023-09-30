@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://sx2gqphom8wy"]
+
+[ext_resource type="Script" path="res://scripts/WordTile.gd" id="1_87gpv"]
+[ext_resource type="PackedScene" uid="uid://ccosysn4u6uvt" path="res://scenes/Tile.tscn" id="3_af8my"]
+
+[node name="WordTile" type="Node2D"]
+script = ExtResource("1_87gpv")
+word = "biggerest"
+tileScene = ExtResource("3_af8my")

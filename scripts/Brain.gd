@@ -11,7 +11,7 @@ var last_position = Vector2()
 
 func _ready():
 	var core_mem = Tile.instantiate()
-	core_mem.init("tactic-2",Globals.L,Vector2(0,0),0)
+	core_mem.init("tactic-2",Global.L,Vector2(0,0),0)
 	core_mem.set_global_position(Vector2(250,100))
 	memories.append(core_mem)
 	add_child(core_mem)

@@ -47,7 +47,6 @@ const tactics_score: Dictionary = {
 	"The Beeg Bonk-Gorilla Tactics" : 0,
 }
 
-
 func get_tactics_score(tactic1:String, tactic2:String) -> int:
 	# All tactics tie against themselves.
 	if (tactic1 == tactic2):
@@ -71,3 +70,29 @@ func get_random_tactic() -> Tactic:
 func get_random_tactic_to_counter(tactic: Tactic, min_score: int) -> Tactic:
 	# loop through tactic scores to find ones that have >= min_score, then randomly pick one of them
 	return null
+	
+#Brain 
+const ART_PATH = "res://art/"
+enum TILE_SHAPE{L, SQUARE, RECT}
+const MEMORIES = {
+	"general-knowledge":{
+		"art": ART_PATH + "generalknowledge.png"
+	},
+	"expert-knowledge":{
+		"art": ART_PATH + "generalknowledge.png"
+	},
+	"core-memory":{
+		"art": ART_PATH + "corememory.png"
+	},
+	"trauma":{
+		"art": ART_PATH + "trauma.png"
+	},
+	"tactic-1":{
+		"art": ART_PATH + "tactic 1.png"
+	},
+	"tactic-2":{
+		"art": ART_PATH + "tactic 2.png"
+	}
+}
+func get_memory(memory_id):
+	return MEMORIES[memory_id]

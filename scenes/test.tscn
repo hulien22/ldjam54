@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://rltch5jb3g6h"]
+[gd_scene load_steps=2 format=3 uid="uid://rltch5jb3g6h"]
+
+[ext_resource type="PackedScene" uid="uid://sx2gqphom8wy" path="res://scenes/WordTile.tscn" id="1_a4qtr"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="WordTile" parent="." instance=ExtResource("1_a4qtr")]
+position = Vector2(247, 207)
+word = "test"
+spread = 10.0
