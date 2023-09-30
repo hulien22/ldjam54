@@ -16,7 +16,7 @@ func _init(name:String, desc:String, pro:String, con: String, hints:Array = []):
 	name_ = name;
 	desc_ = desc;
 	pro_ = pro;
-	con = con;
+	con_ = con;
 	hints_ = hints
 	
 

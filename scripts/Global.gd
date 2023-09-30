@@ -24,7 +24,7 @@ var tactics: Dictionary = {
 	"Omae Wa Mou Shindeiru" : Tactic.new("Omae Wa Mou Shindeiru", "Teleport behind their backs, 'Nothing personnel kid'", "Good against ranged units", "CON", [TacticHints.HINT_STEALTHY, TacticHints.HINT_SURPRISE]),
 	"Faint Attack" : Tactic.new("Faint Attack", "Pretend to faint to draw in their forces, then attack!", "Works well on dumb soldiers", "CON", [TacticHints.HINT_SMART, TacticHints.HINT_SURPRISE]),
 	"Platypus Defense" : Tactic.new("Platypus Defense", "Stab attackers with poisonous spurs", "Good against poorly armored fighters", "CON", [TacticHints.HINT_DEFENSIVE, TacticHints.HINT_WEAK]),
-	"Tank You Very Much" : Tactic.new("Tank You Very Much", "Steal enemy tanks and attack with them", "Really good if they have tanks", "Really bad if they don't", [TacticHints.HINT_STEALTHY]),
+	"Tank You Very Much" : Tactic.new("Tank You Very Much", "Steal enemy tanks and attack with them", "Really good if they have tanks", "Really bad if they don't..", [TacticHints.HINT_STEALTHY]),
 	"Carpet Bomb" : Tactic.new("Carpet Bomb", "Cover them with the finest carpets", "Good against units that are hiding", "Bad against stronger enemies", [TacticHints.HINT_AOE, TacticHints.HINT_WEAK, TacticHints.HINT_RANGED]),
 	"Armadillo Rollout" : Tactic.new("Armadillo Rollout", "Roll armadillos at them and aim for a STRIKE!", "PRO", "CON", [TacticHints.HINT_POWERFUL_ATTACK, TacticHints.HINT_AOE]),
 	"Walk The Flank" : Tactic.new("Walk The Flank", "Put on eyepatches and attack from both sides me-mateys!", "PRO", "CON", [TacticHints.HINT_SURPRISE]),

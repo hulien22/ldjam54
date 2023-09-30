@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://7cgw8nt5wvde"]
+
+[ext_resource type="FontFile" uid="uid://b1yle3bl6l4qs" path="res://fonts/GochiHand-Regular.ttf" id="1_gryj3"]
+[ext_resource type="Script" path="res://scripts/tooltip.gd" id="1_ti84n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b7788"]
+font = ExtResource("1_gryj3")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ypka"]
+font = ExtResource("1_gryj3")
+font_size = 25
+font_color = Color(0.839216, 0.839216, 0.839216, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fp4sk"]
+font = ExtResource("1_gryj3")
+font_size = 25
+font_color = Color(0.282353, 0.909804, 0.286275, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_df3dj"]
+font = ExtResource("1_gryj3")
+font_size = 25
+font_color = Color(0.870588, 0.2, 0.2, 1)
+
+[node name="tooltip" type="Node2D"]
+z_index = 99
+script = ExtResource("1_ti84n")
+
+[node name="TacticTooltip" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="TacticTooltip"]
+offset_right = 325.0
+offset_bottom = 409.0
+color = Color(0, 0, 0, 0.129412)
+
+[node name="Title" type="Label" parent="TacticTooltip"]
+offset_top = 8.0
+offset_right = 328.0
+offset_bottom = 48.0
+text = "The Beeg Bonk"
+label_settings = SubResource("LabelSettings_b7788")
+horizontal_alignment = 1
+text_overrun_behavior = 1
+
+[node name="Desc" type="Label" parent="TacticTooltip"]
+offset_left = 9.0
+offset_top = 57.0
+offset_right = 318.0
+offset_bottom = 172.0
+text = "Hit them with the largest sticks we can find"
+label_settings = SubResource("LabelSettings_5ypka")
+autowrap_mode = 3
+text_overrun_behavior = 1
+
+[node name="Pros" type="Label" parent="TacticTooltip"]
+offset_left = 9.0
+offset_top = 171.0
+offset_right = 318.0
+offset_bottom = 286.0
+text = "+ Good against poorly armored fighters"
+label_settings = SubResource("LabelSettings_fp4sk")
+autowrap_mode = 3
+text_overrun_behavior = 1
+
+[node name="Cons" type="Label" parent="TacticTooltip"]
+offset_left = 9.0
+offset_top = 287.0
+offset_right = 318.0
+offset_bottom = 402.0
+text = "- Bad against advanced strategies and even larger sticks"
+label_settings = SubResource("LabelSettings_df3dj")
+autowrap_mode = 3
+text_overrun_behavior = 1
