@@ -6,6 +6,12 @@ var pro_: String
 var con_: String
 var hints_: Array
 
+
+# Tactic complexity? for speech impact?
+# Size? or put that into the tiles class?
+# Icon?
+# environment buff/debuff
+
 func _init(name:String, desc:String, pro:String, con: String, hints:Array = []):
 	name_ = name;
 	desc_ = desc;
