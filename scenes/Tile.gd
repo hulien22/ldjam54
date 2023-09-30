@@ -8,7 +8,7 @@ var rotate
 func init(newType,newShape, newCenter,newRotation):
 	type=newType
 	$TileImage.set_meta("id",type)
-	$TileImage.texture =load(Globals.get_memory(type)["art"])
+	$TileImage.texture =load(Global.get_memory(type)["art"])
 	center=newCenter
 	shape=newShape
 	rotate=newRotation

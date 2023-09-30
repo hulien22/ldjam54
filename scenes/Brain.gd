@@ -16,7 +16,6 @@ func _ready():
 	memories.append(core_mem)
 	add_child(core_mem)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var cursor_pos = get_global_mouse_position()

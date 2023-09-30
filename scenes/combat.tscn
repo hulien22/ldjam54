@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bds4dx4cjh170"]
+
+[ext_resource type="Script" path="res://scripts/combat.gd" id="1_uqive"]
+[ext_resource type="PackedScene" uid="uid://7cgw8nt5wvde" path="res://scenes/tooltip.tscn" id="2_7e2x6"]
+
+[node name="combat" type="Node2D"]
+script = ExtResource("1_uqive")
+
+[node name="tooltip" parent="." instance=ExtResource("2_7e2x6")]
+position = Vector2(210, 119)
+scale = Vector2(0.6, 0.6)
