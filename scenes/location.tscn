@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dewe7nkd1binl"]
+
+[ext_resource type="Script" path="res://scripts/Location.gd" id="1_14ir8"]
+[ext_resource type="Texture2D" uid="uid://caiiw0boachdi" path="res://art/icon.svg" id="2_vboih"]
+
+[node name="location" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_14ir8")
+
+[node name="button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 96.0
+offset_bottom = 96.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_vboih")
+stretch_mode = 0
+
+[connection signal="pressed" from="button" to="." method="_on_pressed"]
