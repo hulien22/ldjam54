@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1hwh75rufqtn"]
+[gd_scene load_steps=4 format=3 uid="uid://bcagiv8ky6l6c"]
 
 [ext_resource type="Script" path="res://scenes/Brain.gd" id="1_ohy02"]
 [ext_resource type="Texture2D" uid="uid://c7vk23c2m4vqy" path="res://art/braingrid.png" id="2_lvhj0"]
-[ext_resource type="PackedScene" uid="uid://ccosysn4u6uvt" path="res://scenes/Tile.tscn" id="3_diyu5"]
+[ext_resource type="PackedScene" uid="uid://cq3bej4s7hxlt" path="res://scenes/Tile.tscn" id="3_diyu5"]
 
 [node name="Brain" type="Node2D"]
 script = ExtResource("1_ohy02")
