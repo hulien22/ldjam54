@@ -21,7 +21,7 @@
 		
 		["Does alien life exist?", "Yes", "No", "Aliens exist on other planets.", "Aliens aren't real."],
 		["If a tree falls in a forest and no one is around ...", "It doesn't make a sound", "It makes a sound", "If a tree falls in a forest and no one is around, it does not make a sound.", "If a tree falls in a forest and no one is around, it makes a sound."],
-		["Is chess a real sport?", "Yes", "No", "Chess should be considered a sport.", "Chess should not be considered a sport."],
+		["Is chess a sport?", "Yes", "No", "Chess should be considered a sport.", "Chess should not be considered a sport."],
 		["What came first?", "Chicken", "Egg", "The chicken came before the egg.", "The egg came before the chicken."],
 		["What is mightier?", "The pen", "The sword", "The pen is mightier than the sword.", "The sword is mightier than the pen."],
 		["Is cereal a soup?", "Yes", "No", "Cereal is a soup.", "Cereal is not a soup."],
@@ -33,7 +33,7 @@
 		["Do we have free will?","Yes","No", "We have free will", "We do not have free will"],
 		["Will artificial intelligence ever become conscious?","Yes","No","Artificial intelligence will become conscious.","Artificial intelligence will not become conscious."],
 		["Is the you at 7 year still the you at 90 years old?","Yes","No","The you at 7 year is still the you at 90 years old.","The you at 7 year is not the you at 90 years old."],
-		["Which more important: security or freedom?","Security","Freedom","Security is most important.","Freedom is most important."],
+		["Which more important: security or freedom?","Security","Freedom","Security is more important than freedom.","Freedom is more important than security."],
 		["Is perception of a color mostly the same for each person?","Yes","No","Perception of a color is mostly the same for each person.","Perception of a color is different for each person."],
 		["A chariot is heading to run over either a family member or 3 close friends, who should you save?","Family Member","3 Close Friends","You should save your family member instead of 3 close friends.","You should save your 3 close friends instead of a family member."],
 		["Is what we currently perceive the truth of our reality or are they just shadows on a wall in a cave?","Truth","Shadows on a Wall","We percieve the real reality.","We percieve the Prisoners' Reality."],
@@ -58,6 +58,7 @@
 		["Which would win in a fight?", "Cerberus", "Minotaur", "Cerberus would beat minotaur in a fight.", "Minotaur would beat cerberus in a fight."],
 		["Which is more interesting to study?", "Geometry", "Astronomy", "Geometry is more interesting than astronomy.", "Astronomy is more interesting than geometry."],
 		["Which blue pigment material is better?", "Lapis Lazuli", "Azurite", "Lapis Lazuli is a better blue pigment material than azurite.", "Azurite is a better blue pigment material than lapis lazuli."],
-		["Which is tastier?", "Olives", "Grapes", "Olives are tastier than grapes.", "Grapes are tastier than olives."]
+		["Which is tastier?", "Olives", "Grapes", "Olives are tastier than grapes.", "Grapes are tastier than olives."],
+		["What is more important?", "Sleeping", "Eating", "Sleeping is more important than eating.", "Eating is more important than sleeping."],
 	]
 }
