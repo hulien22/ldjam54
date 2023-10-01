@@ -30,11 +30,7 @@ func show_first_level():
 
 
 func _on_button_pressed():
-	if current_node:
-		$SceneHolder.remove_child(current_node)
-		current_node.queue_free();
-	show_brain(false);
-	$SceneHolder.add_child(map)
+	_end_scene()
 
 func _on_moved_to_location(location: Location):
 	var node
@@ -44,6 +40,7 @@ func _on_moved_to_location(location: Location):
 			node.init(location.debate_topic)
 			node.connect("start_combat_phase", _start_combat_phase);
 			node.connect("end_combat_phase", _end_combat_phase);
+			node.connect("end_scene", _end_scene)
 			show_brain(false);
 		Location.LOCATION.BOSS:
 			node = boss_scene.instantiate()
@@ -71,7 +68,13 @@ func move_brain(global_posn:Vector2):
 
 #func scale_brain(s:float):
 #	$Brain.scale = s;
-
+func _end_scene():
+	if current_node:
+		$SceneHolder.remove_child(current_node)
+		current_node.queue_free();
+	show_brain(false);
+	$SceneHolder.add_child(map)
+	
 func show_brain(show: bool = true):
 	$Brain.visible = show;
 
