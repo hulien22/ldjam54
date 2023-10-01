@@ -58,6 +58,8 @@ func _on_moved_to_location(location: Location):
 			show_brain(false);
 		Location.LOCATION.FORGE:
 			node = forge_scene.instantiate()
+			node.connect("start_forge_phase", _start_forge_phase);
+			node.connect("end_forge_phase", _end_forge_phase);
 			show_brain(false);
 	$SceneHolder.add_child(node)
 	current_node = node
@@ -107,3 +109,22 @@ func _end_library_phase():
 	# just hide the brain
 	show_brain(false);
 
+
+func _start_forge_phase():
+#	# set the brain to the correct phase
+#	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
+#	# move the brain to correct position
+#	move_brain(global_posn); 
+#
+#	#spawn a bunch of words
+#	var n = randi_range(5,10);
+#	for i in n:
+#		$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
+#	show_brain(true);
+	pass
+
+func _end_forge_phase(global_posn:Vector2, w: String):
+	move_brain(global_posn);
+	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
+	$Brain.spawn_new_word(w, Vector2(200,40));
+	show_brain(true);
