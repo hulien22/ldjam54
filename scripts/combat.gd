@@ -21,16 +21,16 @@ var word_tiles: Array = [];
 signal start_combat_phase(global_posn:Vector2);
 signal end_combat_phase();
 
-func init(difficulty: int):
-	difficulty_ = difficulty;
+func init(topic: DebateQuestion):
+	#difficulty_ = difficulty;
 	combat_phase_ = COMBAT_PHASE.INTRO;
-	debate_question_ = Global.get_random_debate_question()
+	debate_question_ = topic #Global.get_random_debate_question()
 #	description_ = get_random_desc_for_difficulty(difficulty_);
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# TODO REMOVE
-	init(0);
+	#init(0);
 	
 	assert(combat_phase_ == COMBAT_PHASE.INTRO);
 	start_phase();
