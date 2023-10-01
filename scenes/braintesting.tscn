@@ -9,5 +9,4 @@ position = Vector2(973, 501)
 size = Vector2(16, 16)
 starting_size = Vector2(8, 6)
 starting_offset = Vector2(4, 5)
-canBuyTiles = true
 state_ = 1

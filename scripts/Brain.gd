@@ -8,7 +8,7 @@ extends Node2D
 @export var starting_offset: Vector2
 @export var spread: float = 0
 @export var tileScale: float=0.07
-@export var canBuyTiles: bool= false
+#@export var canBuyTiles: bool= false
 @export var state_: Global.BrainState = Global.BrainState.VIEW_ONLY;
 @export var target_brain_grid_ratio:float = 1.0
 # the actual grid and whether or not the grid tiles are available
@@ -44,11 +44,14 @@ func _ready():
 			#tile.position = Vector2(i*tile.get_width()*tileScale+i*spread,0)
 			#tiles.append(tile)
 			#add_child(tile)
-	spawn_new_word("I", Vector2(100,10));
-	spawn_new_word("BECAUSE", Vector2(100,20));
-	spawn_new_word("LIKE", Vector2(100,30));
-	spawn_new_word("TEST", Vector2(100,40));
-	spawn_new_word("TASTY", Vector2(100,50));
+
+	# game control should probably call these instead
+	spawn_new_word("I", Vector2(200,10));
+	spawn_new_word("BECAUSE", Vector2(200,20));
+	spawn_new_word("LIKE", Vector2(200,30));
+	spawn_new_word("TEST", Vector2(200,40));
+	spawn_new_word("TASTY", Vector2(200,50));
+	
 	render()
 
 func render_grid():
@@ -127,34 +130,45 @@ func set_state(s: Global.BrainState):
 	state_ = s;
 	match s:
 		Global.BrainState.ADDING_NEW_WORDS:
-			# update all words accordingly
-			pass
+			# update all word tiles to be draggable
+			for word_tile in word_tiles:
+				word_tile.set_state(Global.TileState.DRAGGABLE);
 		Global.BrainState.EXPANDING:
+			for word_tile in word_tiles:
+				word_tile.set_state(Global.TileState.VIEW_ONLY);
+			cleanup_abandoned_word_tiles()
 			pass
 		Global.BrainState.COMBAT:
+			for word_tile in word_tiles:
+				word_tile.set_state(Global.TileState.CLICKABLE);
+			cleanup_abandoned_word_tiles()
 			pass
 		Global.BrainState.VIEW_ONLY:
+			for word_tile in word_tiles:
+				word_tile.set_state(Global.TileState.VIEW_ONLY);
+			cleanup_abandoned_word_tiles()
 			pass
 
-
-#func _process(delta):
-#	var cursorPos = get_global_mouse_position()
-#	mouse_to_grid(cursorPos)
-#
-#
-#func mouse_to_grid(pos):
-#	pass
-	
 func _on_tile_clicked(gridPosn:Vector2):
-	assert(state_ == Global.BrainState.EXPANDING);
 	print(gridPosn)
-	if canBuyTiles:
+	if state_ == Global.BrainState.EXPANDING:
 		var clickedTile = grid[gridPosn.y][gridPosn.x]
 		if clickedTile.isLocked():
 			clickedTile.unlock()
 			render()
-#		else:
-#			clickedTile.lock()
+	else:
+		push_warning("got tile clicked signal while in unexpected state: ", state_);
+
+func spawn_new_word(word: String, global_posn: Vector2):
+#	assert(state_ == Global.BrainState.ADDING_NEW_WORDS);
+	var word_tile = wordTileScene.instantiate();
+	word_tile.word = word;
+	word_tile.connect("was_dropped", _handle_dropped_word_tile);
+	word_tile.global_position = global_posn;
+	word_tile.tileScale = tileScale
+	word_tile.spread = spread;
+	word_tiles.append(word_tile)
+	$WordsHolder.add_child(word_tile);
 
 
 func check_for_valid_placement(word_tile:WordTile) -> Array:
@@ -204,16 +218,6 @@ func does_other_word_tile_collide(word_tile: WordTile, grid_posn: Vector2) -> bo
 				return true
 	return false
 
-func spawn_new_word(word: String, global_posn: Vector2):
-	var word_tile = wordTileScene.instantiate();
-	word_tile.word = word;
-	word_tile.connect("was_dropped", _handle_dropped_word_tile);
-	word_tile.global_position = global_posn;
-	word_tile.tileScale = tileScale
-	word_tile.spread = spread;
-	word_tiles.append(word_tile)
-	$WordsHolder.add_child(word_tile);
-
 func _handle_dropped_word_tile(word_tile: WordTile):
 	print("DROPPED ", word_tile.word, " ", word_tile);
 	var res:Array = check_for_valid_placement(word_tile);
@@ -234,4 +238,9 @@ func _handle_dropped_word_tile(word_tile: WordTile):
 
 
 func cleanup_abandoned_word_tiles():
-	pass
+	#loop backwards to deal with deletion issues
+	for i in range(word_tiles.size() - 1, -1, -1):
+		if (!word_tiles[i].on_grid()):
+			word_tiles[i].queue_free();
+			word_tiles.remove_at(i);
+
