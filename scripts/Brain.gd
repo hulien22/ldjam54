@@ -5,23 +5,23 @@ extends Node2D
 @export var size: Vector2
 @export var spread: float = 0
 @export var tileScale: float=0.1
-signal move_player_click(posn: Vector2)
+@export var canBuyTiles: bool= false
 var grid = []
 
 func _ready():
-	#move_player_click.connect("move_player_click", _on_tile_clicked)
+	
 	print("test")
 	for h in size.y:
 		var str= ""
-		grid[h]=[]
+		grid.append([])
 		for l in size.x:
 			var gridTile = gridTileScene.instantiate()
 			add_child(gridTile)
-			gridTile.posn = Vector2(h,l)
+			gridTile.connect("select_tile_click", _on_tile_clicked)
+			gridTile.posn = Vector2(l,h)
 			gridTile.scale = Vector2(tileScale,tileScale)
-			gridTile.position = Vector2(h*gridTile.get_height()*tileScale+h*spread,
-											l*gridTile.get_width()*tileScale+l*spread)
-			grid[h][l]=gridTile
+			gridTile.position = Vector2(l*gridTile.get_width()+l*spread,h*gridTile.get_height()+h*spread)
+			grid[h].append(gridTile)
 		print(str)
 			#var char = word[x][y]
 			#var tile = tileScene.instantiate()
@@ -39,6 +39,12 @@ func _process(delta):
 func mouse_to_grid(pos):
 	pass
 	
-func _on_tile_clicked(posn: Vector2):
-	pass
+func _on_tile_clicked(gridPosn:Vector2):
+	print(gridPosn)
+	if canBuyTiles:
+		var clickedTile = grid[gridPosn.y][gridPosn.x]
+		if clickedTile.isLocked():
+			clickedTile.unlock()
+		else:
+			clickedTile.lock()
 	

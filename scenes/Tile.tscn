@@ -17,11 +17,6 @@ position = Vector2(2.6226e-06, 1.3113e-06)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_l5ifo")
 
-[node name="TileColl" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 5.28991e-06)
-scale = Vector2(1.2, 1.2)
-shape = SubResource("RectangleShape2D_0bbrv")
-
 [node name="TileText" type="RichTextLabel" parent="Area2D"]
 offset_left = -360.0
 offset_top = -360.0
@@ -35,9 +30,16 @@ scroll_active = false
 autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
+[node name="TileColl" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3.05176e-05, -3.05176e-05)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_0bbrv")
+
 [node name="Rect" type="ColorRect" parent="."]
 visible = false
 offset_left = -360.0
 offset_top = -360.0
 offset_right = 360.0
 offset_bottom = 360.0
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

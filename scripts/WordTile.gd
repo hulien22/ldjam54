@@ -6,7 +6,7 @@ extends Node2D
 @export var tileScene: PackedScene
 
 var tiles= []
-
+var isSelected = false
 func _ready():
 	
 	for i in len(word):
@@ -14,10 +14,18 @@ func _ready():
 		var tile = tileScene.instantiate()
 		tile.scale = Vector2(tileScale,tileScale)
 		tile.letter = char
+		tile.connect("select_drag",set_selected)
 		tile.position = Vector2(i*tile.get_width()*tileScale+i*spread,0)
 		tiles.append(tile)
 		add_child(tile)
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+func set_selected(isSel):
+	isSelected = isSel
+	print("is selected",isSelected)
+func _physics_process(delta):
+	if isSelected:
+		global_position = lerp(global_position,get_global_mouse_position(),25*delta)

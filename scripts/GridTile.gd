@@ -4,6 +4,7 @@ var posn: Vector2 = Vector2.ZERO
 var islocked = false
 var unlockedMod = Color(1,1,1,1)
 var lockedMod = Color(0.3,0.3,0.3,1)
+signal select_tile_click(posn: Vector2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +18,7 @@ func lock():
 	$GridImg.set_modulate(lockedMod)
 	islocked=true
 	
-func isLock():
+func isLocked():
 	return islocked
 
 func get_height():
@@ -32,5 +33,4 @@ func _process(delta):
 
 
 func _on_button_pressed():
-	pass
-	#Events.emit_signal("move_player_click", posn)
+	emit_signal("select_tile_click", posn)
