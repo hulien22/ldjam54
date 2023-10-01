@@ -53,6 +53,8 @@ func set_word(w: String):
 		tile.set_state(state_);
 		tiles.append(tile);
 		add_child(tile);
+	
+	modulate = Color(word.hash() | 0x000000ff);
 
 
 func on_grid():
