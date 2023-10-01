@@ -38,3 +38,8 @@ func load_debate_questions():
 func get_random_debate_question() -> DebateQuestion:
 	return debate_questions[rng.randi() % debate_questions.size()];
 
+enum TileState {
+	DRAGGABLE,
+	CLICKABLE,
+	DISABLED,
+};
