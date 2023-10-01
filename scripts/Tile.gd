@@ -9,15 +9,15 @@ func _ready():
 	$Area2D/TileText.add_text(letter) # Replace with function body.
 func get_width():
 	return $Rect.get_global_rect().size.x
+func get_height():
+	return $Rect.get_global_rect().size.y
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+func _on_button_button_down():
+	emit_signal("select_drag",true)
 
-func _on_area_2d_input_event(viewport, event, shape_idx):
-	if Input.is_action_just_pressed("inv_grab"):
-		print("grab")
-		emit_signal("select_drag",true)
-	if Input.is_action_just_released("inv_grab"):
-		print("release")
-		emit_signal("select_drag",true)
+
+func _on_button_button_up():
+	emit_signal("select_drag",false)
