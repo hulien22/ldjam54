@@ -1,10 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://rltch5jb3g6h"]
+[gd_scene load_steps=4 format=3 uid="uid://rltch5jb3g6h"]
 
+[ext_resource type="PackedScene" uid="uid://b1hwh75rufqtn" path="res://scenes/Brain.tscn" id="1_3ep46"]
 [ext_resource type="PackedScene" uid="uid://sx2gqphom8wy" path="res://scenes/WordTile.tscn" id="1_a4qtr"]
+[ext_resource type="PackedScene" uid="uid://jxidb2mxy764" path="res://scenes/GridTile.tscn" id="3_bb6ue"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="WordTile" parent="." instance=ExtResource("1_a4qtr")]
+visible = false
 position = Vector2(247, 207)
 word = "test"
 spread = 10.0
+
+[node name="Brain" parent="." instance=ExtResource("1_3ep46")]
+position = Vector2(531, 310)
+gridTile = ExtResource("3_bb6ue")
+size = Vector2(9, 5)

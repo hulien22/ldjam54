@@ -1,57 +1,44 @@
 extends Node2D
 
 
-@export var Tile: PackedScene
+@export var gridTileScene: PackedScene
+@export var size: Vector2
+@export var spread: float = 0
+@export var tileScale: float=0.1
 
-
-var memories=[]
-var memory_held=null
-var memory_offset=Vector2()
-var last_position = Vector2()
+var grid = []
 
 func _ready():
-	var core_mem = Tile.instantiate()
-	core_mem.init("tactic-2",Global.L,Vector2(0,0),0)
-	core_mem.set_global_position(Vector2(250,100))
-	memories.append(core_mem)
-	add_child(core_mem)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	Events.connect("move_player_click", _on_tile_clicked)
+	print("test")
+	for h in size.y:
+		var str= ""
+		grid[h]=[]
+		for l in size.x:
+			var gridTile = gridTileScene.instantiate()
+			add_child(gridTile)
+			gridTile.posn = Vector2(h,l)
+			gridTile.scale = Vector2(tileScale,tileScale)
+			gridTile.position = Vector2(y*gridTile.get_height()*tileScale+y*spread,
+											x*gridTile.get_width()*tileScale+x*spread)
+			grid[h][l]=gridTile
+		print(str)
+			#var char = word[x][y]
+			#var tile = tileScene.instantiate()
+			#tile.scale = Vector2(tileScale,tileScale)
+			#tile.letter = char
+			#tile.position = Vector2(i*tile.get_width()*tileScale+i*spread,0)
+			#tiles.append(tile)
+			#add_child(tile)
+			
 func _process(delta):
-	var cursor_pos = get_global_mouse_position()
-	if Input.is_action_just_pressed("inv_grab"):
-		grab(cursor_pos)
-	if Input.is_action_just_released("inv_grab"):
-		release(cursor_pos)
-	if memory_held != null:
-		memory_held.rect_global_position = cursor_pos + memory_offset
-
-func grab(cursor_pos):
-	memory_held = get_memory_under_pos(cursor_pos)
-	if memory_held != null:
-		# or last_position = cursor_pos
-		last_position = memory_held.rect_global_position
-		memory_offset = memory_held.rect_global_position - cursor_pos
-		move_child(memory_held, get_child_count())
-		
-func get_memory_under_pos(pos):
-	for memory in memories:
-		if memory.get_global_rect().has_point(pos):
-			return memory
-	return null
+	var cursorPos = get_global_mouse_position()
+	mouse_to_grid(cursorPos)
 	
-func release(cursor_pos):
-	if memory_held == null:
-		return
-	elif !insert_memory(memory_held):
-		#return memory to last position
-		memory_held.rect_global_position = last_position
-		memory_held = null
-	else:
-		memory_held= null
-		
-func insert_memory(memory):
+	
+func mouse_to_grid(pos):
 	pass
 	
-func add_memory():
+func _on_tile_clicked(posn: Vector2):
 	pass
+	

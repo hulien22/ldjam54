@@ -7,12 +7,7 @@ extends Node2D
 
 var tiles= []
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	#$word.add_text(word)
-	#print($tile.
-	#var width = $word.get_content_width()
-	#var tile_amount = ceil(word.length()/width)
 	
 	for i in len(word):
 		var char = word[i]
