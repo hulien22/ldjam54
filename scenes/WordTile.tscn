@@ -1,18 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://sx2gqphom8wy"]
+[gd_scene load_steps=3 format=3 uid="uid://sx2gqphom8wy"]
 
 [ext_resource type="Script" path="res://scripts/WordTile.gd" id="1_87gpv"]
 [ext_resource type="PackedScene" uid="uid://ccosysn4u6uvt" path="res://scenes/Tile.tscn" id="3_af8my"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ncpd"]
 
 [node name="WordTile" type="Node2D"]
 script = ExtResource("1_87gpv")
 word = "biggerest"
 tileScene = ExtResource("3_af8my")
-
-[node name="WordArea" type="Area2D" parent="."]
-visible = false
-
-[node name="WordColl" type="CollisionShape2D" parent="WordArea"]
-visible = false
-shape = SubResource("RectangleShape2D_5ncpd")

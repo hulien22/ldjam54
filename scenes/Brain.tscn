@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1hwh75rufqtn"]
+[gd_scene load_steps=3 format=3 uid="uid://bcagiv8ky6l6c"]
 
 [ext_resource type="Script" path="res://scripts/Brain.gd" id="1_pcbub"]
 [ext_resource type="Texture2D" uid="uid://cy25i0qfd1a3v" path="res://art/brain.png" id="2_cwi72"]
@@ -7,5 +7,4 @@
 script = ExtResource("1_pcbub")
 
 [node name="Brain" type="Sprite2D" parent="."]
-position = Vector2(182, 132)
 texture = ExtResource("2_cwi72")

@@ -128,7 +128,7 @@ func parse_results_from_response(body: PackedByteArray):
 		push_error("Got null body in response.");
 	push_error("DONE")
 	
-	# TODO special handling for "[5, The argument is unrelated to the prompt.]"
+	# TODO special handling for "[5, The argument is unrelated to the prompt.]", "[5, The argument does not address the prompt.]"
 
 func _return_to_map():
 	pass
