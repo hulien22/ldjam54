@@ -242,12 +242,4 @@ offset_bottom = 615.0
 size_flags_horizontal = 4
 text = "CONTINUE"
 
-[node name="Button" type="Button" parent="ResultsBox/Button"]
-offset_left = 930.0
-offset_top = 542.0
-offset_right = 1117.0
-offset_bottom = 615.0
-size_flags_horizontal = 4
-text = "SUBMIT!"
-
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
