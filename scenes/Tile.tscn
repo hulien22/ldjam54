@@ -1,11 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccosysn4u6uvt"]
+[gd_scene load_steps=4 format=3 uid="uid://ccosysn4u6uvt"]
 
-[ext_resource type="Script" path="res://scripts/Tile.gd" id="1_4guc4"]
+[ext_resource type="Script" path="res://scripts/Tile.gd" id="1_0hu26"]
+[ext_resource type="Texture2D" uid="uid://dfcfy5wpc75du" path="res://art/gridblock.png" id="1_l5ifo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bbrv"]
+size = Vector2(600, 600)
 
 [node name="Tile" type="Node2D"]
-scale = Vector2(0.1, 0.1)
-script = ExtResource("1_4guc4")
+script = ExtResource("1_0hu26")
 
-[node name="TileImage" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="TileImage" type="Sprite2D" parent="Area2D"]
+position = Vector2(2.6226e-06, 1.3113e-06)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_l5ifo")
+
+[node name="TileColl" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 5.28991e-06)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_0bbrv")
+
+[node name="TileText" type="RichTextLabel" parent="Area2D"]
+offset_left = -360.0
+offset_top = -360.0
+offset_right = 360.0
+offset_bottom = 360.0
+theme_override_font_sizes/normal_font_size = 456
+bbcode_enabled = true
+text = "[center][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Rect" type="ColorRect" parent="."]
+visible = false
+offset_left = -360.0
+offset_top = -360.0
+offset_right = 360.0
+offset_bottom = 360.0
