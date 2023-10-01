@@ -8,6 +8,7 @@ var data
 func _ready():
 	var file = FileAccess.open(words_file.resource_path, FileAccess.READ)
 	data = JSON.parse_string(file.get_as_text())
+	load_debate_questions();
 	print(data.words.positive)
 	print(get_word())
 	print(get_word())
@@ -24,3 +25,14 @@ func get_word() -> String:
 		return data.words.negative[rng.randi_range(0, len(data.words.negative)-1)]
 	else:
 		return data.words.person[rng.randi_range(0, len(data.words.person)-1)]
+
+var debate_questions: Array;
+
+func load_debate_questions():
+	for d in data.debates:
+		assert(d.size() >= 4)
+		debate_questions.append(DebateQuestion.new(d[0], d[1], d[2], d[3], d[4], "HINT"));
+
+func get_random_debate_question() -> DebateQuestion:
+	return debate_questions[rng.randi() % debate_questions.size()];
+

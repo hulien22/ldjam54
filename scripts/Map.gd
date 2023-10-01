@@ -2,11 +2,14 @@ extends Node
 
 @export var length: int
 @export var width: int
+@export var min_width: int
 
 @export var left_margin: int
 @export var right_margin: int
 @export var top_margin: int
 @export var bottom_margin: int
+@export var jitter_width_bias: float
+@export var jitter_length_radius: float
 
 @export var length_bias: float
 
@@ -47,7 +50,7 @@ func _ready():
 	for i in length:
 		var cur_layer: Array[Location] = []
 		length_offset -= total_length/(length+1)
-		var rand_width = rng.randi_range(1+floor(width*length_bias*(length-i)/length), width-floor(width*length_bias*i/length))
+		var rand_width = rng.randi_range(min_width+floor(width*length_bias*(length-i)/length), width-floor(width*length_bias*i/length))
 		var connect_offset = len(prev_layer)/float(rand_width)
 		var width_ratio = ceil(connect_offset)
 		var width_offset = center_height if rand_width == 1 else top_margin
@@ -57,7 +60,8 @@ func _ready():
 			for k in width_ratio:
 				connections.append(prev_layer[floor(j*connect_offset)+k])
 			var node = location_scene.instantiate()
-			node.init(random_location(),Vector2(length_offset, width_offset), is_active, connections)
+			var total_radius = (float(width-rand_width+1)/width * total_width)/2 * jitter_width_bias
+			node.init(random_location(), Vector2(length_offset + rng.randf_range(-jitter_length_radius, jitter_length_radius), width_offset + rng.randf_range(-total_radius, total_radius)), is_active, connections)
 			add_child(node)
 			node.moved_to_location.connect(_on_moved_to_location)
 			width_offset += total_width/(rand_width-1)

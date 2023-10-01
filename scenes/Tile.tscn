@@ -10,7 +10,6 @@ size = Vector2(600, 600)
 script = ExtResource("1_0hu26")
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="TileImage" type="Sprite2D" parent="Area2D"]
 position = Vector2(2.6226e-06, 1.3113e-06)
