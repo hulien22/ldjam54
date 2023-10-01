@@ -41,6 +41,7 @@ func _on_moved_to_location(location: Location):
 	match location.location_type:
 		Location.LOCATION.COMBAT:
 			node = combat_scene.instantiate()
+			node.init(location.debate_topic)
 			node.connect("start_combat_phase", _start_combat_phase);
 			node.connect("end_combat_phase", _end_combat_phase);
 			show_brain(false);

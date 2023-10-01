@@ -7,6 +7,7 @@ var line_texture = load("res://art/tactic 1.png")
 signal moved_to_location(Location)
 
 var location_type: LOCATION
+var debate_topic: DebateQuestion
 var connections: Array[Location]
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +19,8 @@ func activate(active: bool):
 
 func init(location_type: LOCATION, position: Vector2, active: bool, connections: Array[Location]):
 	self.location_type = location_type
+	if location_type == LOCATION.COMBAT:
+		debate_topic = Global.get_random_debate_question()
 	self.connections = connections
 	self.set_position(position)
 	$button.disabled = !active
