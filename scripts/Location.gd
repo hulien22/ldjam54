@@ -2,6 +2,7 @@ class_name Location
 extends Control
 
 enum LOCATION {START, COMBAT, ORACLE, LIBRARY, UPGRADE, FORGE, BOSS}
+var line_texture = load("res://art/tactic 1.png")
 
 signal moved_to_location(Location)
 
@@ -24,6 +25,10 @@ func init(location_type: LOCATION, position: Vector2, active: bool, connections:
 		var line = Line2D.new()
 		line.add_point(Vector2.ZERO)
 		line.add_point(connection.position-position)
+		line.z_index = -10
+		line.texture = line_texture
+		line.texture_mode = Line2D.LINE_TEXTURE_TILE
+		line.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
 		add_child(line)
 
 func _on_pressed():

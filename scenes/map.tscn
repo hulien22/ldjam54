@@ -5,12 +5,16 @@
 
 [node name="map" type="Node2D"]
 script = ExtResource("1_5iiuj")
-length = 15
-width = 3
-left_margin = 200
-right_margin = 200
-top_margin = 200
-bottom_margin = 200
+length = 10
+width = 4
+min_width = 2
+left_margin = 40
+right_margin = 40
+top_margin = 500
+bottom_margin = 500
+jitter_width_bias = 0.8
+jitter_length_radius = 20.0
+length_bias = 0.4
 
 [node name="PlayerMapMarker" parent="." instance=ExtResource("2_ccopb")]
 modulate = Color(0.772549, 0, 0.52549, 1)
