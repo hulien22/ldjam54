@@ -6,29 +6,42 @@
 		"connecting": ["a", "about", "ago", "all", "also", "and", "as", "at", "back", "be", "because", "but", "by", "can", "come", "could", "do", "enough", "even", "first", "for", "from", "get", "give", "go", "have", "here", "how", "if", "in", "is", "it", "just", "know", "like", "look", "make", "many", "more", "no", "not", "now", "of", "on", "only", "or", "other", "out", "say", "see", "so", "some", "since", "such", "take", "tell", "than", "that", "the", "then", "there", "these", "thing", "this", "those", "time", "to", "too", "use", "until", "very", "want", "way", "well", "what", "when", "which", "who", "will", "with", "within", "would"],
 	},
 	"debates" : [
+		
 		["What's better, apples or oranges?", "Apples", "Oranges", "Apples are better than oranges.", "Oranges are better than apples."],
 		["Pineapple _____ on pizza?", "belongs", "does not belong", "Pineapple is a good pizza topping.", "Pineapple is a horrible pizza topping."],
 		["Dogs or cats?", "dogs", "cats", "Dogs are better pets than cats.", "Cats are better pets than dogs."],
 		["Which season is better?", "Summer", "Winter", "Summer is a better season than winter.", "Winter is a better season than summer."],
-		["What type of music reigns supreme?", "Classical", "Modern", "Classical music is better than modern music.", "Modern music is better than classical music."],
-		["Is Pluto a planet?", "Yes", "No", "Pluto should be considered a planet.", "Pluto should not be considered a planet."],
-		["Does playing video games help make you smarter?", "Yes", "No", "Playing video games makes you smarter.", "Playing video games doesn't make you smarter."],
-		["Books or movies?", "Books", "Movies", "Books are better than movies.", "Movies are better than books."],
-		["Who's cooler?", "Vampires", "Werewolves", "Vampires are cooler than werewolves.", "Werewolves are cooler than vampires."],
-		["Should birthdays be holidays?", "Yes", "No", "Birthdays should be holidays.", "Birthdays should not be holidays."],
+		["Books or plays?", "Books", "Plays", "Books are better than movies.", "Plays are better than books."],
+		["Who's cooler?", "Scribes", "Artisans", "Scribes are cooler than Artisans.", "Artisans are cooler than Scribes."],
+		["What type of music reigns supreme?", "The classics", "Modern", "Classic music is better than modern music.", "Modern music is better than classic music."],
 		["Socks with sandals?", "Looks good", "Horrendous", "Socks with sandals is a respectable fashion statement.", "Socks with sandals is a horrible fashion statement."],
+		["Red vs blue?", "Blue", "Red", "Blue is a better color than red.", "Red is a better color than blue."],
+		["Should birthdays be holidays?", "Yes", "No", "Birthdays should be holidays.", "Birthdays should not be holidays."],
+		
 		["Does alien life exist?", "Yes", "No", "Aliens exist on other planets.", "Aliens aren't real."],
 		["If a tree falls in a forest and no one is around ...", "It doesn't make a sound", "It makes a sound", "If a tree falls in a forest and no one is around, it does not make a sound.", "If a tree falls in a forest and no one is around, it makes a sound."],
-		["If you replace all parts of a ship ...", "It is a new ship", "It is still the same ship.", "If you replace all parts of a ship it is a new ship.", "If you replace all parts of a ship it is still the same ship."],
-		["Are esports real sports?", "Yes", "No", "Competitive video games should be considered a sport.", "Competitive video games should not be considered a sport."],
-		["Blue or Red?", "Blue", "Red", "Blue is a better color than red.", "Red is a better color than blue."],
+		["Is Chess a real sports?", "Yes", "No", "Chess should be considered a sport.", "Chess should not be considered a sport."],
 		["What came first?", "Chicken", "Egg", "The chicken came before the egg.", "The egg came before the chicken."],
 		["What is mightier?", "The pen", "The sword", "The pen is mightier than the sword.", "The sword is mightier than the pen."],
-		["Nature vs Nurture?", "Nature", "Nurture", ".", "."],
-		["Does the sun revolve the earth?", "Yes", "No", ".", "."],
-		["Is the earth flat?", "Yes", "No", ".", "."],
-		["Is water wet?", "Yes", "No", ".", "."],
-		["How many holes are in a straw?", "1", "2", ".", "."],
 		["Is cereal a soup?", "Yes", "No", "Cereal is a soup.", "Cereal is not a soup."],
+		["Is water wet?", "Yes", "No", "Water is wet.", "Water is not wet."],
+		
+		["If you replace all parts of a ship ...", "It is a new ship", "It is still the same ship.", "If you replace all parts of a ship it is a new ship.", "If you replace all parts of a ship it is still the same ship."],
+		["Nature vs Nurture?", "Nature", "Nurture", "Nature forms the person.", "Nurture forms the person."],
+		["If you punch yourself and it hurts are you strong or weak?","Strong","Weak","You're weak if it hurts when you punch youself.","You're Strong if it hurts when you punch youself."],
+		["Do we have free will?","Yes","No"],
+		["Will artificial intelegence ever become conscious?","Yes","No","Artificial will become conscious.","Artificial will not become conscious."],
+		["Is the you at 7 year still the you at 90 years old?","Yes","No","The you at 7 year is still the you at 90 years old.","The you at 7 year is not the you at 90 years old."],
+		["Which more important: security or freedom?","Security","Freedom","Security is most important.","Freedom is most important."],
+		["Is perception of a color mosty the same for each person?","Yes","No","Perception of a color is mostly the same for each person.","Perception of a color is different for each person."],
+		["A chariot is heading to run over either a family memory or 3 close friends, who should you save?","Family Member","3 Close Friends","You should save your family member instead of 3 close friends.","You should save your 3 close friends instead of a family member."]
+		["Is what we currenlty perceive the truth of our reality or are they just shadows on a wall in a cave?","Truth","Shadows on a Wall","We percieve the real reality.","We percieve the Prisoners' Reality."]
+		
+		
+		["Is Pluto a planet?", "Yes", "No", "Pluto should be considered a planet.", "Pluto should not be considered a planet."],
+		["Does playing video games help make you smarter?", "Yes", "No", "Playing video games makes you smarter.", "Playing video games doesn't make you smarter."],
+		
+		["Does the sun revolve the earth?", "Yes", "No", ".", "."],
+		["Is the earth flat?", "Yes", "No", ".", "."]
 	]
 }
