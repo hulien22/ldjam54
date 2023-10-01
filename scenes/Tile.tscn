@@ -43,7 +43,6 @@ offset_bottom = 300.0
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
 offset_left = -300.0
 offset_top = -300.0
 offset_right = 300.0

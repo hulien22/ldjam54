@@ -30,9 +30,11 @@ func show_first_level():
 
 
 func _on_button_pressed():
-	remove_child(current_node)
+	if current_node:
+		$SceneHolder.remove_child(current_node)
+		current_node.queue_free();
 	show_brain(false);
-	add_child(map)
+	$SceneHolder.add_child(map)
 
 func _on_moved_to_location(location: Location):
 	var node
@@ -57,9 +59,9 @@ func _on_moved_to_location(location: Location):
 		Location.LOCATION.FORGE:
 			node = forge_scene.instantiate()
 			show_brain(false);
-	add_child(node)
+	$SceneHolder.add_child(node)
 	current_node = node
-	remove_child(map)
+	$SceneHolder.remove_child(map)
 
 func move_brain(global_posn:Vector2):
 	$Brain.global_position = global_posn;
@@ -73,6 +75,7 @@ func show_brain(show: bool = true):
 func _start_combat_phase(global_posn:Vector2):
 	# set the brain to the correct phase
 	$Brain.set_state(Global.BrainState.COMBAT);
+	$Brain.set_combat_node(current_node);
 	# move the brain to correct position
 	move_brain(global_posn);
 	show_brain(true);

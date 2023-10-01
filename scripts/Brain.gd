@@ -17,6 +17,8 @@ var grid = []
 # the list of word tiles present, can be on or off the grid 
 var word_tiles: Array = []
 
+var combat_scene: Combat;
+
 func _ready():
 	print("test")
 	for h in size.y:
@@ -142,6 +144,9 @@ func set_state(s: Global.BrainState):
 			pass
 	render()
 
+func set_combat_node(scene: Combat):
+	combat_scene = scene;
+
 func _on_tile_clicked(gridPosn:Vector2):
 	print(gridPosn)
 	if state_ == Global.BrainState.EXPANDING:
@@ -157,6 +162,7 @@ func spawn_new_word(word: String, global_posn: Vector2):
 	var word_tile = wordTileScene.instantiate();
 	word_tile.word = word;
 	word_tile.connect("was_dropped", _handle_dropped_word_tile);
+	word_tile.connect("was_clicked", _handle_clicked_word_tile);
 	word_tile.global_position = global_posn;
 	word_tile.tileScale = tileScale
 	word_tile.spread = spread;
@@ -210,6 +216,12 @@ func does_other_word_tile_collide(word_tile: WordTile, grid_posn: Vector2) -> bo
 			elif (w.direction == WordTile.Direction.DOWN && grid_posn.x == w.grid_posn.x && grid_posn.y >= w.grid_posn.y && grid_posn.y < w.grid_posn.y + w.word.length()):
 				return true
 	return false
+
+
+func _handle_clicked_word_tile(word_tile: WordTile, selected:bool):
+	print("CLICKED ", word_tile.word, " ", word_tile);
+	combat_scene.add_word_tile(word_tile, selected);
+	
 
 func _handle_dropped_word_tile(word_tile: WordTile):
 	print("DROPPED ", word_tile.word, " ", word_tile);

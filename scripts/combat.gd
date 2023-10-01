@@ -15,6 +15,9 @@ var description_: String = "You encounter a farmer who seems to be pondering som
 var prompt_: String;
 var result_scores: Array;
 
+# this will compose the argument.
+var word_tiles: Array = [];
+
 signal start_combat_phase(global_posn:Vector2);
 signal end_combat_phase();
 
@@ -138,3 +141,17 @@ func parse_results_from_response(body: PackedByteArray):
 
 func _return_to_map():
 	pass
+
+func add_word_tile(word_tile: WordTile, add: bool):
+	if add:
+		word_tiles.append(word_tile);
+	else:
+		word_tiles.erase(word_tile);
+	render_argument();
+
+func render_argument():
+	var s: String = "";
+	for word_tile in word_tiles:
+		s += word_tile.word + " ";
+	$ConstructArgBox/Label2.text = s;
+	

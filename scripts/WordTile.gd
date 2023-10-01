@@ -9,7 +9,8 @@ enum Direction {
 @export var tileScale: float=0.1
 @export var tileScene: PackedScene
 
-signal was_dropped(word_tile: WordTile)
+signal was_dropped(word_tile: WordTile);
+signal was_clicked(word_tile: WordTile, selected:bool);
 
 
 var tiles= []
@@ -36,7 +37,7 @@ func _ready():
 		tile.scale = Vector2(tileScale,tileScale)
 		tile.letter = char
 		tile.connect("select_drag", set_selected);
-		tile.connect("clicked", was_clicked);
+		tile.connect("clicked", set_clicked);
 		tile.position = Vector2(i*tile.get_width()*tileScale+i*spread,0)
 		tiles.append(tile)
 		add_child(tile)
@@ -63,12 +64,14 @@ func return_to_prev_loc():
 	else:
 		direction = Direction.DOWN;
 
-func was_clicked(isSel: bool):
+func set_clicked(isSel: bool):
+	print("CLICKED ", word, " ", isSel);
 	if (isSel):
 		set_state(Global.TileState.DISABLED);
 	else:
 		set_state(Global.TileState.CLICKABLE);
 	# todo emit signals to combat scene about spawning in stuff
+	emit_signal("was_clicked", self, isSel);
 
 func set_state(s: Global.TileState):
 	state_ = s;
