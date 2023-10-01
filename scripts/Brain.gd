@@ -5,11 +5,11 @@ extends Node2D
 @export var size: Vector2
 @export var spread: float = 0
 @export var tileScale: float=0.1
-
+signal move_player_click(posn: Vector2)
 var grid = []
 
 func _ready():
-	Events.connect("move_player_click", _on_tile_clicked)
+	#move_player_click.connect("move_player_click", _on_tile_clicked)
 	print("test")
 	for h in size.y:
 		var str= ""
@@ -19,8 +19,8 @@ func _ready():
 			add_child(gridTile)
 			gridTile.posn = Vector2(h,l)
 			gridTile.scale = Vector2(tileScale,tileScale)
-			gridTile.position = Vector2(y*gridTile.get_height()*tileScale+y*spread,
-											x*gridTile.get_width()*tileScale+x*spread)
+			gridTile.position = Vector2(h*gridTile.get_height()*tileScale+h*spread,
+											l*gridTile.get_width()*tileScale+l*spread)
 			grid[h][l]=gridTile
 		print(str)
 			#var char = word[x][y]
