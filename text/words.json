@@ -22,5 +22,13 @@
 		["If you replace all parts of a ship ...", "It is a new ship", "It is still the same ship.", "If you replace all parts of a ship it is a new ship.", "If you replace all parts of a ship it is still the same ship."],
 		["Are esports real sports?", "Yes", "No", "Competitive video games should be considered a sport.", "Competitive video games should not be considered a sport."],
 		["Blue or Red?", "Blue", "Red", "Blue is a better color than red.", "Red is a better color than blue."],
+		["What came first?", "Chicken", "Egg", "The chicken came before the egg.", "The egg came before the chicken."],
+		["What is mightier?", "The pen", "The sword", "The pen is mightier than the sword.", "The sword is mightier than the pen."],
+		["Nature vs Nurture?", "Nature", "Nurture", ".", "."],
+		["Does the sun revolve the earth?", "Yes", "No", ".", "."],
+		["Is the earth flat?", "Yes", "No", ".", "."],
+		["Is water wet?", "Yes", "No", ".", "."],
+		["How many holes are in a straw?", "1", "2", ".", "."],
+		["Is cereal a soup?", "Yes", "No", "Cereal is a soup.", "Cereal is not a soup."],
 	]
 }
