@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcagiv8ky6l6c"]
+[gd_scene load_steps=5 format=3 uid="uid://bcagiv8ky6l6c"]
 
 [ext_resource type="Script" path="res://scripts/Brain.gd" id="1_pcbub"]
 [ext_resource type="Texture2D" uid="uid://cy25i0qfd1a3v" path="res://art/brain.png" id="2_cwi72"]
 [ext_resource type="PackedScene" uid="uid://jxidb2mxy764" path="res://scenes/GridTile.tscn" id="2_npnp3"]
+[ext_resource type="PackedScene" uid="uid://sx2gqphom8wy" path="res://scenes/WordTile.tscn" id="3_qy81r"]
 
 [node name="Brain" type="Node2D"]
 script = ExtResource("1_pcbub")
 gridTileScene = ExtResource("2_npnp3")
+wordTileScene = ExtResource("3_qy81r")
 size = Vector2(12, 12)
 starting_size = Vector2(8, 8)
 starting_offset = Vector2(2, 2)
@@ -35,3 +37,5 @@ color = Color(1, 1, 1, 0.329412)
 
 [node name="GridHolder" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0.34902)
+
+[node name="WordsHolder" type="Node2D" parent="."]

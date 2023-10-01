@@ -2,6 +2,7 @@ extends Node2D
 
 
 @export var gridTileScene: PackedScene
+@export var wordTileScene: PackedScene
 @export var size: Vector2
 @export var starting_size: Vector2
 @export var starting_offset: Vector2
@@ -14,7 +15,7 @@ extends Node2D
 var grid = []
 
 # the list of word tiles present, can be on or off the grid 
-var wordtiles: Array = []
+var word_tiles: Array = []
 
 
 func _ready():
@@ -43,7 +44,10 @@ func _ready():
 			#tile.position = Vector2(i*tile.get_width()*tileScale+i*spread,0)
 			#tiles.append(tile)
 			#add_child(tile)
-	render_grid()
+	spawn_new_word("I", Vector2(100,10));
+	spawn_new_word("BECAUSE", Vector2(100,20));
+	spawn_new_word("LIKE", Vector2(100,30));
+	render()
 
 func render_grid():
 	# only show grid elements that are bought
@@ -83,11 +87,11 @@ func render_grid():
 	
 	print_debug(debug_string);
 	# Center the grid such that the center nodes are closest to 0,0
-	var grid_width = (max_col - min_col) * (grid[0][0].get_width() + spread);
-	var grid_height = (max_row - min_row) * (grid[0][0].get_width() + spread);
+	var grid_width = (max_col - min_col) * get_tile_width();
+	var grid_height = (max_row - min_row) * get_tile_width();
 	
-	$GridHolder.position.x = -(max_col + min_col) * (grid[0][0].get_width() + spread) / 2.0;
-	$GridHolder.position.y = -(max_row + min_row) * (grid[0][0].get_width() + spread) / 2.0;
+	$GridHolder.position.x = -(max_col + min_col) * get_tile_width() / 2.0;
+	$GridHolder.position.y = -(max_row + min_row) * get_tile_width() / 2.0;
 
 	# TODO some calculation to resize the brain image to fit the grid
 	# Use rect to get brain size approximation, fit the grid inside of that.
@@ -99,9 +103,23 @@ func render_grid():
 	# want the ratio of brain:grid to be 1.1:1
 	$BG.scale.x = (target_brain_grid_ratio * grid_width) / bwidth;
 	$BG.scale.y = (target_brain_grid_ratio * grid_height) / bheight;
-	
-	
-	
+
+func move_grid_word_tiles():
+	for word_tile in word_tiles:
+		print(word_tile.word, " ", word_tile.grid_posn);
+		if word_tile.on_grid():
+			word_tile.global_position.x = $GridHolder.global_position.x + word_tile.grid_posn.x * get_tile_width();
+			word_tile.global_position.y = $GridHolder.global_position.y + word_tile.grid_posn.y * get_tile_width();
+			print(word_tile.word, " ", word_tile.global_position);
+
+func render():
+	render_grid();
+	move_grid_word_tiles();
+
+func get_tile_width() -> float:
+	#TODO also need scale in here??
+	return grid[0][0].get_width() + spread;
+
 
 func set_state(s: Global.BrainState):
 	state_ = s;
@@ -117,13 +135,13 @@ func set_state(s: Global.BrainState):
 			pass
 
 
-func _process(delta):
-	var cursorPos = get_global_mouse_position()
-	mouse_to_grid(cursorPos)
-	
-	
-func mouse_to_grid(pos):
-	pass
+#func _process(delta):
+#	var cursorPos = get_global_mouse_position()
+#	mouse_to_grid(cursorPos)
+#
+#
+#func mouse_to_grid(pos):
+#	pass
 	
 func _on_tile_clicked(gridPosn:Vector2):
 	assert(state_ == Global.BrainState.EXPANDING);
@@ -132,7 +150,75 @@ func _on_tile_clicked(gridPosn:Vector2):
 		var clickedTile = grid[gridPosn.y][gridPosn.x]
 		if clickedTile.isLocked():
 			clickedTile.unlock()
-			render_grid()
+			render()
 #		else:
 #			clickedTile.lock()
+
+
+func does_tile_have_valid_or_invalid(word_tile:WordTile) -> Array:
+	var has_at_least_one_valid_tile: bool = false;
+	var has_at_least_one_invalid_tile: bool = false;
+	# Get grid position
+	var grid_posn = (word_tile.global_position + Vector2(get_tile_width() / 2, get_tile_width() / 2) - $GridHolder.global_position) / get_tile_width();
+	grid_posn.x = int(grid_posn.x);
+	grid_posn.y = int(grid_posn.y);
 	
+	# analyze all the grid spots we intersect with, even the ones outside the grid.
+	var dir:Vector2;
+	if (word_tile.direction == WordTile.Direction.RIGHT):
+		dir = Vector2(1, 0)
+	else:
+		dir = Vector2(0,1)
+	
+	for i in word_tile.word.length():
+		var p = grid_posn + i * dir;
+		if (p.x >= 0 && p.x < size.x && p.y >= 0 && p.y < size.y):
+			# an actual grid element
+			if (grid[p.y][p.x].isLocked()):
+				has_at_least_one_invalid_tile = true;
+			else:
+				# TODO Check for collision with other word tiles here.
+				has_at_least_one_valid_tile = true;
+		else:
+			# invalid spot
+			has_at_least_one_invalid_tile = true;
+		print(p, " | ",  [has_at_least_one_valid_tile, has_at_least_one_invalid_tile])
+		
+		#shortcircuit early
+		if has_at_least_one_valid_tile && has_at_least_one_invalid_tile:
+			return [true, true];
+	
+	# made it to the end with only valid or invalid tiles, therefore this is a valid spot.
+	return [has_at_least_one_valid_tile, has_at_least_one_invalid_tile];
+
+func spawn_new_word(word: String, global_posn: Vector2):
+	var word_tile = wordTileScene.instantiate();
+	word_tile.word = word;
+	word_tile.connect("was_dropped", _handle_dropped_word_tile);
+	word_tile.global_position = global_posn;
+	word_tile.tileScale = tileScale
+	word_tile.spread = spread;
+	word_tiles.append(word_tile)
+	$WordsHolder.add_child(word_tile);
+
+func _handle_dropped_word_tile(word_tile: WordTile):
+	print("DROPPED ", word_tile.word, " ", word_tile);
+	var res:Array = does_tile_have_valid_or_invalid(word_tile);
+	
+	print(res);
+	if (res[0] && res[1]):
+		# invalid spot to be dropped, return word tile back to previous location
+		word_tile.return_to_prev_loc();
+	elif (res[0]):
+		# valid spot on the grid!
+		var grid_posn = (word_tile.global_position + Vector2(get_tile_width() / 2, get_tile_width() / 2) - $GridHolder.global_position) / get_tile_width();
+		grid_posn.x = int(grid_posn.x);
+		grid_posn.y = int(grid_posn.y);
+		word_tile.grid_posn = grid_posn;
+		render();
+	else:
+		word_tile.grid_posn = WordTile.NOT_ON_GRID;
+
+
+func cleanup_abandoned_word_tiles():
+	pass

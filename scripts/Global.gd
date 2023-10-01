@@ -52,3 +52,4 @@ enum BrainState {
 	VIEW_ONLY,
 	COMBAT,
 };
+
