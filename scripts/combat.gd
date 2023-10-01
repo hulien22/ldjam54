@@ -18,7 +18,7 @@ var result_scores: Array;
 func init(difficulty: int):
 	difficulty_ = difficulty;
 	combat_phase_ = COMBAT_PHASE.INTRO;
-	debate_question_ = $Node.get_random_debate_question()
+	debate_question_ = Global.get_random_debate_question()
 #	description_ = get_random_desc_for_difficulty(difficulty_);
 
 # Called when the node enters the scene tree for the first time.

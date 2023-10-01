@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnv66lo7xwndp"]
+[gd_scene load_steps=10 format=3 uid="uid://dnv66lo7xwndp"]
 
 [ext_resource type="PackedScene" path="res://scenes/map.tscn" id="1_6wptd"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_iij1i"]
@@ -9,8 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://ryagmgt1vqsb" path="res://scenes/upgrade.tscn" id="7_l25g6"]
 [ext_resource type="PackedScene" uid="uid://bd8ck0os5fgp" path="res://scenes/forge.tscn" id="8_3set1"]
 [ext_resource type="PackedScene" uid="uid://c2t66apu50q7i" path="res://scenes/AudioPlayer.tscn" id="9_d1na7"]
-[ext_resource type="Script" path="res://scripts/words.gd" id="10_bq2o4"]
-[ext_resource type="JSON" path="res://text/words.json" id="11_n5pog"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_iij1i")
@@ -27,9 +25,5 @@ offset_right = 307.0
 offset_bottom = 123.0
 
 [node name="AudioPlayer" parent="." instance=ExtResource("9_d1na7")]
-
-[node name="Node" type="Node" parent="."]
-script = ExtResource("10_bq2o4")
-words_file = ExtResource("11_n5pog")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

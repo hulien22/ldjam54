@@ -24,6 +24,7 @@ func _ready():
 func set_selected(isSel):
 	isSelected = isSel
 	print("is selected",isSelected)
+
 func _process(delta):
 	if isSelected:
 		global_position = lerp(global_position,get_global_mouse_position(),25*delta)

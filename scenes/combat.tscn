@@ -1,8 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1qd4jib7m856"]
+[gd_scene load_steps=6 format=3 uid="uid://b1qd4jib7m856"]
 
 [ext_resource type="Script" path="res://scripts/combat.gd" id="1_uqive"]
-[ext_resource type="Script" path="res://scripts/words.gd" id="2_2towf"]
-[ext_resource type="JSON" path="res://text/words.json" id="3_42n6f"]
 [ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="4_kcjvg"]
 
 [sub_resource type="Animation" id="Animation_cpd2w"]
@@ -31,10 +29,6 @@ font_size = 100
 
 [node name="combat" type="Node2D"]
 script = ExtResource("1_uqive")
-
-[node name="Node" type="Node" parent="."]
-script = ExtResource("2_2towf")
-words_file = ExtResource("3_42n6f")
 
 [node name="IntroBox" type="Node2D" parent="."]
 visible = false
