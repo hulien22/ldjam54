@@ -40,6 +40,15 @@ func get_random_debate_question() -> DebateQuestion:
 
 enum TileState {
 	DRAGGABLE,
+	BEING_DRAGGED,
 	CLICKABLE,
 	DISABLED,
+	VIEW_ONLY,
+};
+
+enum BrainState {
+	ADDING_NEW_WORDS,
+	EXPANDING,
+	VIEW_ONLY,
+	COMBAT,
 };

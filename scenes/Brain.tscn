@@ -7,6 +7,31 @@
 [node name="Brain" type="Node2D"]
 script = ExtResource("1_pcbub")
 gridTileScene = ExtResource("2_npnp3")
+size = Vector2(12, 12)
+starting_size = Vector2(8, 8)
+starting_offset = Vector2(2, 2)
 
-[node name="Brain" type="Sprite2D" parent="."]
+[node name="BG" type="Node2D" parent="."]
+
+[node name="Brain" type="Sprite2D" parent="BG"]
+position = Vector2(0, -1)
 texture = ExtResource("2_cwi72")
+
+[node name="ColorRect" type="ColorRect" parent="BG"]
+visible = false
+offset_left = -325.0
+offset_top = -200.0
+offset_right = 325.0
+offset_bottom = 200.0
+color = Color(1, 1, 1, 0.329412)
+
+[node name="ColorRect2" type="ColorRect" parent="BG"]
+visible = false
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+color = Color(1, 1, 1, 0.329412)
+
+[node name="GridHolder" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.34902)

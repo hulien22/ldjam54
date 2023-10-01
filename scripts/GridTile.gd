@@ -1,19 +1,23 @@
 extends Node2D
 
 var posn: Vector2 = Vector2.ZERO
-var islocked = false
+var islocked = true
 var unlockedMod = Color(1,1,1,1)
 var lockedMod = Color(0.3,0.3,0.3,1)
 signal select_tile_click(posn: Vector2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	if islocked:
+		lock();
+	else:
+		unlock();
 
 func unlock():
 	$GridImg.set_modulate(unlockedMod)
+	$Button.disabled = true;
 	islocked=false
-	
+
 func lock():
 	$GridImg.set_modulate(lockedMod)
 	islocked=true

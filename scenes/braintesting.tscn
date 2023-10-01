@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl5583scn3tew"]
+
+[ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="1_y0332"]
+
+[node name="braintesting" type="Node2D"]
+
+[node name="Brain" parent="." instance=ExtResource("1_y0332")]
+position = Vector2(973, 501)
+size = Vector2(16, 16)
+starting_size = Vector2(8, 6)
+starting_offset = Vector2(4, 5)
+canBuyTiles = true
+state_ = 1

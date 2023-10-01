@@ -10,6 +10,10 @@ var tiles= []
 var isSelected: bool = false
 var wasRightClicked: bool = false
 
+# global position and rotation of where we were picked up from, return here in case drop is invalid
+var picked_up_posn: Vector2;
+var picked_up_rotation: float;
+
 var state_:Global.TileState = Global.TileState.DRAGGABLE;
 
 func _ready():
@@ -27,6 +31,8 @@ func _ready():
 
 func set_selected(isSel : bool):
 	isSelected = isSel
+	picked_up_posn = global_position;
+	picked_up_rotation = rotation;
 	print("is selected",isSelected)
 
 func was_clicked(isSel: bool):
