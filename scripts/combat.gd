@@ -15,6 +15,9 @@ var description_: String = "You encounter a farmer who seems to be pondering som
 var prompt_: String;
 var result_scores: Array;
 
+signal start_combat_phase(global_posn:Vector2);
+signal end_combat_phase();
+
 func init(difficulty: int):
 	difficulty_ = difficulty;
 	combat_phase_ = COMBAT_PHASE.INTRO;
@@ -47,12 +50,15 @@ func start_phase():
 			$PickSideBox.hide();
 			$ConstructArgBox/Label.text = prompt_;
 			#show brain with words
+			var brain_posn = $ConstructArgBox.global_position + Vector2(553, 397);
+			emit_signal("start_combat_phase", brain_posn);
 			#enable clicking words
 #			$ConstructArgBox/Brain.set_click_only()
 			$ConstructArgBox/Button.pressed.connect(self._submit_debate);
 			$ConstructArgBox.show();
 		COMBAT_PHASE.JUDGING:
 			$ConstructArgBox.hide();
+			emit_signal("end_combat_phase");
 			$JudgingBox/AnimationPlayer.play("wait_for_judging");
 			$JudgingBox.show();
 		COMBAT_PHASE.RESULTS:

@@ -17,7 +17,6 @@ var grid = []
 # the list of word tiles present, can be on or off the grid 
 var word_tiles: Array = []
 
-
 func _ready():
 	print("test")
 	for h in size.y:
@@ -44,13 +43,6 @@ func _ready():
 			#tile.position = Vector2(i*tile.get_width()*tileScale+i*spread,0)
 			#tiles.append(tile)
 			#add_child(tile)
-
-	# game control should probably call these instead
-	spawn_new_word("I", Vector2(200,10));
-	spawn_new_word("BECAUSE", Vector2(200,20));
-	spawn_new_word("LIKE", Vector2(200,30));
-	spawn_new_word("TEST", Vector2(200,40));
-	spawn_new_word("TASTY", Vector2(200,50));
 	
 	render()
 
@@ -64,7 +56,7 @@ func render_grid():
 	var max_row = 0;
 	var max_col = 0;
 	
-	var debug_string = "";
+#	var debug_string = "";
 	for row in size.y:
 		for col in size.x:
 			grid[row][col].visible = false;
@@ -85,12 +77,12 @@ func render_grid():
 				min_col = min(min_col, col);
 				max_row = max(max_row, row);
 				max_col = max(max_col, col);
-				debug_string += "O ";
-			else:
-				debug_string += "X ";
-		debug_string +="\n";
+#				debug_string += "O ";
+#			else:
+#				debug_string += "X ";
+#		debug_string +="\n";
 	
-	print_debug(debug_string);
+#	print_debug(debug_string);
 	# Center the grid such that the center nodes are closest to 0,0
 	var grid_width = (max_col - min_col) * get_tile_width();
 	var grid_height = (max_row - min_row) * get_tile_width();
@@ -148,6 +140,7 @@ func set_state(s: Global.BrainState):
 				word_tile.set_state(Global.TileState.VIEW_ONLY);
 			cleanup_abandoned_word_tiles()
 			pass
+	render()
 
 func _on_tile_clicked(gridPosn:Vector2):
 	print(gridPosn)
@@ -241,6 +234,7 @@ func cleanup_abandoned_word_tiles():
 	#loop backwards to deal with deletion issues
 	for i in range(word_tiles.size() - 1, -1, -1):
 		if (!word_tiles[i].on_grid()):
+			print_debug("Deleting word tile ", word_tiles[i].word);
 			word_tiles[i].queue_free();
 			word_tiles.remove_at(i);
 

@@ -12,11 +12,26 @@ var map
 var current_node
 
 func _ready():
+	show_brain(false);
 	map = map_scene.instantiate()
 	map.connect("moved_to_location", _on_moved_to_location)
+	show_first_level()
+
+func show_first_level():
+	move_brain(get_viewport_rect().size / 2);
+	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
+	# game control should probably call these instead
+	for i in 15:
+		# TODO don't spawn words too long to start with
+		# maybe force a certain set of starting words?
+		$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
+	show_brain();
+	
+
 
 func _on_button_pressed():
 	remove_child(current_node)
+	show_brain(false);
 	add_child(map)
 
 func _on_moved_to_location(location: Location):
@@ -24,16 +39,45 @@ func _on_moved_to_location(location: Location):
 	match location.location_type:
 		Location.LOCATION.COMBAT:
 			node = combat_scene.instantiate()
+			node.connect("start_combat_phase", _start_combat_phase);
+			node.connect("end_combat_phase", _end_combat_phase);
+			show_brain(false);
 		Location.LOCATION.BOSS:
 			node = boss_scene.instantiate()
+			show_brain(false);
 		Location.LOCATION.LIBRARY:
 			node = library_scene.instantiate()
+			show_brain(false);
 		Location.LOCATION.ORACLE:
 			node = oracle_scene.instantiate()
+			show_brain(false);
 		Location.LOCATION.UPGRADE:
 			node = upgrade_scene.instantiate()
+			show_brain(false);
 		Location.LOCATION.FORGE:
 			node = forge_scene.instantiate()
+			show_brain(false);
 	add_child(node)
 	current_node = node
 	remove_child(map)
+
+func move_brain(global_posn:Vector2):
+	$Brain.global_position = global_posn;
+
+#func scale_brain(s:float):
+#	$Brain.scale = s;
+
+func show_brain(show: bool = true):
+	$Brain.visible = show;
+
+func _start_combat_phase(global_posn:Vector2):
+	# set the brain to the correct phase
+	$Brain.set_state(Global.BrainState.COMBAT);
+	# move the brain to correct position
+	move_brain(global_posn);
+	show_brain(true);
+
+func _end_combat_phase():
+	# just hide the brain
+	show_brain(false);
+	# TODO reset the words that were selected? need another phase?
