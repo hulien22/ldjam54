@@ -63,7 +63,6 @@ func start_phase():
 			$ResultsBox/Score3.text = str(result_scores[2]);
 			$ResultsBox/Button.pressed.connect(self._return_to_map);
 			$ResultsBox.show();
-			pass
 
 func _move_to_next_phase():
 	combat_phase_ += 1;
