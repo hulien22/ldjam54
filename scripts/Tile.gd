@@ -30,6 +30,10 @@ func _on_button_button_down():
 	match state_:
 		Global.TileState.DRAGGABLE:
 			emit_signal("select_drag",true)
+		Global.TileState.CLICKABLE:
+			emit_signal("clicked", true);
+		Global.TileState.DISABLED:
+			emit_signal("clicked", false);
 
 
 func _on_button_button_up():
@@ -38,8 +42,9 @@ func _on_button_button_up():
 			emit_signal("select_drag",false)
 
 func _on_button_pressed():
-	match state_:
-		Global.TileState.CLICKABLE:
-			emit_signal("clicked", true);
-		Global.TileState.DISABLED:
-			emit_signal("clicked", false);
+#	match state_:
+#		Global.TileState.CLICKABLE:
+#			emit_signal("clicked", true);
+#		Global.TileState.DISABLED:
+#			emit_signal("clicked", false);
+	pass

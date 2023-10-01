@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dnv66lo7xwndp"]
 
-[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="1_6wptd"]
+[ext_resource type="PackedScene" uid="uid://dwychm67ltxst" path="res://scenes/map.tscn" id="1_6wptd"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_iij1i"]
 [ext_resource type="PackedScene" uid="uid://b1qd4jib7m856" path="res://scenes/combat.tscn" id="2_f0e2t"]
 [ext_resource type="PackedScene" uid="uid://dvsqs64munlvc" path="res://scenes/boss.tscn" id="4_ekeoq"]
@@ -32,5 +32,7 @@ offset_bottom = 123.0
 [node name="Brain" parent="." instance=ExtResource("10_m2vja")]
 z_index = 50
 z_as_relative = false
+starting_size = Vector2(8, 6)
+starting_offset = Vector2(2, 3)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

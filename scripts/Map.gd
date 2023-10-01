@@ -24,7 +24,7 @@ func random_location() -> Location.LOCATION:
 	var value = rng.randi_range(1, 100)
 	if value <= 30:
 		return Location.LOCATION.COMBAT
-	elif value <= 40:
+	elif value <= 30:
 		return Location.LOCATION.ORACLE
 	elif value <= 50:
 		return Location.LOCATION.LIBRARY

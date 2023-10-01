@@ -144,6 +144,7 @@ size_flags_horizontal = 4
 text = "SUBMIT!"
 
 [node name="Brain" parent="ConstructArgBox" instance=ExtResource("4_kcjvg")]
+visible = false
 position = Vector2(553.754, 397.598)
 
 [node name="JudgingBox" type="Node2D" parent="."]

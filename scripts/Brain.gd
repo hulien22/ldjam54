@@ -18,6 +18,7 @@ var grid = []
 var word_tiles: Array = []
 
 var combat_scene: Combat;
+var upgrade_scene: Upgrade;
 
 func _ready():
 	print("test")
@@ -86,8 +87,6 @@ func render_grid():
 	
 #	print_debug(debug_string);
 	# Center the grid such that the center nodes are closest to 0,0
-	var grid_width = (max_col - min_col) * get_tile_width();
-	var grid_height = (max_row - min_row) * get_tile_width();
 	
 	$GridHolder.position.x = -(max_col + min_col) * get_tile_width() / 2.0;
 	$GridHolder.position.y = -(max_row + min_row) * get_tile_width() / 2.0;
@@ -97,6 +96,12 @@ func render_grid():
 	# This value stays the same, even with node resizing.
 	var bwidth = $BG/ColorRect.size.x
 	var bheight = $BG/ColorRect.size.y
+	
+	var bonus = 2;
+	if (is_expanding):
+		bonus = 0;
+	var grid_width = (max_col - min_col + bonus) * get_tile_width();
+	var grid_height = (max_row - min_row + bonus) * get_tile_width();
 	
 	print(grid_width, " ", grid_height, " ", bwidth, " ", bheight);
 	# want the ratio of brain:grid to be 1.1:1
@@ -141,6 +146,9 @@ func set_state(s: Global.BrainState):
 
 func set_combat_node(scene: Combat):
 	combat_scene = scene;
+	
+func set_upgrade_node(scene: Upgrade):
+	upgrade_scene = scene;
 
 func _on_tile_clicked(gridPosn:Vector2):
 	print(gridPosn)
@@ -148,6 +156,7 @@ func _on_tile_clicked(gridPosn:Vector2):
 		var clickedTile = grid[gridPosn.y][gridPosn.x]
 		if clickedTile.isLocked():
 			clickedTile.unlock()
+			upgrade_scene.on_upgrade();
 			render()
 	else:
 		push_warning("got tile clicked signal while in unexpected state: ", state_);
@@ -241,7 +250,7 @@ func cleanup_abandoned_word_tiles():
 	#loop backwards to deal with deletion issues
 	for i in range(word_tiles.size() - 1, -1, -1):
 		if (!word_tiles[i].on_grid()):
-			print_debug("Deleting word tile ", word_tiles[i].word);
+#			print_debug("Deleting word tile ", word_tiles[i].word);
 			word_tiles[i].queue_free();
 			word_tiles.remove_at(i);
 

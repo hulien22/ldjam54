@@ -5,4 +5,4 @@ extends AudioStreamPlayer
 
 func _ready():
 	stream = boss_music
-	play()
+#	play()

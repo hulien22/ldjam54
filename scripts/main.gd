@@ -55,6 +55,10 @@ func _on_moved_to_location(location: Location):
 			show_brain(false);
 		Location.LOCATION.UPGRADE:
 			node = upgrade_scene.instantiate()
+			node.num_upgrades_available = 3;
+			node.connect("start_upgrade_phase", _start_upgrade_phase);
+			node.connect("end_upgrade_phase", _end_upgrade_phase);
+			$Brain.set_upgrade_node(node); 
 			show_brain(false);
 		Location.LOCATION.FORGE:
 			node = forge_scene.instantiate()
@@ -109,6 +113,17 @@ func _end_library_phase():
 	# just hide the brain
 	show_brain(false);
 
+func _start_upgrade_phase(global_posn:Vector2):
+	# set the brain to the correct phase
+	$Brain.set_state(Global.BrainState.EXPANDING);
+	# move the brain to correct position
+	move_brain(global_posn);
+	show_brain(true);
+
+func _end_upgrade_phase():
+	# stop allowing expansion
+	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
+#	$Brain.set_state(Global.BrainState.VIEW_ONLY);
 
 func _start_forge_phase():
 #	# set the brain to the correct phase
