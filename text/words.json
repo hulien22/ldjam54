@@ -12,16 +12,15 @@
 		["Which season is better?", "Summer", "Winter", "Summer is a better season than winter.", "Winter is a better season than summer."],
 		["What type of music reigns supreme?", "Classical", "Modern", "Classical music is better than modern music.", "Modern music is better than classical music."],
 		["Is Pluto a planet?", "Yes", "No", "Pluto should be considered a planet.", "Pluto should not be considered a planet."],
-		"Playing video games makes you smarter.",
-		"Books are better than movies.",
-		"Vampires are cooler than werewolves.",
-		"Birthdays should be holidays.",
-		"Socks with sandals is a respectable fashion statement.",
-		"Aliens exist on other planets.",
-		"Green is the best color.",
-		"If a tree falls in a forest and no one is around, it does not make a sound.",
-		"If you replace all parts of a ship it is not still the same ship.",
-		"Competitive video games should be considered a sport."
-		
+		["Does playing video games help make you smarter?", "Yes", "No", "Playing video games makes you smarter.", "Playing video games doesn't make you smarter."],
+		["Books or movies?", "Books", "Movies", "Books are better than movies.", "Movies are better than books."],
+		["Who's cooler?", "Vampires", "Werewolves", "Vampires are cooler than werewolves.", "Werewolves are cooler than vampires."],
+		["Should birthdays be holidays?", "Yes", "No", "Birthdays should be holidays.", "Birthdays should not be holidays."],
+		["Socks with sandals?", "Looks good", "Horrendous", "Socks with sandals is a respectable fashion statement.", "Socks with sandals is a horrible fashion statement."],
+		["Does alien life exist?", "Yes", "No", "Aliens exist on other planets.", "Aliens aren't real."],
+		["If a tree falls in a forest and no one is around ...", "It doesn't make a sound", "It makes a sound", "If a tree falls in a forest and no one is around, it does not make a sound.", "If a tree falls in a forest and no one is around, it makes a sound."],
+		["If you replace all parts of a ship ...", "It is a new ship", "It is still the same ship.", "If you replace all parts of a ship it is a new ship.", "If you replace all parts of a ship it is still the same ship."],
+		["Are esports real sports?", "Yes", "No", "Competitive video games should be considered a sport.", "Competitive video games should not be considered a sport."],
+		["Blue or Red?", "Blue", "Red", "Blue is a better color than red.", "Red is a better color than blue."],
 	]
 }
