@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3bf4xe8dr1o7"]
+[gd_scene load_steps=4 format=3 uid="uid://dys7mc2p3tgug"]
 
 [ext_resource type="FontFile" uid="uid://b1yle3bl6l4qs" path="res://fonts/GochiHand-Regular.ttf" id="1_dntfh"]
 [ext_resource type="Script" path="res://scripts/hint.gd" id="1_vits4"]

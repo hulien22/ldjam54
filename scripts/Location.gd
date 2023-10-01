@@ -21,6 +21,9 @@ func init(location_type: LOCATION, position: Vector2, active: bool, connections:
 	self.location_type = location_type
 	if location_type == LOCATION.COMBAT:
 		debate_topic = Global.get_random_debate_question()
+		$label.text = debate_topic.hint_
+	else:
+		$label.text = LOCATION.keys()[location_type]
 	self.connections = connections
 	self.set_position(position)
 	$button.disabled = !active
