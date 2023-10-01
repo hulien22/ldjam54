@@ -47,6 +47,8 @@ func _ready():
 	spawn_new_word("I", Vector2(100,10));
 	spawn_new_word("BECAUSE", Vector2(100,20));
 	spawn_new_word("LIKE", Vector2(100,30));
+	spawn_new_word("TEST", Vector2(100,40));
+	spawn_new_word("TASTY", Vector2(100,50));
 	render()
 
 func render_grid():
@@ -155,9 +157,9 @@ func _on_tile_clicked(gridPosn:Vector2):
 #			clickedTile.lock()
 
 
-func does_tile_have_valid_or_invalid(word_tile:WordTile) -> Array:
-	var has_at_least_one_valid_tile: bool = false;
-	var has_at_least_one_invalid_tile: bool = false;
+func check_for_valid_placement(word_tile:WordTile) -> Array:
+	var has_a_grid_spot: bool = false;
+	var has_a_non_grid_spot: bool = false;
 	# Get grid position
 	var grid_posn = (word_tile.global_position + Vector2(get_tile_width() / 2, get_tile_width() / 2) - $GridHolder.global_position) / get_tile_width();
 	grid_posn.x = int(grid_posn.x);
@@ -166,30 +168,41 @@ func does_tile_have_valid_or_invalid(word_tile:WordTile) -> Array:
 	# analyze all the grid spots we intersect with, even the ones outside the grid.
 	var dir:Vector2;
 	if (word_tile.direction == WordTile.Direction.RIGHT):
-		dir = Vector2(1, 0)
+		dir = Vector2(1, 0);
 	else:
-		dir = Vector2(0,1)
+		dir = Vector2(0,1);
 	
 	for i in word_tile.word.length():
 		var p = grid_posn + i * dir;
 		if (p.x >= 0 && p.x < size.x && p.y >= 0 && p.y < size.y):
 			# an actual grid element
 			if (grid[p.y][p.x].isLocked()):
-				has_at_least_one_invalid_tile = true;
+				has_a_non_grid_spot = true;
+			elif (does_other_word_tile_collide(word_tile, p)):
+				# We have a collision with another word in the grid, this is always invalid!
+				return [true, true];
 			else:
-				# TODO Check for collision with other word tiles here.
-				has_at_least_one_valid_tile = true;
+				has_a_grid_spot = true;
 		else:
 			# invalid spot
-			has_at_least_one_invalid_tile = true;
-		print(p, " | ",  [has_at_least_one_valid_tile, has_at_least_one_invalid_tile])
+			has_a_non_grid_spot = true;
 		
 		#shortcircuit early
-		if has_at_least_one_valid_tile && has_at_least_one_invalid_tile:
+		if has_a_grid_spot && has_a_non_grid_spot:
 			return [true, true];
 	
 	# made it to the end with only valid or invalid tiles, therefore this is a valid spot.
-	return [has_at_least_one_valid_tile, has_at_least_one_invalid_tile];
+	return [has_a_grid_spot, has_a_non_grid_spot];
+
+func does_other_word_tile_collide(word_tile: WordTile, grid_posn: Vector2) -> bool:
+	for w in word_tiles:
+		if w.on_grid() && w != word_tile:
+			# check if we collide with this word
+			if (w.direction == WordTile.Direction.RIGHT && grid_posn.y == w.grid_posn.y && grid_posn.x >= w.grid_posn.x && grid_posn.x < w.grid_posn.x + w.word.length()):
+				return true;
+			elif (w.direction == WordTile.Direction.DOWN && grid_posn.x == w.grid_posn.x && grid_posn.y >= w.grid_posn.y && grid_posn.y < w.grid_posn.y + w.word.length()):
+				return true
+	return false
 
 func spawn_new_word(word: String, global_posn: Vector2):
 	var word_tile = wordTileScene.instantiate();
@@ -203,7 +216,7 @@ func spawn_new_word(word: String, global_posn: Vector2):
 
 func _handle_dropped_word_tile(word_tile: WordTile):
 	print("DROPPED ", word_tile.word, " ", word_tile);
-	var res:Array = does_tile_have_valid_or_invalid(word_tile);
+	var res:Array = check_for_valid_placement(word_tile);
 	
 	print(res);
 	if (res[0] && res[1]):
