@@ -31,6 +31,17 @@ var grid_posn: Vector2 = NOT_ON_GRID;
 var state_:Global.TileState = Global.TileState.DRAGGABLE;
 
 func _ready():
+	set_word(word);
+	set_state(state_);
+
+func set_word(w: String):
+	#erase all previous letters first
+	#loop backwards to deal with deletion issues
+	for i in tiles.size() :
+		tiles[i].queue_free();
+	tiles.clear();
+
+	word = w;
 	for i in len(word):
 		var char = word[i]
 		var tile = tileScene.instantiate()
@@ -38,10 +49,11 @@ func _ready():
 		tile.letter = char
 		tile.connect("select_drag", set_selected);
 		tile.connect("clicked", set_clicked);
-		tile.position = Vector2(i*tile.get_width()*tileScale+i*spread,0)
-		tiles.append(tile)
-		add_child(tile)
-	set_state(state_);
+		tile.position = Vector2(i*tile.get_width()*tileScale+i*spread,0);
+		tile.set_state(state_);
+		tiles.append(tile);
+		add_child(tile);
+
 
 func on_grid():
 	return grid_posn != NOT_ON_GRID;

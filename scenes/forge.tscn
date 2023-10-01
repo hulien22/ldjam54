@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://bd8ck0os5fgp"]
+[gd_scene load_steps=3 format=3 uid="uid://bd8ck0os5fgp"]
+
+[ext_resource type="Script" path="res://scripts/forge.gd" id="1_4se2y"]
+[ext_resource type="PackedScene" uid="uid://sx2gqphom8wy" path="res://scenes/WordTile.tscn" id="2_fcoqw"]
 
 [node name="forge" type="Node2D"]
+script = ExtResource("1_4se2y")
+
+[node name="WordTile" parent="." instance=ExtResource("2_fcoqw")]
+position = Vector2(904, 204)
+word = ""
