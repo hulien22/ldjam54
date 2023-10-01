@@ -1,11 +1,253 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1qd4jib7m856"]
+[gd_scene load_steps=8 format=3 uid="uid://b1qd4jib7m856"]
 
 [ext_resource type="Script" path="res://scripts/combat.gd" id="1_uqive"]
-[ext_resource type="PackedScene" path="res://scenes/tooltip.tscn" id="2_7e2x6"]
+[ext_resource type="Script" path="res://scripts/words.gd" id="2_2towf"]
+[ext_resource type="JSON" path="res://text/words.json" id="3_42n6f"]
+[ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="4_kcjvg"]
+
+[sub_resource type="Animation" id="Animation_cpd2w"]
+resource_name = "wait_for_judging"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [7, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v1vca"]
+_data = {
+"wait_for_judging": SubResource("Animation_cpd2w")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_fkf4r"]
+font_size = 100
 
 [node name="combat" type="Node2D"]
 script = ExtResource("1_uqive")
 
-[node name="tooltip" parent="." instance=ExtResource("2_7e2x6")]
-position = Vector2(210, 119)
-scale = Vector2(0.6, 0.6)
+[node name="Node" type="Node" parent="."]
+script = ExtResource("2_2towf")
+words_file = ExtResource("3_42n6f")
+
+[node name="IntroBox" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="IntroBox"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1144.0
+offset_bottom = 640.0
+color = Color(0.384314, 0.376471, 0.768627, 1)
+
+[node name="Label" type="Label" parent="IntroBox"]
+offset_left = 27.0
+offset_top = 23.0
+offset_right = 1126.0
+offset_bottom = 521.0
+text = "Sample Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="IntroBox"]
+offset_left = 976.0
+offset_top = 567.0
+offset_right = 1129.0
+offset_bottom = 627.0
+size_flags_horizontal = 4
+text = "DEBATE!"
+
+[node name="PickSideBox" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="PickSideBox"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1144.0
+offset_bottom = 640.0
+color = Color(0.25098, 0.454902, 0.627451, 1)
+
+[node name="Label" type="Label" parent="PickSideBox"]
+offset_left = 27.0
+offset_top = 23.0
+offset_right = 1126.0
+offset_bottom = 92.0
+text = "Sample Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button1" type="Button" parent="PickSideBox"]
+offset_left = 42.0
+offset_top = 133.0
+offset_right = 545.0
+offset_bottom = 531.0
+size_flags_horizontal = 4
+text = "DEBATE!"
+
+[node name="Button2" type="Button" parent="PickSideBox"]
+offset_left = 607.0
+offset_top = 133.0
+offset_right = 1110.0
+offset_bottom = 531.0
+size_flags_horizontal = 4
+text = "DEBATE!"
+
+[node name="ConstructArgBox" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="ConstructArgBox"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1144.0
+offset_bottom = 640.0
+color = Color(0.215686, 0.486275, 0.490196, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ConstructArgBox"]
+visible = false
+offset_left = 59.0
+offset_top = 133.0
+offset_right = 485.0
+offset_bottom = 510.0
+color = Color(1, 0.623529, 0.988235, 1)
+
+[node name="Label" type="Label" parent="ConstructArgBox"]
+offset_left = 27.0
+offset_top = 23.0
+offset_right = 1126.0
+offset_bottom = 92.0
+text = "Sample Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="ConstructArgBox"]
+offset_left = 27.0
+offset_top = 78.0
+offset_right = 1126.0
+offset_bottom = 147.0
+text = "APPLES ARE VERY TASTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="ConstructArgBox"]
+offset_left = 930.0
+offset_top = 542.0
+offset_right = 1117.0
+offset_bottom = 615.0
+size_flags_horizontal = 4
+text = "SUBMIT!"
+
+[node name="Brain" parent="ConstructArgBox" instance=ExtResource("4_kcjvg")]
+position = Vector2(556, 400)
+scale = Vector2(0.917034, 0.917034)
+
+[node name="JudgingBox" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="JudgingBox"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1144.0
+offset_bottom = 640.0
+color = Color(0.27451, 0.490196, 0.360784, 1)
+
+[node name="Label" type="Label" parent="JudgingBox"]
+offset_left = 22.0
+offset_top = 264.0
+offset_right = 1121.0
+offset_bottom = 333.0
+text = "Judging...."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+visible_characters = 7
+visible_ratio = 0.636364
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="JudgingBox"]
+libraries = {
+"": SubResource("AnimationLibrary_v1vca")
+}
+
+[node name="ResultsBox" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="ResultsBox"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1144.0
+offset_bottom = 640.0
+color = Color(0.533333, 0.411765, 0.227451, 1)
+
+[node name="Label" type="Label" parent="ResultsBox"]
+offset_left = 22.0
+offset_top = 15.0
+offset_right = 1121.0
+offset_bottom = 84.0
+text = "~ Results ~"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+visible_ratio = -0.0909091
+
+[node name="Score1" type="Label" parent="ResultsBox"]
+offset_left = 85.0
+offset_top = 163.0
+offset_right = 299.0
+offset_bottom = 372.0
+size_flags_vertical = 1
+text = "1"
+label_settings = SubResource("LabelSettings_fkf4r")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Score2" type="Label" parent="ResultsBox"]
+offset_left = 465.0
+offset_top = 163.0
+offset_right = 679.0
+offset_bottom = 372.0
+size_flags_vertical = 1
+text = "1"
+label_settings = SubResource("LabelSettings_fkf4r")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Score3" type="Label" parent="ResultsBox"]
+offset_left = 826.0
+offset_top = 163.0
+offset_right = 1040.0
+offset_bottom = 372.0
+size_flags_vertical = 1
+text = "1"
+label_settings = SubResource("LabelSettings_fkf4r")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="ResultsBox"]
+offset_left = 930.0
+offset_top = 542.0
+offset_right = 1117.0
+offset_bottom = 615.0
+size_flags_horizontal = 4
+text = "CONTINUE"
+
+[node name="Button" type="Button" parent="ResultsBox/Button"]
+offset_left = 930.0
+offset_top = 542.0
+offset_right = 1117.0
+offset_bottom = 615.0
+size_flags_horizontal = 4
+text = "SUBMIT!"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
