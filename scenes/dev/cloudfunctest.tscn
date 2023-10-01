@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlnb0dmjpqat1"]
+
+[ext_resource type="Script" path="res://scenes/dev/cloudfunctest.gd" id="1_8lbwo"]
+
+[node name="cloudfunctest" type="Node2D"]
+script = ExtResource("1_8lbwo")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 131.0
+offset_top = 117.0
+offset_right = 423.0
+offset_bottom = 148.0
+placeholder_text = "INSERT PROMPT"
+
+[node name="LineEdit2" type="LineEdit" parent="."]
+offset_left = 132.0
+offset_top = 171.0
+offset_right = 424.0
+offset_bottom = 202.0
+placeholder_text = "INSERT ARGUMENT"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 607.0
+offset_top = 121.0
+offset_right = 772.0
+offset_bottom = 204.0
+text = "SUBMIT"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 245.0
+offset_top = 281.0
+offset_right = 830.0
+offset_bottom = 528.0
+text = "OUTPUT"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
