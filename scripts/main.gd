@@ -49,6 +49,8 @@ func _on_moved_to_location(location: Location):
 			show_brain(false);
 		Location.LOCATION.LIBRARY:
 			node = library_scene.instantiate()
+			node.connect("start_library_phase", _start_library_phase);
+			node.connect("end_library_phase", _end_library_phase);
 			show_brain(false);
 		Location.LOCATION.ORACLE:
 			node = oracle_scene.instantiate()
@@ -84,3 +86,20 @@ func _end_combat_phase():
 	# just hide the brain
 	show_brain(false);
 	# TODO reset the words that were selected? need another phase?
+
+func _start_library_phase(global_posn:Vector2):
+	# set the brain to the correct phase
+	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
+	# move the brain to correct position
+	move_brain(global_posn);
+	
+	#spawn a bunch of words
+	var n = randi_range(5,10);
+	for i in n:
+		$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
+	show_brain(true);
+
+func _end_library_phase():
+	# just hide the brain
+	show_brain(false);
+

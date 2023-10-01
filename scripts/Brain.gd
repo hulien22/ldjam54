@@ -121,6 +121,7 @@ func get_tile_width() -> float:
 
 
 func set_state(s: Global.BrainState):
+	cleanup_abandoned_word_tiles()
 	state_ = s;
 	match s:
 		Global.BrainState.ADDING_NEW_WORDS:
@@ -130,18 +131,12 @@ func set_state(s: Global.BrainState):
 		Global.BrainState.EXPANDING:
 			for word_tile in word_tiles:
 				word_tile.set_state(Global.TileState.VIEW_ONLY);
-			cleanup_abandoned_word_tiles()
-			pass
 		Global.BrainState.COMBAT:
 			for word_tile in word_tiles:
 				word_tile.set_state(Global.TileState.CLICKABLE);
-			cleanup_abandoned_word_tiles()
-			pass
 		Global.BrainState.VIEW_ONLY:
 			for word_tile in word_tiles:
 				word_tile.set_state(Global.TileState.VIEW_ONLY);
-			cleanup_abandoned_word_tiles()
-			pass
 	render()
 
 func set_combat_node(scene: Combat):
