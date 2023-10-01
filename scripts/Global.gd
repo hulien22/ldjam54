@@ -35,7 +35,7 @@ var debate_questions: Array;
 func load_debate_questions():
 	for d in data.debates:
 		assert(d.size() >= 4)
-		debate_questions.append(DebateQuestion.new(d[0], d[1], d[2], d[3], d[4], "HINT"));
+		debate_questions.append(DebateQuestion.new(d[0], d[1], d[2], d[3], d[4], d[5]));
 
 func get_random_debate_question() -> DebateQuestion:
 	return debate_questions[rng.randi() % debate_questions.size()];
