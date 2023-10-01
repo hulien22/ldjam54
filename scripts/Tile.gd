@@ -2,6 +2,7 @@ extends Node2D
 
 @export var letter: String
 signal select_drag(isSel: bool)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if letter.length() > 1:
