@@ -20,10 +20,14 @@ enum GameSceneState {
 var scene_state_: GameSceneState = GameSceneState.IN_LEVEL;
 
 var map
+var stage
 var brain_preview
 var current_node
+var on_boss
 
 func _ready():
+	on_boss = false
+	stage = 0
 	show_brain(false);
 	map = map_scene.instantiate()
 	map.connect("moved_to_location", _on_moved_to_location)
@@ -58,6 +62,7 @@ func _on_moved_to_location(location: Location):
 			show_brain(false);
 		Location.LOCATION.BOSS:
 			node = boss_scene.instantiate()
+			on_boss = true
 			show_brain(false);
 		Location.LOCATION.LIBRARY:
 			node = library_scene.instantiate()
@@ -92,11 +97,24 @@ func move_brain(global_posn:Vector2):
 #	$Brain.scale = s;
 func _end_scene():
 	if current_node != null:
+		if on_boss:
+			next_stage()
 		$SceneHolder.remove_child(current_node)
 		current_node.queue_free();
 	show_brain(false);
 	switch_to_game_scene_state(GameSceneState.ON_MAP);
 	$SceneHolder.add_child(map)
+
+func next_stage():
+	on_boss = false
+	stage += 1
+	if map:
+		$SceneHolder.remove_child(map)
+		map.queue_free()
+	map = map_scene.instantiate()
+	map.connect("moved_to_location", _on_moved_to_location)
+	map.get_node("AnimatedSprite2D").frame = stage
+	#$SceneHolder.add_child(map)
 	
 func show_brain(show: bool = true):
 	$Brain.visible = show;
