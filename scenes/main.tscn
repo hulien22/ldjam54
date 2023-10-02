@@ -119,9 +119,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="MapBtn" type="Node2D" parent="UI"]
-position = Vector2(73, 196)
+position = Vector2(1841, 999)
 
 [node name="Sprite2D" type="Sprite2D" parent="UI/MapBtn"]
+position = Vector2(-2, -2)
 texture = ExtResource("11_a2eth")
 
 [node name="Button" type="Button" parent="UI/MapBtn"]
@@ -131,7 +132,7 @@ offset_right = 64.0
 offset_bottom = 65.0
 
 [node name="BrainBtn" type="Node2D" parent="UI"]
-position = Vector2(73, 332)
+position = Vector2(1842, 78)
 
 [node name="Sprite2D" type="Sprite2D" parent="UI/BrainBtn"]
 texture = ExtResource("11_a2eth")
@@ -157,6 +158,7 @@ text = "99"
 label_settings = SubResource("LabelSettings_eux2y")
 
 [node name="Label2" type="Label" parent="UI/Ego"]
+visible = false
 offset_left = 150.0
 offset_top = -48.0
 offset_right = 792.0
