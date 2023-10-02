@@ -28,8 +28,8 @@ func _ready():
 	murmur_sound.stream = murmur
 	background_sound.play()
 	murmur_sound.play()
-	play()
-	music_state = 1
+	#play()
+	music_state = 0
 
 func change_music(combat: bool, boss: bool):
 	if (music_state == 1 and !combat and !boss) or (music_state == 2 and combat and !boss) or (music_state == 3 and combat and boss):
