@@ -148,12 +148,14 @@ func _process_combat_rewards(score: float):
 	# bad copy paste stuff here :/
 	if score < 5.0:
 		node = library_scene.instantiate();
+		node.text = "You lost, but you picked up some words from the opponent";
 		node.connect("start_library_phase", _start_library_phase);
 		node.connect("end_library_phase", _end_library_phase);
 		# change stuff in the node, description, category
 	else:
 		node = upgrade_scene.instantiate()
 		node.num_upgrades_available = 2;
+		node.text = "Great work! Your brain expands from your success!";
 		node.connect("start_upgrade_phase", _start_upgrade_phase);
 		node.connect("end_upgrade_phase", _end_upgrade_phase);
 		$Brain.set_upgrade_node(node);
@@ -176,10 +178,14 @@ func _start_library_phase(global_posn:Vector2):
 	for i in n:
 		$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
 	show_brain(true);
+	$Brain.set_update_button_scene(current_node);
+	$Brain.send_button_update_to_scene();
 
 func _end_library_phase():
 	# just hide the brain
 	show_brain(false);
+	$Brain.set_update_button_scene(null);
+	_end_scene();
 
 func _start_upgrade_phase(global_posn:Vector2):
 	# set the brain to the correct phase

@@ -19,6 +19,7 @@ var word_tiles: Array = []
 
 var combat_scene: Combat;
 var upgrade_scene: Upgrade;
+var update_button_scene: Node2D;
 
 func _ready():
 	print("test")
@@ -150,6 +151,9 @@ func set_combat_node(scene: Combat):
 func set_upgrade_node(scene: Upgrade):
 	upgrade_scene = scene;
 
+func set_update_button_scene(scene: Node2D):
+	update_button_scene = scene;
+
 func _on_tile_clicked(gridPosn:Vector2):
 	print(gridPosn)
 	if state_ == Global.BrainState.EXPANDING:
@@ -245,6 +249,16 @@ func _handle_dropped_word_tile(word_tile: WordTile):
 		render();
 	else:
 		word_tile.grid_posn = WordTile.NOT_ON_GRID;
+	
+	send_button_update_to_scene()
+
+func send_button_update_to_scene():
+	if update_button_scene != null:
+		var count = 0;
+		for w in word_tiles:
+			if w.on_grid():
+				count += 1;
+		update_button_scene.update_button(count);
 
 func _handle_picked_up_word_tile(word_tile: WordTile):
 	word_tile.move_to_front()

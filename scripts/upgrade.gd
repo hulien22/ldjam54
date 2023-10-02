@@ -4,11 +4,13 @@ signal start_upgrade_phase(global_posn:Vector2);
 signal end_upgrade_phase();
 
 var num_upgrades_available:int = 3;
+var text:String = "Unlock your mind!";
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#can move to later if needed
 	emit_signal("start_upgrade_phase", get_viewport_rect().size / 2);
+	$Label.text = text;
 	update_text()
 
 func update_text():
