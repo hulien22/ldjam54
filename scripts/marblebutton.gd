@@ -42,6 +42,7 @@ func _on_button_button_down():
 		$Node2D/NinePatchRect2.hide()
 		$Node2D/NinePatchRect3.show()
 		$Node2D/Label.position = label_posn + $Node2D/NinePatchRect3.position - $Node2D/NinePatchRect2.position;
+		#TODO play sounds here?
 
 func _on_button_button_up():
 	if enabled:
