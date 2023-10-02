@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1qd4jib7m856"]
+[gd_scene load_steps=15 format=3 uid="uid://b1qd4jib7m856"]
 
 [ext_resource type="Script" path="res://scripts/combat.gd" id="1_uqive"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="2_m3vsr"]
@@ -48,6 +48,18 @@ font_size = 40
 [sub_resource type="LabelSettings" id="LabelSettings_fkf4r"]
 font = ExtResource("2_m3vsr")
 font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_gr1hk"]
+font = ExtResource("2_m3vsr")
+font_size = 150
+
+[sub_resource type="Animation" id="Animation_13xc1"]
+resource_name = "results"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u1kkl"]
+_data = {
+"results": SubResource("Animation_13xc1")
+}
 
 [node name="combat" type="Node2D"]
 script = ExtResource("1_uqive")
@@ -199,7 +211,6 @@ libraries = {
 }
 
 [node name="ResultsBox" type="Node2D" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="ResultsBox"]
 offset_left = 5.0
@@ -256,6 +267,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="ScoreTotal" type="Label" parent="ResultsBox"]
+offset_left = 774.0
+offset_top = 622.0
+offset_right = 1127.0
+offset_bottom = 831.0
+size_flags_vertical = 1
+text = "1.00"
+label_settings = SubResource("LabelSettings_gr1hk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="Button" type="Button" parent="ResultsBox"]
 offset_left = 851.0
 offset_top = 865.0
@@ -264,4 +287,12 @@ offset_bottom = 938.0
 size_flags_horizontal = 4
 text = "CONTINUE"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ResultsBox"]
+libraries = {
+"": SubResource("AnimationLibrary_u1kkl")
+}
+
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

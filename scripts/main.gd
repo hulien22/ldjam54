@@ -32,6 +32,7 @@ func _ready():
 	$UI/BrainBtn/Button.pressed.connect(self.show_brain_preview);
 	show_first_level()
 
+#TODO convert to an actual scene
 func show_first_level():
 	move_brain(get_viewport_rect().size / 2);
 	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);

@@ -6,6 +6,7 @@ enum COMBAT_PHASE {
 	CONSTRUCT_ARGUMENT,
 	JUDGING,
 	RESULTS,
+	REWARDS,
 }
 
 var difficulty_: int = 0;
@@ -68,9 +69,11 @@ func start_phase():
 		COMBAT_PHASE.RESULTS:
 			$JudgingBox.hide();
 			$JudgingBox/AnimationPlayer.stop();
+			# TODO animate fade/slide in one by one? and play sound
 			$ResultsBox/Score1.text = str(result_scores[0]);
 			$ResultsBox/Score2.text = str(result_scores[1]);
 			$ResultsBox/Score3.text = str(result_scores[2]);
+			$ResultsBox/ScoreTotal.text = str(avg_score());
 			$ResultsBox/Button.pressed.connect(self._return_to_map);
 			$ResultsBox.show();
 
@@ -109,6 +112,7 @@ func _on_request_completed(result, response_code, headers, body):
 
 	print(body.get_string_from_utf8())
 	print(result_scores)
+
 	_move_to_next_phase();
 
 func generate_random_results():
@@ -136,7 +140,7 @@ func parse_results_from_response(body: PackedByteArray):
 			push_error("Error parsing string.", parsed_string);
 	else:
 		push_error("Got null body in response.");
-	push_error("DONE")
+#	push_error("DONE")
 	
 	# TODO special handling for "[5, The argument is unrelated to the prompt.]", "[5, The argument does not address the prompt.]"
 
@@ -155,4 +159,9 @@ func render_argument():
 	for word_tile in word_tiles:
 		s += word_tile.word + " ";
 	$ConstructArgBox/Label2.text = s;
+	
+func avg_score() -> float:
+	if result_scores.size() < 3:
+		return 0.0;
+	return snappedf((result_scores[0] + result_scores[1] + result_scores[2]) / 3.0, 0.01);
 	
