@@ -167,6 +167,7 @@ func spawn_new_word(word: String, global_posn: Vector2):
 	word_tile.word = word;
 	word_tile.connect("was_dropped", _handle_dropped_word_tile);
 	word_tile.connect("was_clicked", _handle_clicked_word_tile);
+	word_tile.connect("was_picked_up", _handle_picked_up_word_tile);
 	word_tile.global_position = global_posn;
 	word_tile.tileScale = tileScale
 	word_tile.spread = spread;
@@ -245,6 +246,8 @@ func _handle_dropped_word_tile(word_tile: WordTile):
 	else:
 		word_tile.grid_posn = WordTile.NOT_ON_GRID;
 
+func _handle_picked_up_word_tile(word_tile: WordTile):
+	word_tile.move_to_front()
 
 func cleanup_abandoned_word_tiles():
 	#loop backwards to deal with deletion issues
