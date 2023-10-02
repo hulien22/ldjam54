@@ -36,7 +36,11 @@ func _ready():
 #	map.length = 1;
 	map.set_stage(stage);
 	map.connect("moved_to_location", _on_moved_to_location)
-#	map.set_enabled();
+	# hacky code to call ready
+	$SceneHolder.add_child(map)
+	$SceneHolder.remove_child(map)
+	map.set_enabled();
+	
 	brain_preview = brain_preview_scene.instantiate()
 	$UI/MapBtn/Button.pressed.connect(self.show_map_preview);
 	$UI/BrainBtn/Button.pressed.connect(self.show_brain_preview);
