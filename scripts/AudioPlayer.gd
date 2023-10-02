@@ -16,6 +16,7 @@ extends AudioStreamPlayer
 @export var trumpet_success: AudioStream
 
 @onready var sound_effects = $SoundEffects
+@onready var trumpet_sound_effects = $TrumpetSoundEffects
 @onready var background_sound = $background
 @onready var murmur_sound = $murmur
 
@@ -36,9 +37,9 @@ func play_click():
 	sound_effects.play()
 
 func play_success():
-	sound_effects.stream = trumpet_success
-	sound_effects.play()
+	trumpet_sound_effects.stream = trumpet_success
+	trumpet_sound_effects.play()
 	
 func play_fail():
-	sound_effects.stream = trumpet_fail
-	sound_effects.play()
+	trumpet_sound_effects.stream = trumpet_fail
+	trumpet_sound_effects.play()

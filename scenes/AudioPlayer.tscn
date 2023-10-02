@@ -31,6 +31,8 @@ trumpet_success = ExtResource("9_q4jre")
 
 [node name="SoundEffects" type="AudioStreamPlayer" parent="."]
 
+[node name="TrumpetSoundEffects" type="AudioStreamPlayer" parent="."]
+
 [node name="murmur" type="AudioStreamPlayer" parent="."]
 
 [node name="background" type="AudioStreamPlayer" parent="."]

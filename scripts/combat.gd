@@ -164,6 +164,11 @@ func parse_results_from_response(body: PackedByteArray):
 
 
 func _after_results():
+	if avg_score() < 5.0:
+		AudioPlayer.play_fail()
+	else:
+		AudioPlayer.play_success()
+		
 	if is_boss && avg_score() < 5.0:
 		# try again
 		emit_signal("take_damage");
