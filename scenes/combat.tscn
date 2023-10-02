@@ -152,11 +152,9 @@ autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="ConstructArgBox"]
 offset_left = 415.0
-offset_top = 137.0
+offset_top = 106.0
 offset_right = 1514.0
-offset_bottom = 206.0
-text = "
-"
+offset_bottom = 204.0
 label_settings = SubResource("LabelSettings_noux4")
 horizontal_alignment = 1
 vertical_alignment = 1

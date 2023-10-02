@@ -79,7 +79,7 @@ func _on_moved_to_location(location: Location):
 		Location.LOCATION.UPGRADE:
 			show_brain(false);
 			node = upgrade_scene.instantiate()
-			node.num_upgrades_available = 3;
+			node.num_upgrades_available = 10;
 			node.connect("start_upgrade_phase", _start_upgrade_phase);
 			node.connect("end_upgrade_phase", _end_upgrade_phase);
 			$Brain.set_upgrade_node(node); 

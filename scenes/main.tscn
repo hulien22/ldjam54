@@ -54,8 +54,9 @@ text = "REPLACE ME"
 visible = false
 z_index = 50
 z_as_relative = false
+size = Vector2(16, 12)
 starting_size = Vector2(8, 6)
-starting_offset = Vector2(2, 3)
+starting_offset = Vector2(4, 3)
 
 [node name="MapPreviewHolder" type="Node2D" parent="."]
 
