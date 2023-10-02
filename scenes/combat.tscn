@@ -1,7 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1qd4jib7m856"]
+[gd_scene load_steps=12 format=3 uid="uid://b1qd4jib7m856"]
 
 [ext_resource type="Script" path="res://scripts/combat.gd" id="1_uqive"]
+[ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="2_m3vsr"]
 [ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="4_kcjvg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qpt4k"]
+font = ExtResource("2_m3vsr")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_au43t"]
+font = ExtResource("2_m3vsr")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_noux4"]
+font = ExtResource("2_m3vsr")
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_5p24u"]
+font = ExtResource("2_m3vsr")
+font_size = 80
 
 [sub_resource type="Animation" id="Animation_cpd2w"]
 resource_name = "wait_for_judging"
@@ -24,7 +41,12 @@ _data = {
 "wait_for_judging": SubResource("Animation_cpd2w")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_i45iw"]
+font = ExtResource("2_m3vsr")
+font_size = 40
+
 [sub_resource type="LabelSettings" id="LabelSettings_fkf4r"]
+font = ExtResource("2_m3vsr")
 font_size = 100
 
 [node name="combat" type="Node2D"]
@@ -74,6 +96,7 @@ offset_top = 23.0
 offset_right = 1885.0
 offset_bottom = 92.0
 text = "Sample Text"
+label_settings = SubResource("LabelSettings_qpt4k")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -118,6 +141,7 @@ offset_top = 23.0
 offset_right = 1885.0
 offset_bottom = 92.0
 text = "Sample Text"
+label_settings = SubResource("LabelSettings_au43t")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -129,6 +153,7 @@ offset_right = 1514.0
 offset_bottom = 206.0
 text = "
 "
+label_settings = SubResource("LabelSettings_noux4")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -157,10 +182,11 @@ color = Color(0.27451, 0.490196, 0.360784, 1)
 
 [node name="Label" type="Label" parent="JudgingBox"]
 offset_left = 22.0
-offset_top = 466.0
+offset_top = 410.0
 offset_right = 1886.0
-offset_bottom = 535.0
+offset_bottom = 539.0
 text = "Judging...."
+label_settings = SubResource("LabelSettings_5p24u")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -189,6 +215,7 @@ offset_right = 1885.0
 offset_bottom = 92.0
 text = "~ RESULTS ~
 "
+label_settings = SubResource("LabelSettings_i45iw")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
