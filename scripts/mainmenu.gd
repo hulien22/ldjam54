@@ -7,4 +7,5 @@ func _ready():
 	$AnimationPlayer.play("brain hover");
 
 func _on_pressed():
+	Global.reset_used_prompts()
 	get_tree().change_scene_to_packed(game_scene)
