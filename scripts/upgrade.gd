@@ -2,6 +2,7 @@ class_name Upgrade extends Node2D
 
 signal start_upgrade_phase(global_posn:Vector2);
 signal end_upgrade_phase();
+signal leave_upgrade_phase();
 
 var num_upgrades_available:int = 3;
 var title:String = "Unlock your mind!";
@@ -12,6 +13,10 @@ func _ready():
 	emit_signal("start_upgrade_phase", get_viewport_rect().size / 2);
 	$Label.text = title;
 	update_text()
+	$Button.connect("on_pressed", self.end_scene);
+
+func end_scene():
+	emit_signal("leave_upgrade_phase");
 
 func update_text():
 	$Label2.text = "Unlocks remaining: " + str(num_upgrades_available);
@@ -21,5 +26,6 @@ func on_upgrade():
 	update_text()
 	if num_upgrades_available <= 0:
 		emit_signal("end_upgrade_phase");
+		$Button.set_text("CONTINUE");
 
 	#TODO what if out of spots to upgrade?

@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://ryagmgt1vqsb"]
+[gd_scene load_steps=6 format=3 uid="uid://ryagmgt1vqsb"]
 
 [ext_resource type="Script" path="res://scripts/upgrade.gd" id="1_30evq"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="2_cwlvh"]
+[ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="3_jb0c4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_toyxx"]
 font = ExtResource("2_cwlvh")
 font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_l4v06"]
+font = ExtResource("2_cwlvh")
+font_size = 24
 
 [node name="upgrade" type="Node2D"]
 script = ExtResource("1_30evq")
@@ -15,16 +20,23 @@ offset_left = 35.0
 offset_top = 23.0
 offset_right = 1885.0
 offset_bottom = 92.0
-text = "Unlock you mind!"
+text = "Unlock your mind!"
 label_settings = SubResource("LabelSettings_toyxx")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 841.0
-offset_top = 100.0
-offset_right = 1069.0
-offset_bottom = 168.0
+offset_left = 32.0
+offset_top = 89.0
+offset_right = 1882.0
+offset_bottom = 158.0
 text = "Unlocks remaining: 3"
+label_settings = SubResource("LabelSettings_l4v06")
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" parent="." instance=ExtResource("3_jb0c4")]
+position = Vector2(952, 994)
+text = "SKIP"

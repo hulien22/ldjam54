@@ -92,7 +92,8 @@ func _on_moved_to_location(location: Location):
 			node.num_upgrades_available = 3;
 			node.connect("start_upgrade_phase", _start_upgrade_phase);
 			node.connect("end_upgrade_phase", _end_upgrade_phase);
-			$Brain.set_upgrade_node(node); 
+			node.connect("leave_upgrade_phase", _leave_upgrade_phase);
+			$Brain.set_upgrade_node(node);
 		Location.LOCATION.FORGE:
 			show_brain(false);
 			node = forge_scene.instantiate()
@@ -169,6 +170,7 @@ func _process_combat_rewards(score: float):
 		node.title = "Great work! Your brain expands from your success!";
 		node.connect("start_upgrade_phase", _start_upgrade_phase);
 		node.connect("end_upgrade_phase", _end_upgrade_phase);
+		node.connect("leave_upgrade_phase", _leave_upgrade_phase);
 		$Brain.set_upgrade_node(node);
 
 	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
@@ -222,6 +224,9 @@ func _end_upgrade_phase():
 	# stop allowing expansion
 	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
 #	$Brain.set_state(Global.BrainState.VIEW_ONLY);
+
+func _leave_upgrade_phase():
+	_end_scene();
 
 func _start_forge_phase():
 #	# set the brain to the correct phase
