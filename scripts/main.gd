@@ -33,6 +33,7 @@ func _ready():
 	stage = 0
 	show_brain(false);
 	map = map_scene.instantiate()
+	map.length = 1;
 	map.set_stage(stage);
 	map.connect("moved_to_location", _on_moved_to_location)
 	brain_preview = brain_preview_scene.instantiate()
@@ -130,6 +131,7 @@ func _end_scene():
 	if current_node != null:
 		if on_boss:
 			next_stage()
+			update_health(10);
 		$SceneHolder.remove_child(current_node)
 		current_node.queue_free();
 	show_brain(false);
@@ -181,8 +183,12 @@ func _process_combat_rewards(score: float):
 		# change stuff in the node, description, category
 	else:
 		node = upgrade_scene.instantiate()
-		node.num_upgrades_available = 2;
-		node.title = "Great work! Your brain expands from your success!";
+		if on_boss:
+			node.title = "You did it! Your brain expands significantly from your accomplishment!";
+			node.num_upgrades_available = 6;
+		else:
+			node.num_upgrades_available = 2;
+			node.title = "Great work! Your brain expands from your success!";
 		node.connect("start_upgrade_phase", _start_upgrade_phase);
 		node.connect("end_upgrade_phase", _end_upgrade_phase);
 		node.connect("leave_upgrade_phase", _leave_upgrade_phase);
@@ -355,6 +361,7 @@ func update_health(add: int, play_anim:bool = true):
 	else:
 		$UI/Ego/Label2.hide();
 	
+	# todo move this to after combat. only calculate then so player can see results screen.
 	if health == 0:
 		#GAME OVER
 		var node = game_over_scene.instantiate();

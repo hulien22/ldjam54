@@ -87,6 +87,34 @@ autowrap_mode = 3
 position = Vector2(945, 994)
 text = "DEBATE!"
 
+[node name="RetryBox" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="RetryBox"]
+visible = false
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1919.0
+offset_bottom = 1076.0
+color = Color(0.384314, 0.376471, 0.768627, 1)
+
+[node name="Label" type="Label" parent="RetryBox"]
+offset_left = 27.0
+offset_top = 23.0
+offset_right = 1881.0
+offset_bottom = 888.0
+text = "\"I don't fully understand your argument..\"
+
+\"I'll give you another chance to do better.\""
+label_settings = SubResource("LabelSettings_8kaqr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" parent="RetryBox" instance=ExtResource("2_e6uob")]
+position = Vector2(945, 994)
+text = "REPHRASE"
+
 [node name="PickSideBox" type="Node2D" parent="."]
 visible = false
 
