@@ -84,7 +84,8 @@ func start_phase():
 			if !$ResultsBox/Button.is_connected("on_pressed", self._after_results):
 				$ResultsBox/Button.connect("on_pressed", self._after_results);
 			# really need this on a delay for game overs..
-			emit_signal("take_damage");
+			if avg_score() < 5.0:
+				emit_signal("take_damage");
 			$ResultsBox.show();
 		COMBAT_PHASE.RETRY:
 			$ResultsBox.hide();
