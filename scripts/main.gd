@@ -166,9 +166,12 @@ func _start_combat_phase(global_posn:Vector2, debate_question:DebateQuestion, fr
 	# move the brain to correct position
 	move_brain(global_posn);
 	
-	
 	for i in debate_question.free_words.size():
-		$Brain.spawn_new_word(debate_question.free_words[i].to_lower(), free_words_posn - global_posn + Vector2.DOWN * i * 60, Global.TileState.CLICKABLE);
+		var word: String = debate_question.free_words[i].to_lower();
+		var tile_width = $Brain.get_tile_width();
+		var posn : Vector2 = free_words_posn - global_posn + Vector2.DOWN * i * 60;
+		posn.x -= word.length() * tile_width;
+		$Brain.spawn_new_word(word, posn, Global.TileState.CLICKABLE);
 	
 	show_brain(true);
 

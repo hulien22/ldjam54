@@ -61,7 +61,7 @@ func start_phase():
 			$ConstructArgBox/Label.text = prompt_;
 			#show brain with words
 			var brain_posn = $ConstructArgBox.global_position + Vector2(965, 549);
-			emit_signal("start_combat_phase", brain_posn, debate_question_, Vector2(1565, 380));
+			emit_signal("start_combat_phase", brain_posn, debate_question_, Vector2(1890, 330));
 			#enable clicking words
 #			$ConstructArgBox/Brain.set_click_only()
 			word_tiles.clear();
