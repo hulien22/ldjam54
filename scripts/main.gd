@@ -151,6 +151,7 @@ func _process_combat_rewards(score: float):
 		node.num_upgrades_available = 2;
 		node.connect("start_upgrade_phase", _start_upgrade_phase);
 		node.connect("end_upgrade_phase", _end_upgrade_phase);
+		$Brain.set_upgrade_node(node);
 
 	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
 	$SceneHolder.remove_child(current_node)
