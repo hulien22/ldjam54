@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dnv66lo7xwndp"]
+[gd_scene load_steps=23 format=3 uid="uid://dnv66lo7xwndp"]
 
 [ext_resource type="PackedScene" uid="uid://dwychm67ltxst" path="res://scenes/map.tscn" id="1_6wptd"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_iij1i"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccb7ydon7aoh7" path="res://scenes/library.tscn" id="5_6lbyg"]
 [ext_resource type="PackedScene" uid="uid://3gi5l01y0hvo" path="res://scenes/oracle.tscn" id="6_pvrvx"]
 [ext_resource type="PackedScene" uid="uid://ryagmgt1vqsb" path="res://scenes/upgrade.tscn" id="7_l25g6"]
-[ext_resource type="PackedScene" uid="uid://dr1xxh3dnv6mq" path="res://scenes/meditate.tscn" id="7_p0mtb"]
+[ext_resource type="PackedScene" path="res://scenes/meditate.tscn" id="7_p0mtb"]
 [ext_resource type="PackedScene" uid="uid://bd8ck0os5fgp" path="res://scenes/forge.tscn" id="8_3set1"]
 [ext_resource type="PackedScene" uid="uid://c2t66apu50q7i" path="res://scenes/AudioPlayer.tscn" id="9_d1na7"]
 [ext_resource type="PackedScene" uid="uid://cim8agmfowbt3" path="res://scenes/PlainScene.tscn" id="9_d7rch"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://opa8x4rqg2qi" path="res://art/Backgrounds/Main_BG.png" id="11_ft7ik"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="12_t31cu"]
 [ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="13_ta7i4"]
+[ext_resource type="Texture2D" uid="uid://ix81xiamn422" path="res://art/Random Elements/Brain_Template.png" id="17_52vlk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eux2y"]
 font = ExtResource("12_t31cu")
@@ -134,9 +135,12 @@ offset_bottom = 65.0
 position = Vector2(1842, 78)
 
 [node name="Sprite2D" type="Sprite2D" parent="UI/BrainBtn"]
-texture = ExtResource("11_a2eth")
+position = Vector2(1, -5)
+scale = Vector2(0.121152, 0.121152)
+texture = ExtResource("17_52vlk")
 
 [node name="Button" type="Button" parent="UI/BrainBtn"]
+modulate = Color(1, 1, 1, 0)
 offset_left = -64.0
 offset_top = -64.0
 offset_right = 64.0
