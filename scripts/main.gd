@@ -9,6 +9,7 @@ extends Node2D
 @export var forge_scene: PackedScene
 @export var plain_scene: PackedScene
 @export var brain_preview_scene: PackedScene
+@export var game_over_scene: PackedScene
 
 enum GameSceneState {
 	PREVIEW_MAP,
@@ -24,6 +25,7 @@ var stage
 var brain_preview
 var current_node
 var on_boss
+var health:int = 5;
 
 func _ready():
 	on_boss = false
@@ -35,6 +37,7 @@ func _ready():
 	brain_preview = brain_preview_scene.instantiate()
 	$UI/MapBtn/Button.pressed.connect(self.show_map_preview);
 	$UI/BrainBtn/Button.pressed.connect(self.show_brain_preview);
+	update_health(0);
 	show_first_level()
 
 #TODO convert to an actual scene
@@ -263,3 +266,20 @@ func switch_to_game_scene_state(s: GameSceneState):
 			$UI/BrainBtn/Button.disabled = true;
 			$UI/BrainBtn.hide();
 
+func update_health(add: int):
+	health = clamp(health+add, 0, 5);
+	#update the health ui
+	$UI/Ego/Label.text = str(health);
+	if health == 0:
+		#GAME OVER
+		var node = game_over_scene.instantiate();
+		$SceneHolder.remove_child(current_node);
+		current_node.queue_free();
+		$SceneHolder.remove_child(map);
+		$SceneHolder.add_child(node);
+		current_node = node;
+		$UI/BrainBtn/Button.disabled = false;
+		$UI/BrainBtn.show();
+		$UI/MapBtn/Button.disabled = false;
+		$UI/MapBtn.show();
+	

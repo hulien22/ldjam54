@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dnv66lo7xwndp"]
+[gd_scene load_steps=18 format=3 uid="uid://dnv66lo7xwndp"]
 
 [ext_resource type="PackedScene" uid="uid://dwychm67ltxst" path="res://scenes/map.tscn" id="1_6wptd"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_iij1i"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cim8agmfowbt3" path="res://scenes/PlainScene.tscn" id="9_d7rch"]
 [ext_resource type="PackedScene" uid="uid://bdwqktdp0bssu" path="res://scenes/BrainPreview.tscn" id="10_aulcq"]
 [ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="10_m2vja"]
+[ext_resource type="PackedScene" uid="uid://ciqlc0hn0m0uf" path="res://scenes/GameOver.tscn" id="11_2kgep"]
 [ext_resource type="Texture2D" uid="uid://caiiw0boachdi" path="res://art/icon.svg" id="11_a2eth"]
 [ext_resource type="Texture2D" uid="uid://opa8x4rqg2qi" path="res://art/Backgrounds/Main_BG.png" id="11_ft7ik"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="12_t31cu"]
@@ -31,6 +32,7 @@ upgrade_scene = ExtResource("7_l25g6")
 forge_scene = ExtResource("8_3set1")
 plain_scene = ExtResource("9_d7rch")
 brain_preview_scene = ExtResource("10_aulcq")
+game_over_scene = ExtResource("11_2kgep")
 
 [node name="MainBg" type="Sprite2D" parent="."]
 z_index = -999
