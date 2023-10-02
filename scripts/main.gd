@@ -256,10 +256,15 @@ func _start_library_phase(global_posn:Vector2):
 			for i in n:
 				$Brain.spawn_new_word(Global.get_word(), Vector2(500,50 * i - 350));
 		Library.LibraryType.FIRST_ROOM:
-			for i in 15:
+			for i in 10:
 				# TODO don't spawn words too long to start with
 				# maybe force a certain set of starting words?
 				$Brain.spawn_new_word(Global.get_word(), Vector2(500,50 * i - 350));
+			$Brain.spawn_new_word("it", Vector2(500,50 * 10 - 350));
+			$Brain.spawn_new_word("since", Vector2(500,50 * 11 - 350));
+			$Brain.spawn_new_word("and", Vector2(500,50 * 12 - 350));
+			$Brain.spawn_new_word("or", Vector2(500,50 * 13 - 350));
+			$Brain.spawn_new_word("not", Vector2(500,50 * 14 - 350));
 		Library.LibraryType.UPGRADE:
 			#TODO get category and spawn words from that
 			var n = randi_range(5,10);
