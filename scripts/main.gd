@@ -15,6 +15,8 @@ func _ready():
 	show_brain(false);
 	map = map_scene.instantiate()
 	map.connect("moved_to_location", _on_moved_to_location)
+	$UI/MapBtn/Button.pressed.connect(self.show_map_preview);
+	$UI/BrainBtn/Button.pressed.connect(self.show_brain_preview);
 	show_first_level()
 
 func show_first_level():
@@ -26,8 +28,6 @@ func show_first_level():
 		# maybe force a certain set of starting words?
 		$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
 	show_brain();
-	
-
 
 func _on_button_pressed():
 	_end_scene()
@@ -83,6 +83,12 @@ func _end_scene():
 	
 func show_brain(show: bool = true):
 	$Brain.visible = show;
+	if show:
+		$UI/BrainBtn/Button.disabled = true;
+		$UI/BrainBtn.modulate = Color.DIM_GRAY;
+	else:
+		$UI/BrainBtn/Button.disabled = false;
+		$UI/BrainBtn.modulate = Color.WHITE;
 
 func _start_combat_phase(global_posn:Vector2):
 	# set the brain to the correct phase
@@ -143,3 +149,9 @@ func _end_forge_phase(global_posn:Vector2, w: String):
 	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
 	$Brain.spawn_new_word(w, Vector2(200,40));
 	show_brain(true);
+
+func show_map_preview():
+	pass
+
+func show_brain_preview():
+	pass
