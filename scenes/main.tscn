@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dnv66lo7xwndp"]
+[gd_scene load_steps=19 format=3 uid="uid://dnv66lo7xwndp"]
 
 [ext_resource type="PackedScene" uid="uid://dwychm67ltxst" path="res://scenes/map.tscn" id="1_6wptd"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_iij1i"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://caiiw0boachdi" path="res://art/icon.svg" id="11_a2eth"]
 [ext_resource type="Texture2D" uid="uid://opa8x4rqg2qi" path="res://art/Backgrounds/Main_BG.png" id="11_ft7ik"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="12_t31cu"]
+[ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="13_ta7i4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eux2y"]
 font = ExtResource("12_t31cu")
@@ -41,9 +42,9 @@ texture = ExtResource("11_ft7ik")
 
 [node name="SceneHolder" type="Node2D" parent="."]
 
-[node name="Button" type="Button" parent="."]
-offset_right = 307.0
-offset_bottom = 123.0
+[node name="Button" parent="." instance=ExtResource("13_ta7i4")]
+position = Vector2(197, 48)
+text = "REPLACE ME"
 
 [node name="AudioPlayer" parent="." instance=ExtResource("9_d1na7")]
 
@@ -102,4 +103,4 @@ offset_bottom = 54.0
 text = "99"
 label_settings = SubResource("LabelSettings_eux2y")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="on_pressed" from="Button" to="." method="_on_button_pressed"]

@@ -41,7 +41,7 @@ func start_phase():
 	match combat_phase_:
 		COMBAT_PHASE.INTRO:
 			$IntroBox/Label.text = description_;
-			$IntroBox/Button.pressed.connect(self._move_to_next_phase);
+			$IntroBox/Button.connect("on_pressed", self._move_to_next_phase);
 			$IntroBox.show();
 		COMBAT_PHASE.PICK_SIDE:
 			$IntroBox.hide();
@@ -59,7 +59,7 @@ func start_phase():
 			emit_signal("start_combat_phase", brain_posn);
 			#enable clicking words
 #			$ConstructArgBox/Brain.set_click_only()
-			$ConstructArgBox/Button.pressed.connect(self._submit_debate);
+			$ConstructArgBox/Button.connect("on_pressed", self._submit_debate);
 			$ConstructArgBox.show();
 		COMBAT_PHASE.JUDGING:
 			$ConstructArgBox.hide();
@@ -74,7 +74,7 @@ func start_phase():
 			$ResultsBox/Score2.text = str(result_scores[1]);
 			$ResultsBox/Score3.text = str(result_scores[2]);
 			$ResultsBox/ScoreTotal.text = str(avg_score());
-			$ResultsBox/Button.pressed.connect(self._return_to_map);
+			$ResultsBox/Button.connect("on_pressed", self._return_to_map);
 			$ResultsBox.show();
 
 func _move_to_next_phase():

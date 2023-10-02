@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1qd4jib7m856"]
+[gd_scene load_steps=14 format=3 uid="uid://b1qd4jib7m856"]
 
 [ext_resource type="Script" path="res://scripts/combat.gd" id="1_uqive"]
+[ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="2_e6uob"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="2_m3vsr"]
 [ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="4_kcjvg"]
 
@@ -77,12 +78,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Button" type="Button" parent="IntroBox"]
-offset_left = 880.0
-offset_top = 974.0
-offset_right = 1033.0
-offset_bottom = 1034.0
-size_flags_horizontal = 4
+[node name="Button" parent="IntroBox" instance=ExtResource("2_e6uob")]
+position = Vector2(945, 994)
 text = "DEBATE!"
 
 [node name="PickSideBox" type="Node2D" parent="."]
@@ -165,12 +162,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Button" type="Button" parent="ConstructArgBox"]
-offset_left = 891.0
-offset_top = 922.0
-offset_right = 1078.0
-offset_bottom = 995.0
-size_flags_horizontal = 4
+[node name="Button" parent="ConstructArgBox" instance=ExtResource("2_e6uob")]
+position = Vector2(945, 994)
 text = "SUBMIT!"
 
 [node name="Brain" parent="ConstructArgBox" instance=ExtResource("4_kcjvg")]
@@ -277,12 +270,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Button" type="Button" parent="ResultsBox"]
-offset_left = 851.0
-offset_top = 865.0
-offset_right = 1038.0
-offset_bottom = 938.0
-size_flags_horizontal = 4
+[node name="Button" parent="ResultsBox" instance=ExtResource("2_e6uob")]
+position = Vector2(945, 994)
 text = "CONTINUE"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
