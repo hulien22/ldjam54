@@ -2,7 +2,7 @@ class_name Location
 extends Control
 
 enum LOCATION {START, COMBAT, ORACLE, LIBRARY, UPGRADE, FORGE, MEDITATE, BOSS}
-var line_texture = load("res://art/tactic 1.png")
+var line_texture = load("res://art/Maps/dash.png")
 
 signal moved_to_location(Location)
 
