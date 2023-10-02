@@ -36,6 +36,11 @@ func _ready():
 #	map.length = 1;
 	map.set_stage(stage);
 	map.connect("moved_to_location", _on_moved_to_location)
+	# hacky code to call ready
+	$SceneHolder.add_child(map)
+	$SceneHolder.remove_child(map)
+	map.set_enabled();
+
 	brain_preview = brain_preview_scene.instantiate()
 	$UI/MapBtn/Button.pressed.connect(self.show_map_preview);
 	$UI/BrainBtn/Button.pressed.connect(self.show_brain_preview);
@@ -61,7 +66,7 @@ func show_first_level():
 	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
 	current_node = node
 	$SceneHolder.add_child(node)
-	
+
 
 func _on_button_pressed():
 	_end_scene()
@@ -147,8 +152,12 @@ func next_stage():
 	map = map_scene.instantiate()
 	map.set_stage(stage);
 	map.connect("moved_to_location", _on_moved_to_location)
+	Global.reset_used_prompts()
+	$SceneHolder.add_child(map)
+	$SceneHolder.remove_child(map)
+	map.set_enabled();
 	#$SceneHolder.add_child(map)
-	
+
 func show_brain(show: bool = true):
 	$Brain.visible = show;
 	if show:
@@ -162,17 +171,17 @@ func _start_combat_phase(global_posn:Vector2, debate_question:DebateQuestion, fr
 	# set the brain to the correct phase
 	$Brain.set_state(Global.BrainState.COMBAT);
 	$Brain.set_combat_node(current_node);
-	
+
 	# move the brain to correct position
 	move_brain(global_posn);
-	
+
 	for i in debate_question.free_words.size():
 		var word: String = debate_question.free_words[i].to_lower();
 		var tile_width = $Brain.get_tile_width();
 		var posn : Vector2 = free_words_posn - global_posn + Vector2.DOWN * i * 60;
 		posn.x -= word.length() * tile_width;
 		$Brain.spawn_new_word(word, posn, Global.TileState.CLICKABLE);
-	
+
 	show_brain(true);
 
 func _end_combat_phase():
@@ -220,7 +229,7 @@ func _start_library_phase(global_posn:Vector2):
 	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
 	# move the brain to correct position
 	move_brain(global_posn);
-	
+
 	#spawn a bunch of words
 	match current_node.type:
 		Library.LibraryType.REGULAR:
@@ -237,7 +246,7 @@ func _start_library_phase(global_posn:Vector2):
 			var n = randi_range(5,10);
 			for i in n:
 				$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
-		
+
 	show_brain(true);
 	$Brain.set_update_button_scene(current_node);
 	$Brain.send_button_update_to_scene();
@@ -277,7 +286,7 @@ func _start_forge_phase():
 #	# set the brain to the correct phase
 #	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
 #	# move the brain to correct position
-#	move_brain(global_posn); 
+#	move_brain(global_posn);
 #
 #	#spawn a bunch of words
 #	var n = randi_range(5,10);
@@ -357,7 +366,7 @@ func update_health(add: int, play_anim:bool = true):
 	health = clamp(health+add, 0, 5);
 	#update the health ui
 	$UI/Ego/Label.text = str(health);
-	
+
 	#animate
 	if (add >= 0) :
 		$UI/Ego/Label2.text = "EGO recovers " + str(health - old_health);
@@ -370,7 +379,7 @@ func update_health(add: int, play_anim:bool = true):
 	else:
 		$UI/Ego/Label2.hide();
 	$UI/Ego/TextureProgressBar.value = health;
-	
+
 	# todo move this to after combat. only calculate then so player can see results screen.
 	if health == 0:
 		#GAME OVER
@@ -384,4 +393,3 @@ func update_health(add: int, play_anim:bool = true):
 		$UI/BrainBtn.show();
 		$UI/MapBtn/Button.disabled = false;
 		$UI/MapBtn.show();
-	

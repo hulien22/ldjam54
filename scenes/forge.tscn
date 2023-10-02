@@ -11,7 +11,7 @@ font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_re1rw"]
 font = ExtResource("2_d8e6t")
-font_size = 24
+font_size = 32
 
 [node name="forge" type="Node2D"]
 script = ExtResource("1_4se2y")

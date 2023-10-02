@@ -51,4 +51,7 @@ func _on_pressed():
 	moved_to_location.emit(self)
 	for connection in connections:
 		connection.activate(true)
-	
+
+func set_visited():
+#	$Holder/ExitIcon.show();
+	$Holder/AnimatedSprite2D.modulate = Color.DIM_GRAY;
