@@ -80,6 +80,11 @@ func _on_moved_to_location(location: Location):
 			show_brain(false);
 			node = boss_scene.instantiate()
 			node.is_boss = true;
+			node.init(location.debate_topic, stage)
+			node.connect("start_combat_phase", _start_combat_phase);
+			node.connect("end_combat_phase", _end_combat_phase);
+			node.connect("end_scene", _process_combat_rewards);
+			node.connect("take_damage", _process_combat_damage);
 			on_boss = true
 		Location.LOCATION.LIBRARY:
 			show_brain(false);
