@@ -2,7 +2,9 @@ class_name Location
 extends Node2D
 
 enum LOCATION {START, COMBAT, ORACLE, LIBRARY, UPGRADE, FORGE, MEDITATE, BOSS}
-var line_texture = load("res://art/Maps/dash.png")
+#var line_texture = load("res://art/Maps/dash.png")
+#var line_texture = load("res://art/Icons/Map_Dash_Line_Icon.png")
+var line_texture = load("res://art/Maps/dash2.png")
 
 signal moved_to_location(Location)
 
@@ -23,11 +25,13 @@ func activate(active: bool):
 
 func init(stage: int, location_type: LOCATION, position: Vector2, active: bool, connections: Array[Location]):
 	self.location_type = location_type
+	$Holder/AnimatedSprite2D.frame = location_type;
 	if location_type == LOCATION.COMBAT || location_type == LOCATION.BOSS:
 		debate_topic = Global.get_random_debate_question(stage)
 		$Holder/label.text = debate_topic.hint_
 	else:
-		$Holder/label.text = LOCATION.keys()[location_type]
+#		$Holder/label.text = LOCATION.keys()[location_type]
+		$Holder/label.text = "";
 	self.connections = connections
 	self.set_position(position)
 	$Holder/button.disabled = !active
