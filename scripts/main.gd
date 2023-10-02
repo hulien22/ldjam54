@@ -152,6 +152,9 @@ func next_stage():
 	map = map_scene.instantiate()
 	map.set_stage(stage);
 	map.connect("moved_to_location", _on_moved_to_location)
+	$SceneHolder.add_child(map)
+	$SceneHolder.remove_child(map)
+	map.set_enabled();
 	#$SceneHolder.add_child(map)
 	
 func show_brain(show: bool = true):

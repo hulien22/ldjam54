@@ -81,6 +81,9 @@ func _ready():
 	$PlayerMapMarker.position = start.position
 
 func _on_moved_to_location(location: Location):
+	if current_location != null:
+		current_location.set_visited();
+
 	for connection in current_location.connections:
 		connection.activate(false)
 	current_location = location
