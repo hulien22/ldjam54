@@ -1,10 +1,10 @@
 {
 	"words" : {
 		"positive" : ["great", "good", "awesome", "brilliant", "superb", "nice", "cool", "sick", "hype", "smile", "win", "right"],
-		"negative": ["bad", "sucks", "terrible", "sad", "stinky", "lame", "yucky", "lose", "crime", "wrong"],
+		"negative": ["bad", "terrible", "sad", "lame", "lose", "crime", "wrong", "rude", "never", "evil"],
 		"person": ["you", "they", "we", "me", "I", "people", "we", "us"],
 		"connecting": ["a", "about", "ago", "all", "also", "and", "as", "at", "back", "be", "because", "but", "by", "can", "come", "could", "do", "enough", "even", "first", "for", "from", "get", "give", "go", "have", "here", "how", "if", "in", "is", "it", "just", "know", "like", "look", "make", "many", "more", "no", "not", "now", "of", "on", "only", "or", "other", "out", "say", "see", "so", "some", "similar", "since", "such", "take", "tell", "than", "that", "the", "then", "there", "these", "thing", "this", "those", "time", "to", "too", "use", "until", "very", "want", "way", "well", "what", "when", "which", "who", "will", "with", "within", "would"],
-		"topics": ["age", "antioxidants", "attack", "autonomy", "color", "conscious", "creative", "decorative", "evidence", "fancy", "feel", "fight", "flavor", "free", "history", "intelligence", "intrigue", "kind", "limited", "logic", "mineral", "mix", "noise", "oil", "old", "original", "pigment", "power", "rich", "rock", "round", "sharp", "smart", "soft", "sound", "sour", "space", "spare", "speed", "spicy", "strategy", "success", "sweet", "tactic", "technical", "time", "useful", "vibe", "wine", "wisdom", "young"]
+		"topics": ["age", "antioxidants", "attack", "autonomy", "color", "conscious", "creative", "decorative", "evidence", "fancy", "feel", "fight", "flavor", "free", "history", "intelligent", "intrigue", "kind", "limited", "logic", "mineral", "mix", "noise", "oil", "old", "original", "pigment", "power", "rich", "rock", "round", "sharp", "smart", "soft", "sound", "sour", "space", "spare", "speed", "spicy", "strategy", "success", "sweet", "tactic", "technical", "time", "useful", "vibe", "wine", "wisdom", "young"]
 	},
 	"debates" : [
 		[
@@ -27,7 +27,9 @@
 			["What is more important?", "Sleeping", "Eating", "Sleeping is more important than eating.", "Eating is more important than sleeping.", "Lifestyle", ["Sleeping", "Eating"]],
 			["Which is sweeter?", "Raisins", "Honey", "Raisins are sweeter than honey.", "Honey is sweeter than raisins.", "Food", ["Honey", "Raisins"]],
 			["Which is better at climbing?", "Humans", "Goats", "Humans are better at climbing than goats.", "Goats are better at climbing than humans.", "Physical", ["Humans", "Goats"]],
-			["Which is more fearsome?", "Lions", "Bears", "Lions are more fearsome than bears.", "Bears are more fearsome than lions.", "Animals", ["Lions", "Bears"]]
+			["Which is more fearsome?", "Lions", "Bears", "Lions are more fearsome than bears.", "Bears are more fearsome than lions.", "Animals", ["Lions", "Bears"]],
+			["What is more important?", "Smell", "Taste", "Smell is more important than taste.", "Taste is more important than smell.", "Physical", ["Taste", "Smell"]],
+			["Which is smarter?", "Cow", "Sheep", "Cows are smarter than sheep.", "Sheep are smarter than cows.", "Animals", ["Cows", "Sheep"]]
 		],
 		[
 			["Does alien life exist?", "Yes", "No", "Aliens exist on other planets.", "Aliens aren't real.", "Science", ["Aliens", "Life"]],
