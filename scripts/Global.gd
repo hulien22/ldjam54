@@ -30,15 +30,17 @@ func get_word() -> String:
 		return data.words.person[rng.randi_range(0, len(data.words.person)-1)]
 
 
-var debate_questions: Array;
+var debate_questions: Array[Array];
 
 func load_debate_questions():
-	for d in data.debates:
-		assert(d.size() >= 4)
-		debate_questions.append(DebateQuestion.new(d[0], d[1], d[2], d[3], d[4], d[5]));
+	for s in 3:
+		debate_questions.append([])
+		for d in data.debates[s]:
+			assert(d.size() >= 4)
+			debate_questions[s].append(DebateQuestion.new(d[0], d[1], d[2], d[3], d[4], d[5]));
 
-func get_random_debate_question() -> DebateQuestion:
-	return debate_questions[rng.randi() % debate_questions.size()];
+func get_random_debate_question(difficulty) -> DebateQuestion:
+	return debate_questions[difficulty][rng.randi() % debate_questions.size()];
 
 enum TileState {
 	DRAGGABLE,
