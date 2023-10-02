@@ -22,7 +22,7 @@ var is_boss: bool = false;
 # this will compose the argument.
 var word_tiles: Array = [];
 
-signal start_combat_phase(global_posn:Vector2);
+signal start_combat_phase(global_posn:Vector2, debate_question: DebateQuestion, free_words_posn:Vector2);
 signal end_combat_phase();
 signal end_scene(final_score: float);
 signal take_damage();
@@ -37,7 +37,8 @@ func init(topic: DebateQuestion, difficulty: int):
 func _ready():
 	# TODO REMOVE
 	#init(0);
-
+	if is_boss:
+		$ConstructArgBox/Tutorial2.enabled = true;
 	assert(combat_phase_ == COMBAT_PHASE.INTRO);
 	start_phase();
 
@@ -60,7 +61,7 @@ func start_phase():
 			$ConstructArgBox/Label.text = prompt_;
 			#show brain with words
 			var brain_posn = $ConstructArgBox.global_position + Vector2(965, 549);
-			emit_signal("start_combat_phase", brain_posn);
+			emit_signal("start_combat_phase", brain_posn, debate_question_, Vector2(1565, 380));
 			#enable clicking words
 #			$ConstructArgBox/Brain.set_click_only()
 			word_tiles.clear();

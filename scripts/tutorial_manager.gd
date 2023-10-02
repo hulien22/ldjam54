@@ -8,3 +8,6 @@ func add_tutorial(tut_name:String) -> bool:
 		return false;
 	completed_tutorials.append(tut_name);
 	return true;
+
+func has_tutorial(tut_name:String) -> bool:
+	return completed_tutorials.has(tut_name);

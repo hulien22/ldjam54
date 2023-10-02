@@ -158,12 +158,17 @@ func show_brain(show: bool = true):
 		$UI/BrainBtn/Button.disabled = false;
 		$UI/BrainBtn.show();
 
-func _start_combat_phase(global_posn:Vector2):
+func _start_combat_phase(global_posn:Vector2, debate_question:DebateQuestion, free_words_posn:Vector2):
 	# set the brain to the correct phase
 	$Brain.set_state(Global.BrainState.COMBAT);
 	$Brain.set_combat_node(current_node);
+	
 	# move the brain to correct position
 	move_brain(global_posn);
+	
+	$Brain.spawn_new_word(debate_question.option1_, free_words_posn - global_posn + Vector2.DOWN * 0, Global.TileState.CLICKABLE);
+	$Brain.spawn_new_word(debate_question.option2_, free_words_posn - global_posn + Vector2.DOWN * 60, Global.TileState.CLICKABLE);
+	
 	show_brain(true);
 
 func _end_combat_phase():
