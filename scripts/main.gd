@@ -224,9 +224,13 @@ func _start_upgrade_phase(global_posn:Vector2):
 func _end_upgrade_phase():
 	# stop allowing expansion
 	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
+	$Brain.set_update_button_scene(current_node);
+	$Brain.send_button_update_to_scene();
 #	$Brain.set_state(Global.BrainState.VIEW_ONLY);
 
 func _leave_upgrade_phase():
+	show_brain(false);
+	$Brain.set_update_button_scene(null);
 	_end_scene();
 
 func _start_forge_phase():

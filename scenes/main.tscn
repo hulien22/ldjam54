@@ -43,6 +43,7 @@ texture = ExtResource("11_ft7ik")
 [node name="SceneHolder" type="Node2D" parent="."]
 
 [node name="Button" parent="." instance=ExtResource("13_ta7i4")]
+visible = false
 position = Vector2(197, 48)
 text = "REPLACE ME"
 

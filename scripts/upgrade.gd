@@ -28,4 +28,8 @@ func on_upgrade():
 		emit_signal("end_upgrade_phase");
 		$Button.set_text("CONTINUE");
 
-	#TODO what if out of spots to upgrade?
+func update_button(num_on_grid: int):
+	if (num_on_grid >= 3):
+		$Button.set_enabled(true);
+	else:
+		$Button.set_enabled(false);
