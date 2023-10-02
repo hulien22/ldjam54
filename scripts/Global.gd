@@ -36,8 +36,8 @@ func load_debate_questions():
 	for s in 3:
 		debate_questions.append([])
 		for d in data.debates[s]:
-			assert(d.size() >= 4)
-			debate_questions[s].append(DebateQuestion.new(d[0], d[1], d[2], d[3], d[4], d[5]));
+			assert(d.size() >= 5)
+			debate_questions[s].append(DebateQuestion.new(d[0], d[1], d[2], d[3], d[4], d[5], d[6]));
 
 func get_random_debate_question(difficulty) -> DebateQuestion:
 	return debate_questions[difficulty][rng.randi() % debate_questions[difficulty].size()];

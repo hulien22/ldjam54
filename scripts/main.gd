@@ -59,8 +59,8 @@ func show_first_level():
 	node.connect("start_library_phase", _start_library_phase);
 	node.connect("end_library_phase", _end_library_phase);
 	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
-	$SceneHolder.add_child(node)
 	current_node = node
+	$SceneHolder.add_child(node)
 	
 
 func _on_button_pressed():
@@ -118,8 +118,8 @@ func _on_moved_to_location(location: Location):
 			node.connect("leave_forge_phase", _leave_forge_phase);
 
 	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
-	$SceneHolder.add_child(node)
 	current_node = node
+	$SceneHolder.add_child(node)
 	$SceneHolder.remove_child(map)
 
 func move_brain(global_posn:Vector2):
@@ -158,12 +158,21 @@ func show_brain(show: bool = true):
 		$UI/BrainBtn/Button.disabled = false;
 		$UI/BrainBtn.show();
 
-func _start_combat_phase(global_posn:Vector2):
+func _start_combat_phase(global_posn:Vector2, debate_question:DebateQuestion, free_words_posn:Vector2):
 	# set the brain to the correct phase
 	$Brain.set_state(Global.BrainState.COMBAT);
 	$Brain.set_combat_node(current_node);
+	
 	# move the brain to correct position
 	move_brain(global_posn);
+	
+	for i in debate_question.free_words.size():
+		var word: String = debate_question.free_words[i].to_lower();
+		var tile_width = $Brain.get_tile_width();
+		var posn : Vector2 = free_words_posn - global_posn + Vector2.DOWN * i * 60;
+		posn.x -= word.length() * tile_width;
+		$Brain.spawn_new_word(word, posn, Global.TileState.CLICKABLE);
+	
 	show_brain(true);
 
 func _end_combat_phase():
@@ -176,7 +185,7 @@ func _process_combat_rewards(score: float):
 	# bad copy paste stuff here :/
 	if score < 5.0:
 		node = library_scene.instantiate();
-		node.title = "You lost, but you picked up some words from the opponent";
+		node.title = "You lost, but you picked up some words from the opponent's argument";
 		node.type = Library.LibraryType.UPGRADE;
 		node.connect("start_library_phase", _start_library_phase);
 		node.connect("end_library_phase", _end_library_phase);
@@ -197,8 +206,8 @@ func _process_combat_rewards(score: float):
 	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
 	$SceneHolder.remove_child(current_node)
 	current_node.queue_free();
-	$SceneHolder.add_child(node)
 	current_node = node
+	$SceneHolder.add_child(node)
 
 func _process_combat_damage():
 	if on_boss:
@@ -360,6 +369,7 @@ func update_health(add: int, play_anim:bool = true):
 		$UI/Ego/AnimationPlayer.play("egotext")
 	else:
 		$UI/Ego/Label2.hide();
+	$UI/Ego/TextureProgressBar.value = health;
 	
 	# todo move this to after combat. only calculate then so player can see results screen.
 	if health == 0:
@@ -368,8 +378,8 @@ func update_health(add: int, play_anim:bool = true):
 		$SceneHolder.remove_child(current_node);
 		current_node.queue_free();
 		$SceneHolder.remove_child(map);
-		$SceneHolder.add_child(node);
 		current_node = node;
+		$SceneHolder.add_child(node);
 		$UI/BrainBtn/Button.disabled = false;
 		$UI/BrainBtn.show();
 		$UI/MapBtn/Button.disabled = false;

@@ -165,7 +165,7 @@ func _on_tile_clicked(gridPosn:Vector2):
 	else:
 		push_warning("got tile clicked signal while in unexpected state: ", state_);
 
-func spawn_new_word(word: String, global_posn: Vector2):
+func spawn_new_word(word: String, global_posn: Vector2, st:Global.TileState = Global.TileState.DRAGGABLE):
 #	assert(state_ == Global.BrainState.ADDING_NEW_WORDS);
 	var word_tile = wordTileScene.instantiate();
 	word_tile.word = word;
@@ -175,7 +175,8 @@ func spawn_new_word(word: String, global_posn: Vector2):
 	word_tile.global_position = global_posn;
 	word_tile.tileScale = tileScale
 	word_tile.spread = spread;
-	word_tiles.append(word_tile)
+	word_tiles.append(word_tile);
+	word_tile.set_state(st);
 	$WordsHolder.add_child(word_tile);
 
 

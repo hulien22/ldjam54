@@ -6,11 +6,13 @@ var option2_: String;
 var prompt1_: String;
 var prompt2_: String;
 var hint_: String;
+var free_words: Array
 
-func _init(initial_prompt: String, option1: String, option2: String, prompt1: String, prompt2: String, hint: String):
+func _init(initial_prompt: String, option1: String, option2: String, prompt1: String, prompt2: String, hint: String, fw: Array):
 	initial_prompt_ = initial_prompt;
 	option1_ = option1;
 	option2_ = option2;
 	prompt1_ = prompt1;
 	prompt2_ = prompt2;
 	hint_ = hint;
+	free_words = fw;
