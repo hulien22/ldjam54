@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnv66lo7xwndp"]
+[gd_scene load_steps=23 format=3 uid="uid://dnv66lo7xwndp"]
 
 [ext_resource type="PackedScene" uid="uid://dwychm67ltxst" path="res://scenes/map.tscn" id="1_6wptd"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_iij1i"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ccb7ydon7aoh7" path="res://scenes/library.tscn" id="5_6lbyg"]
 [ext_resource type="PackedScene" uid="uid://3gi5l01y0hvo" path="res://scenes/oracle.tscn" id="6_pvrvx"]
 [ext_resource type="PackedScene" uid="uid://ryagmgt1vqsb" path="res://scenes/upgrade.tscn" id="7_l25g6"]
+[ext_resource type="PackedScene" uid="uid://dr1xxh3dnv6mq" path="res://scenes/meditate.tscn" id="7_p0mtb"]
 [ext_resource type="PackedScene" uid="uid://bd8ck0os5fgp" path="res://scenes/forge.tscn" id="8_3set1"]
 [ext_resource type="PackedScene" uid="uid://c2t66apu50q7i" path="res://scenes/AudioPlayer.tscn" id="9_d1na7"]
 [ext_resource type="PackedScene" uid="uid://cim8agmfowbt3" path="res://scenes/PlainScene.tscn" id="9_d7rch"]
@@ -22,6 +23,55 @@
 font = ExtResource("12_t31cu")
 font_size = 60
 
+[sub_resource type="LabelSettings" id="LabelSettings_os2gm"]
+font = ExtResource("12_t31cu")
+font_size = 40
+
+[sub_resource type="Animation" id="Animation_bme24"]
+resource_name = "egotext"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 2.07053, 1),
+"update": 0,
+"values": [Vector2(150, -48), Vector2(150, -48), Vector2(150, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iiotm"]
+_data = {
+"egotext": SubResource("Animation_bme24")
+}
+
 [node name="main" type="Node2D"]
 script = ExtResource("1_iij1i")
 map_scene = ExtResource("1_6wptd")
@@ -29,6 +79,7 @@ combat_scene = ExtResource("2_f0e2t")
 boss_scene = ExtResource("4_ekeoq")
 library_scene = ExtResource("5_6lbyg")
 oracle_scene = ExtResource("6_pvrvx")
+meditate_scene = ExtResource("7_p0mtb")
 upgrade_scene = ExtResource("7_l25g6")
 forge_scene = ExtResource("8_3set1")
 plain_scene = ExtResource("9_d7rch")
@@ -104,5 +155,19 @@ offset_right = 152.0
 offset_bottom = 54.0
 text = "99"
 label_settings = SubResource("LabelSettings_eux2y")
+
+[node name="Label2" type="Label" parent="UI/Ego"]
+offset_left = 150.0
+offset_top = -48.0
+offset_right = 792.0
+offset_bottom = 50.0
+text = "Your EGO takes a hit"
+label_settings = SubResource("LabelSettings_os2gm")
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Ego"]
+libraries = {
+"": SubResource("AnimationLibrary_iiotm")
+}
 
 [connection signal="on_pressed" from="Button" to="." method="_on_button_pressed"]

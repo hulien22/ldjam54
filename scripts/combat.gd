@@ -22,6 +22,7 @@ var word_tiles: Array = [];
 signal start_combat_phase(global_posn:Vector2);
 signal end_combat_phase();
 signal end_scene(final_score: float);
+signal take_damage();
 
 func init(topic: DebateQuestion, difficulty: int):
 	difficulty_ = difficulty;
@@ -75,6 +76,8 @@ func start_phase():
 			$ResultsBox/Score3.text = str(result_scores[2]);
 			$ResultsBox/ScoreTotal.text = str(avg_score());
 			$ResultsBox/Button.connect("on_pressed", self._return_to_map);
+			# really need this on a delay for game overs..
+			emit_signal("take_damage");
 			$ResultsBox.show();
 
 func _move_to_next_phase():

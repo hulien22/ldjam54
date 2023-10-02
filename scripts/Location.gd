@@ -1,7 +1,7 @@
 class_name Location
 extends Control
 
-enum LOCATION {START, COMBAT, ORACLE, LIBRARY, UPGRADE, FORGE, BOSS}
+enum LOCATION {START, COMBAT, ORACLE, LIBRARY, UPGRADE, FORGE, MEDITATE, BOSS}
 var line_texture = load("res://art/tactic 1.png")
 
 signal moved_to_location(Location)

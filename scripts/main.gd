@@ -5,6 +5,7 @@ extends Node2D
 @export var boss_scene: PackedScene
 @export var library_scene: PackedScene
 @export var oracle_scene: PackedScene
+@export var meditate_scene: PackedScene
 @export var upgrade_scene: PackedScene
 @export var forge_scene: PackedScene
 @export var plain_scene: PackedScene
@@ -37,7 +38,7 @@ func _ready():
 	brain_preview = brain_preview_scene.instantiate()
 	$UI/MapBtn/Button.pressed.connect(self.show_map_preview);
 	$UI/BrainBtn/Button.pressed.connect(self.show_brain_preview);
-	update_health(0);
+	update_health(0, false);
 	show_first_level()
 
 #TODO convert to an actual scene
@@ -74,6 +75,7 @@ func _on_moved_to_location(location: Location):
 			node.connect("start_combat_phase", _start_combat_phase);
 			node.connect("end_combat_phase", _end_combat_phase);
 			node.connect("end_scene", _process_combat_rewards);
+			node.connect("take_damage", _process_combat_damage);
 		Location.LOCATION.BOSS:
 			show_brain(false);
 			node = boss_scene.instantiate()
@@ -88,6 +90,11 @@ func _on_moved_to_location(location: Location):
 			node = oracle_scene.instantiate()
 			node.prompt = "pls send help"
 			node.connect("leave_oracle_phase", _leave_oracle_phase);
+		Location.LOCATION.MEDITATE:
+			show_brain(false);
+			node = meditate_scene.instantiate();
+			node.connect("leave_meditate_phase", _leave_meditate_phase);
+			update_health(10);
 		Location.LOCATION.UPGRADE:
 			show_brain(false);
 			node = upgrade_scene.instantiate()
@@ -182,6 +189,11 @@ func _process_combat_rewards(score: float):
 	$SceneHolder.add_child(node)
 	current_node = node
 
+func _process_combat_damage():
+	if on_boss:
+		update_health(-2);
+	else:
+		update_health(-1);
 
 func _start_library_phase(global_posn:Vector2):
 	# set the brain to the correct phase
@@ -217,6 +229,9 @@ func _end_library_phase():
 	_end_scene();
 
 func _leave_oracle_phase():
+	_end_scene();
+
+func _leave_meditate_phase():
 	_end_scene();
 
 func _start_upgrade_phase(global_posn:Vector2):
@@ -317,10 +332,24 @@ func switch_to_game_scene_state(s: GameSceneState):
 			$UI/BrainBtn/Button.disabled = true;
 			$UI/BrainBtn.hide();
 
-func update_health(add: int):
+func update_health(add: int, play_anim:bool = true):
+	var old_health:int = health;
 	health = clamp(health+add, 0, 5);
 	#update the health ui
 	$UI/Ego/Label.text = str(health);
+	
+	#animate
+	if (add >= 0) :
+		$UI/Ego/Label2.text = "EGO recovers " + str(health - old_health);
+		$UI/Ego/Label2.modulate = Color.LIME_GREEN;
+	else:
+		$UI/Ego/Label2.text = "EGO takes a hit -" + str(old_health - health);
+		$UI/Ego/Label2.modulate = Color.CRIMSON;
+	if play_anim:
+		$UI/Ego/AnimationPlayer.play("egotext")
+	else:
+		$UI/Ego/Label2.hide();
+	
 	if health == 0:
 		#GAME OVER
 		var node = game_over_scene.instantiate();
