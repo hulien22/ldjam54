@@ -16,7 +16,7 @@ func _ready():
 
 func select_score(score:int):
 	# print message to copy into code
-	print("\t\"" + t1.name_ + "-" + t2.name_ + "\" : " + str(score) + ",");
+	#print("\t\"" + t1.name_ + "-" + t2.name_ + "\" : " + str(score) + ",");
 	# insert into map so we don't pick again.
 	Global.tactics_score[t1.name_ + "-" + t2.name_] = score;
 	gen_next()

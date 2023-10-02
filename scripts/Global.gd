@@ -11,11 +11,11 @@ func _ready():
 	var file = FileAccess.open(words_file.resource_path, FileAccess.READ)
 	data = JSON.parse_string(file.get_as_text())
 	load_debate_questions();
-	print(data.words.positive)
-	print(get_word())
-	print(get_word())
-	print(get_word())
-	print(get_word())
+#	print(data.words.positive)
+#	print(get_word())
+#	print(get_word())
+#	print(get_word())
+#	print(get_word())
 	reset_used_prompts()
 	
 func get_word() -> String:

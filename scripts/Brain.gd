@@ -22,7 +22,7 @@ var upgrade_scene: Upgrade;
 var update_button_scene: Node2D;
 
 func _ready():
-	print("test")
+#	print("test")
 	for h in size.y:
 		var str= ""
 		grid.append([])
@@ -39,7 +39,7 @@ func _ready():
 			else:
 				gridTile.lock();
 			grid[h].append(gridTile)
-		print(str)
+#		print(str)
 			#var char = word[x][y]
 			#var tile = tileScene.instantiate()
 			#tile.scale = Vector2(tileScale,tileScale)
@@ -104,18 +104,18 @@ func render_grid():
 	var grid_width = (max_col - min_col + bonus) * get_tile_width();
 	var grid_height = (max_row - min_row + bonus) * get_tile_width();
 	
-	print(grid_width, " ", grid_height, " ", bwidth, " ", bheight);
+#	print(grid_width, " ", grid_height, " ", bwidth, " ", bheight);
 	# want the ratio of brain:grid to be 1.1:1
 	$BG.scale.x = (target_brain_grid_ratio * grid_width) / bwidth;
 	$BG.scale.y = (target_brain_grid_ratio * grid_height) / bheight;
 
 func move_grid_word_tiles():
 	for word_tile in word_tiles:
-		print(word_tile.word, " ", word_tile.grid_posn);
+#		print(word_tile.word, " ", word_tile.grid_posn);
 		if word_tile.on_grid():
 			word_tile.global_position.x = $GridHolder.global_position.x + word_tile.grid_posn.x * get_tile_width();
 			word_tile.global_position.y = $GridHolder.global_position.y + word_tile.grid_posn.y * get_tile_width();
-			print(word_tile.word, " ", word_tile.global_position);
+#			print(word_tile.word, " ", word_tile.global_position);
 
 func render():
 	render_grid();
@@ -155,7 +155,7 @@ func set_update_button_scene(scene: Node2D):
 	update_button_scene = scene;
 
 func _on_tile_clicked(gridPosn:Vector2):
-	print(gridPosn)
+#	print(gridPosn)
 	if state_ == Global.BrainState.EXPANDING:
 		var clickedTile = grid[gridPosn.y][gridPosn.x]
 		if clickedTile.isLocked():
@@ -229,15 +229,15 @@ func does_other_word_tile_collide(word_tile: WordTile, grid_posn: Vector2) -> bo
 
 
 func _handle_clicked_word_tile(word_tile: WordTile, selected:bool):
-	print("CLICKED ", word_tile.word, " ", word_tile);
+#	print("CLICKED ", word_tile.word, " ", word_tile);
 	combat_scene.add_word_tile(word_tile, selected);
 	
 
 func _handle_dropped_word_tile(word_tile: WordTile):
-	print("DROPPED ", word_tile.word, " ", word_tile);
+#	print("DROPPED ", word_tile.word, " ", word_tile);
 	var res:Array = check_for_valid_placement(word_tile);
 	
-	print(res);
+#	print(res);
 	if (res[0] && res[1]):
 		# invalid spot to be dropped, return word tile back to previous location
 		word_tile.return_to_prev_loc();

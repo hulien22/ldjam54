@@ -94,7 +94,7 @@ func _on_moved_to_location(location: Location):
 	current_location = location
 	$PlayerMapMarker.position = location.position
 	moved_to_location.emit(location)
-	print(location.position)
+	#print(location.position)
 
 func set_enabled(enabled: bool = true):
 	for connection in current_location.connections:

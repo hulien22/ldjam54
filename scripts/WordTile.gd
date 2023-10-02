@@ -79,7 +79,7 @@ func set_selected(isSel : bool):
 	else:
 		emit_signal("was_dropped", self);
 		
-	print("is selected",isSelected)
+	#print("is selected",isSelected)
 
 func return_to_prev_loc():
 	global_position = picked_up_posn;
@@ -90,7 +90,7 @@ func return_to_prev_loc():
 		direction = Direction.DOWN;
 
 func set_clicked(isSel: bool):
-	print("CLICKED ", word, " ", isSel);
+	#print("CLICKED ", word, " ", isSel);
 	if (isSel):
 		set_state(Global.TileState.DISABLED);
 	else:
