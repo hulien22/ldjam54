@@ -203,6 +203,7 @@ libraries = {
 }
 
 [node name="ResultsBox" type="Node2D" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="ResultsBox"]
 offset_left = 5.0

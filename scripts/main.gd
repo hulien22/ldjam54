@@ -139,15 +139,25 @@ func _end_combat_phase():
 	# TODO reset the words that were selected? need another phase?
 
 func _process_combat_rewards(score: float):
+	var node
+	# bad copy paste stuff here :/
+	if score < 5.0:
+		node = library_scene.instantiate();
+		node.connect("start_library_phase", _start_library_phase);
+		node.connect("end_library_phase", _end_library_phase);
+		# change stuff in the node, description, category
+	else:
+		node = upgrade_scene.instantiate()
+		node.num_upgrades_available = 2;
+		node.connect("start_upgrade_phase", _start_upgrade_phase);
+		node.connect("end_upgrade_phase", _end_upgrade_phase);
+
+	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
 	$SceneHolder.remove_child(current_node)
 	current_node.queue_free();
-	var node
-	if score < 5.0:
-#		var l
-#		_on_moved_to_location(Location.LOCATION.LIBRARY);
-		pass
+	$SceneHolder.add_child(node)
+	current_node = node
 
-	
 
 func _start_library_phase(global_posn:Vector2):
 	# set the brain to the correct phase

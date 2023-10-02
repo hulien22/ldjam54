@@ -46,8 +46,8 @@ func start_phase():
 		COMBAT_PHASE.PICK_SIDE:
 			$IntroBox.hide();
 			$PickSideBox/Label.text = debate_question_.initial_prompt_;
-			$PickSideBox/Button1.text = debate_question_.prompt1_;
-			$PickSideBox/Button2.text = debate_question_.prompt2_;
+			$PickSideBox/Button1.text = debate_question_.option1_;
+			$PickSideBox/Button2.text = debate_question_.option2_;
 			$PickSideBox/Button1.pressed.connect(Callable(self, "_select_prompt").bind(1));
 			$PickSideBox/Button2.pressed.connect(Callable(self, "_select_prompt").bind(2));
 			$PickSideBox.show();
