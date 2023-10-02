@@ -90,9 +90,10 @@ func start_phase():
 				$ResultsBox/Button.connect("on_pressed", self._after_results);
 			
 #			$ResultsBox/Button.set_enabled(false);
-			$ResultsBox/AnimationPlayer.play("showresults");
-
+			$ResultsBox/AnimationPlayer.current_animation = "showresults";
+			$ResultsBox/AnimationPlayer.seek(0, true);
 			$ResultsBox.show();
+			$ResultsBox/AnimationPlayer.play("showresults");
 		COMBAT_PHASE.RETRY:
 			$ResultsBox.hide();
 			if !$RetryBox/Button.is_connected("on_pressed", self._try_rephrase):
