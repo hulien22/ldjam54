@@ -10,7 +10,20 @@ var state_:Global.TileState = Global.TileState.DRAGGABLE;
 func _ready():
 	if letter.length() > 1:
 		letter=letter[0]
-	$Area2D/TileText.add_text(letter) # Replace with function body.
+	$Area2D/TileText.text = letter;
+	$Area2D/AnimatedSprite2D.frame = Global.rng.randi_range(0, 4);
+
+func set_first_letter():
+	$Area2D/AnimatedSprite2D.scale.x = 1.078;
+	$Area2D/AnimatedSprite2D.position.x = 33;
+
+func set_first_and_last_letter():
+	$Area2D/AnimatedSprite2D.scale.x = 1;
+	$Area2D/AnimatedSprite2D.position.x = 5;
+
+func set_last_letter():
+	$Area2D/AnimatedSprite2D.scale.x = 1.03;
+	$Area2D/AnimatedSprite2D.position.x = -11;
 
 func get_width():
 	return $Rect.get_global_rect().size.x
