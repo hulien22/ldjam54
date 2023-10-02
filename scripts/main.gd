@@ -99,6 +99,7 @@ func _on_moved_to_location(location: Location):
 			node = forge_scene.instantiate()
 			node.connect("start_forge_phase", _start_forge_phase);
 			node.connect("end_forge_phase", _end_forge_phase);
+			node.connect("leave_forge_phase", _leave_forge_phase);
 
 	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
 	$SceneHolder.add_child(node)
@@ -246,7 +247,13 @@ func _end_forge_phase(global_posn:Vector2, w: String):
 	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
 	$Brain.spawn_new_word(w, Vector2(200,40));
 	show_brain(true);
+	$Brain.set_update_button_scene(current_node);
+	$Brain.send_button_update_to_scene();
 
+func _leave_forge_phase():
+	show_brain(false);
+	$Brain.set_update_button_scene(null);
+	_end_scene();
 
 var map_preview_was_brain_visible:bool = false;
 func show_map_preview():
