@@ -135,7 +135,8 @@ func move_brain(global_posn:Vector2):
 func _end_scene():
 	if current_node != null:
 		if on_boss:
-			next_stage()
+			if next_stage():
+				return
 			update_health(10);
 		$SceneHolder.remove_child(current_node)
 		current_node.queue_free();
@@ -143,19 +144,36 @@ func _end_scene():
 	switch_to_game_scene_state(GameSceneState.ON_MAP);
 	$SceneHolder.add_child(map)
 
-func next_stage():
+func next_stage() -> bool:
 	on_boss = false
 	stage += 1
-	if map:
+	if stage > 2: #win
+		print("win")
+		var node = game_over_scene.instantiate();
+		$SceneHolder.remove_child(current_node);
+		current_node.queue_free();
+		$SceneHolder.remove_child(map);
+		current_node = node;
+		node.get_node("Label").text = "Congratulations!"
+		node.get_node("Label2").text = "You have ascended to become the greek god of debate and intelligence." 
+		$SceneHolder.add_child(node);
+		$UI/BrainBtn/Button.disabled = false;
+		$UI/BrainBtn.show();
+		$UI/MapBtn/Button.disabled = false;
+		$UI/MapBtn.show();
+		return true
+	else:
+		if map:
+			$SceneHolder.remove_child(map)
+			map.queue_free()
+		map = map_scene.instantiate()
+		map.set_stage(stage);
+		map.connect("moved_to_location", _on_moved_to_location)
+		Global.reset_used_prompts()
+		$SceneHolder.add_child(map)
 		$SceneHolder.remove_child(map)
-		map.queue_free()
-	map = map_scene.instantiate()
-	map.set_stage(stage);
-	map.connect("moved_to_location", _on_moved_to_location)
-	Global.reset_used_prompts()
-	$SceneHolder.add_child(map)
-	$SceneHolder.remove_child(map)
-	map.set_enabled();
+		map.set_enabled();
+	return false
 	#$SceneHolder.add_child(map)
 
 func show_brain(show: bool = true):
