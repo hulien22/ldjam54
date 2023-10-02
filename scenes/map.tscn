@@ -24,8 +24,8 @@ script = ExtResource("1_5iiuj")
 length = 10
 width = 4
 min_width = 2
-left_margin = 40
-right_margin = 40
+left_margin = 60
+right_margin = 100
 top_margin = 300
 bottom_margin = 250
 jitter_width_bias = 0.8
@@ -42,8 +42,9 @@ color = Color(0.54902, 0.54902, 0.54902, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -10
 position = Vector2(958.222, 543.812)
-scale = Vector2(1.0022, 1.0022)
+scale = Vector2(1.11, 1.11)
 sprite_frames = SubResource("SpriteFrames_umcyr")
+frame = 1
 
 [node name="MapHolder" type="Node2D" parent="."]
 
