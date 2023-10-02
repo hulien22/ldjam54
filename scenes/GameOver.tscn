@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1vg665ed1xjp"]
+[gd_scene load_steps=6 format=3 uid="uid://ciqlc0hn0m0uf"]
 
 [ext_resource type="Script" path="res://scripts/GameOver.gd" id="1_p0tnp"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="1_pm781"]
-[ext_resource type="PackedScene" uid="uid://ddw4wgpuy1cv7" path="res://scenes/mainmenu.tscn" id="2_a1mh4"]
 [ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="3_vwkuk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6odfe"]
@@ -15,7 +14,6 @@ font_size = 48
 
 [node name="scene" type="Node2D"]
 script = ExtResource("1_p0tnp")
-menu_scene = ExtResource("2_a1mh4")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 35.0
