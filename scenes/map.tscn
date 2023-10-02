@@ -48,7 +48,7 @@ z_index = -10
 position = Vector2(958.222, 543.812)
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_umcyr")
-frame_progress = 0.774226
+frame_progress = 0.0588193
 
 [node name="MapHolder" type="Node2D" parent="."]
 

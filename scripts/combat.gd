@@ -23,17 +23,17 @@ signal start_combat_phase(global_posn:Vector2);
 signal end_combat_phase();
 signal end_scene()
 
-func init(topic: DebateQuestion):
-	#difficulty_ = difficulty;
+func init(topic: DebateQuestion, difficulty: int):
+	difficulty_ = difficulty;
 	combat_phase_ = COMBAT_PHASE.INTRO;
 	debate_question_ = topic #Global.get_random_debate_question()
-#	description_ = get_random_desc_for_difficulty(difficulty_);
+	description_ = get_random_desc_for_difficulty(difficulty_);
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# TODO REMOVE
 	#init(0);
-	
+
 	assert(combat_phase_ == COMBAT_PHASE.INTRO);
 	start_phase();
 
@@ -135,13 +135,13 @@ func parse_results_from_response(body: PackedByteArray):
 						result_scores[i] = clamp(splits[0].to_int(), 1, 10);
 					else:
 						push_error("Error parsing string.", parsed_string);
-		
+
 		else:
 			push_error("Error parsing string.", parsed_string);
 	else:
 		push_error("Got null body in response.");
 #	push_error("DONE")
-	
+
 	# TODO special handling for "[5, The argument is unrelated to the prompt.]", "[5, The argument does not address the prompt.]"
 
 func _return_to_map():
@@ -159,9 +159,26 @@ func render_argument():
 	for word_tile in word_tiles:
 		s += word_tile.word + " ";
 	$ConstructArgBox/Label2.text = s;
-	
+
 func avg_score() -> float:
 	if result_scores.size() < 3:
 		return 0.0;
 	return snappedf((result_scores[0] + result_scores[1] + result_scores[2]) / 3.0, 0.01);
-	
+
+
+var rng = RandomNumberGenerator.new()
+func get_random_desc_for_difficulty(difficulty : int):
+	var value = rng.randi_range(0, 2)
+	match difficulty: #lol at this
+		0:
+			return ["You encounter a farmer who seems to be pondering something.",
+			"A soldier stops you to ask a question.",
+			"You see a small child who seems curious."][value]
+		1:
+			return ["You encounter a ship captain who seems to be pondering something.",
+			"A renowned philosopher wishes to discuss something with you.",
+			"You are approached by a travelling merchant."][value]
+		2:
+			return ["You encounter a titan who seems to be pondering something.",
+			"A demigod seems to be vying for your attention.",
+			"You see an olympian seated in the thinker pose."][value]
