@@ -20,6 +20,7 @@ func _ready():
 	$Timer.one_shot = true;
 	$Timer.start(0.02);
 	$Button.connect("on_pressed", self.end_scene);
+	$Button.set_enabled(false);#fix double noise
 	
 	if type == LibraryType.FIRST_ROOM:
 		#Show drag and drop and rotate help

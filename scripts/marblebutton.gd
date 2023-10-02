@@ -42,7 +42,7 @@ func _on_button_button_down():
 		$Node2D/NinePatchRect2.hide()
 		$Node2D/NinePatchRect3.show()
 		$Node2D/Label.position = label_posn + $Node2D/NinePatchRect3.position - $Node2D/NinePatchRect2.position;
-		#TODO play sounds here?
+		AudioPlayer.play_click()
 
 func _on_button_button_up():
 	if enabled:
@@ -55,6 +55,7 @@ func _on_button_button_up():
 func _on_button_mouse_entered():
 	if enabled:
 		$Node2D.scale = Vector2.ONE * scale_increase_on_hover
+		AudioPlayer.play_pop()
 		mouse_on = true;
 
 func _on_button_mouse_exited():

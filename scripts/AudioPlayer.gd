@@ -31,6 +31,10 @@ func play_pop():
 	sound_effects.stream = concrete_pop
 	sound_effects.play()
 
+func play_click():
+	sound_effects.stream = concrete
+	sound_effects.play()
+
 func play_success():
 	sound_effects.stream = trumpet_success
 	sound_effects.play()

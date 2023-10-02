@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c371kmt4ai3um"]
+[gd_scene load_steps=10 format=3 uid="uid://ddw4wgpuy1cv7"]
 
 [ext_resource type="Texture2D" uid="uid://opa8x4rqg2qi" path="res://art/Backgrounds/Main_BG.png" id="1_68ut4"]
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_qjsu5"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="2_umcnr"]
 [ext_resource type="Texture2D" uid="uid://ix81xiamn422" path="res://art/Random Elements/Brain_Template.png" id="2_vjq2i"]
-[ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="3_kqmnt"]
+[ext_resource type="PackedScene" uid="uid://bqv2hor1yt43r" path="res://scenes/marblebutton.tscn" id="3_kqmnt"]
+[ext_resource type="PackedScene" uid="uid://dnv66lo7xwndp" path="res://scenes/main.tscn" id="6_1nro7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n14vy"]
 font = ExtResource("2_umcnr")
@@ -34,6 +35,7 @@ _data = {
 
 [node name="menu" type="Node2D"]
 script = ExtResource("1_qjsu5")
+game_scene = ExtResource("6_1nro7")
 
 [node name="MainBg" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -67,3 +69,5 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_gqv0f")
 }
+
+[connection signal="on_pressed" from="Button" to="." method="_on_pressed"]
