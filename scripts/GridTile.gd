@@ -2,8 +2,8 @@ extends Node2D
 
 var posn: Vector2 = Vector2.ZERO
 var islocked = true
-var unlockedMod = Color(1,1,1,1)
-var lockedMod = Color(0.3,0.3,0.3,1)
+var unlockedMod = Color.hex(0xf9ff57ff); #Color(1,1,1,1)
+var lockedMod = Color.hex(0xff003bff); #Color(0.3,0.3,0.3,1)
 signal select_tile_click(posn: Vector2)
 
 # Called when the node enters the scene tree for the first time.
