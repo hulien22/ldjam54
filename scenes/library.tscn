@@ -34,7 +34,9 @@ offset_right = 609.0
 offset_bottom = 812.0
 text = "Drag and drop tiles into your brain
 
-Right click while holding to rotate"
+Right click while holding to rotate
+
+Try to fill your brain with as much as you can!"
 label_settings = SubResource("LabelSettings_rekbd")
 horizontal_alignment = 1
 vertical_alignment = 1

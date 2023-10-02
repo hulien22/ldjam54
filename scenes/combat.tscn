@@ -257,9 +257,9 @@ color = Color(1, 0.623529, 0.988235, 1)
 [node name="Tutorial" type="Label" parent="ConstructArgBox"]
 modulate = Color(1, 0.843137, 0.615686, 1)
 offset_left = 8.0
-offset_top = 237.0
+offset_top = 174.0
 offset_right = 609.0
-offset_bottom = 812.0
+offset_bottom = 749.0
 text = "Click on words to make a compelling argument"
 label_settings = SubResource("LabelSettings_7d5vn")
 horizontal_alignment = 1
@@ -269,19 +269,17 @@ script = ExtResource("4_oqwcj")
 tut_name = "tutorial_cosntructarg"
 
 [node name="Tutorial2" type="Label" parent="ConstructArgBox"]
+visible = false
 modulate = Color(1, 0.843137, 0.615686, 1)
 offset_left = 8.0
-offset_top = 237.0
+offset_top = 306.0
 offset_right = 609.0
-offset_bottom = 812.0
+offset_bottom = 881.0
 text = "For boss debates you need to get an average score of at least 5.0 to continue"
 label_settings = SubResource("LabelSettings_7d5vn")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
-script = ExtResource("4_oqwcj")
-tut_name = "tutorial_bossconstruct"
-enabled = false
 
 [node name="Label" type="Label" parent="ConstructArgBox"]
 offset_left = 35.0

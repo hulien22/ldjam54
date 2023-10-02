@@ -38,7 +38,8 @@ func _ready():
 	# TODO REMOVE
 	#init(0);
 	if is_boss:
-		$ConstructArgBox/Tutorial2.enabled = true;
+		$ConstructArgBox/Tutorial2.show();
+		
 	assert(combat_phase_ == COMBAT_PHASE.INTRO);
 	start_phase();
 
