@@ -42,14 +42,24 @@ func _ready():
 
 #TODO convert to an actual scene
 func show_first_level():
-	move_brain(get_viewport_rect().size / 2);
-	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
-	# game control should probably call these instead
-	for i in 15:
-		# TODO don't spawn words too long to start with
-		# maybe force a certain set of starting words?
-		$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
-	show_brain();
+#	move_brain(get_viewport_rect().size / 2);
+#	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
+#	# game control should probably call these instead
+#	for i in 15:
+#		# TODO don't spawn words too long to start with
+#		# maybe force a certain set of starting words?
+#		$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
+#	show_brain();
+	show_brain(false);
+	var node = library_scene.instantiate();
+	node.title = "Fill your brain with knowledge!";
+	node.type = Library.LibraryType.FIRST_ROOM;
+	node.connect("start_library_phase", _start_library_phase);
+	node.connect("end_library_phase", _end_library_phase);
+	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
+	$SceneHolder.add_child(node)
+	current_node = node
+	
 
 func _on_button_pressed():
 	_end_scene()
@@ -148,14 +158,15 @@ func _process_combat_rewards(score: float):
 	# bad copy paste stuff here :/
 	if score < 5.0:
 		node = library_scene.instantiate();
-		node.text = "You lost, but you picked up some words from the opponent";
+		node.title = "You lost, but you picked up some words from the opponent";
+		node.type = Library.LibraryType.UPGRADE;
 		node.connect("start_library_phase", _start_library_phase);
 		node.connect("end_library_phase", _end_library_phase);
 		# change stuff in the node, description, category
 	else:
 		node = upgrade_scene.instantiate()
 		node.num_upgrades_available = 2;
-		node.text = "Great work! Your brain expands from your success!";
+		node.title = "Great work! Your brain expands from your success!";
 		node.connect("start_upgrade_phase", _start_upgrade_phase);
 		node.connect("end_upgrade_phase", _end_upgrade_phase);
 		$Brain.set_upgrade_node(node);
@@ -174,9 +185,22 @@ func _start_library_phase(global_posn:Vector2):
 	move_brain(global_posn);
 	
 	#spawn a bunch of words
-	var n = randi_range(5,10);
-	for i in n:
-		$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
+	match current_node.type:
+		Library.LibraryType.REGULAR:
+			var n = randi_range(5,10);
+			for i in n:
+				$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
+		Library.LibraryType.FIRST_ROOM:
+			for i in 15:
+				# TODO don't spawn words too long to start with
+				# maybe force a certain set of starting words?
+				$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
+		Library.LibraryType.UPGRADE:
+			#TODO get category and spawn words from that
+			var n = randi_range(5,10);
+			for i in n:
+				$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
+		
 	show_brain(true);
 	$Brain.set_update_button_scene(current_node);
 	$Brain.send_button_update_to_scene();

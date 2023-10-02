@@ -24,6 +24,7 @@ autowrap_mode = 3
 
 [node name="Button" parent="." instance=ExtResource("3_x84ab")]
 position = Vector2(952, 994)
+text = "CONTINUE"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
