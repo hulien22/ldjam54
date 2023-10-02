@@ -78,15 +78,16 @@ func start_phase():
 			$JudgingBox.hide();
 			$JudgingBox/AnimationPlayer.stop();
 			# TODO animate fade/slide in one by one? and play sound
-			$ResultsBox/Score1.text = str(result_scores[0]);
-			$ResultsBox/Score2.text = str(result_scores[1]);
-			$ResultsBox/Score3.text = str(result_scores[2]);
-			$ResultsBox/ScoreTotal.text = str(avg_score());
+			$ResultsBox/Node2D/Score1.text = str(result_scores[0]);
+			$ResultsBox/Node2D2/Score2.text = str(result_scores[1]);
+			$ResultsBox/Node2D3/Score3.text = str(result_scores[2]);
+			$ResultsBox/Node2D4/ScoreTotal.text = str(avg_score());
 			if !$ResultsBox/Button.is_connected("on_pressed", self._after_results):
 				$ResultsBox/Button.connect("on_pressed", self._after_results);
-			# really need this on a delay for game overs..
-			if avg_score() < 5.0:
-				emit_signal("take_damage");
+			
+#			$ResultsBox/Button.set_enabled(false);
+			$ResultsBox/AnimationPlayer.play("showresults");
+
 			$ResultsBox.show();
 		COMBAT_PHASE.RETRY:
 			$ResultsBox.hide();
@@ -161,12 +162,17 @@ func parse_results_from_response(body: PackedByteArray):
 
 	# TODO special handling for "[5, The argument is unrelated to the prompt.]", "[5, The argument does not address the prompt.]"
 
+
 func _after_results():
 	if is_boss && avg_score() < 5.0:
 		# try again
+		emit_signal("take_damage");
 		combat_phase_ = COMBAT_PHASE.RETRY;
 		start_phase();
 	else:
+		# really need this on a delay for game overs..
+		if avg_score() < 5.0:
+			emit_signal("take_damage");
 		end_scene.emit(avg_score());
 
 func _try_rephrase():

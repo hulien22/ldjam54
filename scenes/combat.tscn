@@ -1,10 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1qd4jib7m856"]
+[gd_scene load_steps=23 format=3 uid="uid://b1qd4jib7m856"]
 
 [ext_resource type="Script" path="res://scripts/combat.gd" id="1_uqive"]
 [ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="2_e6uob"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="2_m3vsr"]
 [ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="4_kcjvg"]
 [ext_resource type="Script" path="res://scripts/tutorial_obj.gd" id="4_oqwcj"]
+[ext_resource type="Texture2D" uid="uid://dn2f7nwpldeur" path="res://art/Judge Tablets/Tablet_A.png" id="6_baemm"]
+[ext_resource type="Texture2D" uid="uid://dvuneo3k5gnj" path="res://art/Judge Tablets/Tablet_B.png" id="7_8sv41"]
+[ext_resource type="Texture2D" uid="uid://bwoiirijckt1s" path="res://art/Judge Tablets/Tablet_C.png" id="8_o20d8"]
+[ext_resource type="Texture2D" uid="uid://b6ar2mngkm0xr" path="res://art/Judge Tablets/Tablet_Final_Results.png" id="9_n7bny"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8kaqr"]
 font = ExtResource("2_m3vsr")
@@ -57,11 +61,84 @@ font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_fkf4r"]
 font = ExtResource("2_m3vsr")
-font_size = 100
+font_size = 140
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gr1hk"]
 font = ExtResource("2_m3vsr")
 font_size = 150
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_mme6r"]
+resource_name = "showresults"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(5.46416, 1),
+"update": 0,
+"values": [Vector2(469, -350), Vector2(469, 350)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(5.5, 1),
+"update": 0,
+"values": [Vector2(1468, -348), Vector2(1468, 350)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(5.5, 1),
+"update": 0,
+"values": [Vector2(961, -399), Vector2(961, 350)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Button:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jcynk"]
+_data = {
+"showresults": SubResource("Animation_mme6r")
+}
 
 [node name="combat" type="Node2D"]
 script = ExtResource("1_uqive")
@@ -298,11 +375,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Score1" type="Label" parent="ResultsBox"]
-offset_left = 453.0
-offset_top = 351.0
-offset_right = 667.0
-offset_bottom = 560.0
+[node name="Node2D" type="Node2D" parent="ResultsBox"]
+position = Vector2(469, -350)
+
+[node name="TabletA" type="Sprite2D" parent="ResultsBox/Node2D"]
+texture = ExtResource("6_baemm")
+
+[node name="Score1" type="Label" parent="ResultsBox/Node2D"]
+offset_left = -124.0
+offset_top = -93.0
+offset_right = 90.0
+offset_bottom = 130.0
 size_flags_vertical = 1
 text = "1"
 label_settings = SubResource("LabelSettings_fkf4r")
@@ -310,11 +393,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Score2" type="Label" parent="ResultsBox"]
-offset_left = 833.0
-offset_top = 351.0
-offset_right = 1047.0
-offset_bottom = 560.0
+[node name="Node2D2" type="Node2D" parent="ResultsBox"]
+position = Vector2(1468, -348)
+
+[node name="TabletB" type="Sprite2D" parent="ResultsBox/Node2D2"]
+texture = ExtResource("7_8sv41")
+
+[node name="Score2" type="Label" parent="ResultsBox/Node2D2"]
+offset_left = -121.0
+offset_top = -87.0
+offset_right = 93.0
+offset_bottom = 136.0
 size_flags_vertical = 1
 text = "1"
 label_settings = SubResource("LabelSettings_fkf4r")
@@ -322,11 +411,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Score3" type="Label" parent="ResultsBox"]
-offset_left = 1194.0
-offset_top = 351.0
-offset_right = 1408.0
-offset_bottom = 560.0
+[node name="Node2D3" type="Node2D" parent="ResultsBox"]
+position = Vector2(961, -399)
+
+[node name="TabletC" type="Sprite2D" parent="ResultsBox/Node2D3"]
+texture = ExtResource("8_o20d8")
+
+[node name="Score3" type="Label" parent="ResultsBox/Node2D3"]
+offset_left = -108.0
+offset_top = -97.0
+offset_right = 106.0
+offset_bottom = 126.0
 size_flags_vertical = 1
 text = "1"
 label_settings = SubResource("LabelSettings_fkf4r")
@@ -334,11 +429,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="ScoreTotal" type="Label" parent="ResultsBox"]
-offset_left = 774.0
-offset_top = 622.0
-offset_right = 1127.0
-offset_bottom = 831.0
+[node name="Node2D4" type="Node2D" parent="ResultsBox"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(971, 746)
+
+[node name="TabletFinalResults" type="Sprite2D" parent="ResultsBox/Node2D4"]
+texture = ExtResource("9_n7bny")
+
+[node name="ScoreTotal" type="Label" parent="ResultsBox/Node2D4"]
+offset_left = -178.0
+offset_top = -108.0
+offset_right = 175.0
+offset_bottom = 131.0
 size_flags_vertical = 1
 text = "1.00"
 label_settings = SubResource("LabelSettings_gr1hk")
@@ -347,7 +449,13 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Button" parent="ResultsBox" instance=ExtResource("2_e6uob")]
+visible = false
 position = Vector2(945, 994)
 text = "CONTINUE"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ResultsBox"]
+libraries = {
+"": SubResource("AnimationLibrary_jcynk")
+}
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
