@@ -1,3 +1,57 @@
-[gd_scene format=3 uid="uid://3gi5l01y0hvo"]
+[gd_scene load_steps=7 format=3 uid="uid://3gi5l01y0hvo"]
+
+[ext_resource type="Script" path="res://scripts/oracle.gd" id="1_x7vmi"]
+[ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="2_tx8c8"]
+[ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="3_43puw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b35bt"]
+font = ExtResource("2_tx8c8")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_l31hs"]
+font = ExtResource("2_tx8c8")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_k5o5b"]
+font = ExtResource("2_tx8c8")
+font_size = 24
 
 [node name="oracle" type="Node2D"]
+script = ExtResource("1_x7vmi")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 35.0
+offset_top = 23.0
+offset_right = 1885.0
+offset_bottom = 92.0
+text = "A vision from the future!"
+label_settings = SubResource("LabelSettings_b35bt")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 139.0
+offset_right = 1882.0
+offset_bottom = 217.0
+text = "You see the possibility of arguing for the prompt:"
+label_settings = SubResource("LabelSettings_l31hs")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 232.0
+offset_right = 1882.0
+offset_bottom = 310.0
+text = "???"
+label_settings = SubResource("LabelSettings_k5o5b")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" parent="." instance=ExtResource("3_43puw")]
+position = Vector2(952, 994)
+text = "CONTINUE"

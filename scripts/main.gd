@@ -86,6 +86,8 @@ func _on_moved_to_location(location: Location):
 		Location.LOCATION.ORACLE:
 			show_brain(false);
 			node = oracle_scene.instantiate()
+			node.prompt = "pls send help"
+			node.connect("leave_oracle_phase", _leave_oracle_phase);
 		Location.LOCATION.UPGRADE:
 			show_brain(false);
 			node = upgrade_scene.instantiate()
@@ -212,6 +214,9 @@ func _end_library_phase():
 	# just hide the brain
 	show_brain(false);
 	$Brain.set_update_button_scene(null);
+	_end_scene();
+
+func _leave_oracle_phase():
 	_end_scene();
 
 func _start_upgrade_phase(global_posn:Vector2):
