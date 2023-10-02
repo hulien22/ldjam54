@@ -1,9 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1qd4jib7m856"]
+[gd_scene load_steps=15 format=3 uid="uid://b1qd4jib7m856"]
 
 [ext_resource type="Script" path="res://scripts/combat.gd" id="1_uqive"]
 [ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="2_e6uob"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="2_m3vsr"]
 [ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="4_kcjvg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8kaqr"]
+font = ExtResource("2_m3vsr")
+font_size = 36
 
 [sub_resource type="LabelSettings" id="LabelSettings_qpt4k"]
 font = ExtResource("2_m3vsr")
@@ -74,6 +78,7 @@ offset_top = 23.0
 offset_right = 1881.0
 offset_bottom = 888.0
 text = "Sample Text"
+label_settings = SubResource("LabelSettings_8kaqr")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

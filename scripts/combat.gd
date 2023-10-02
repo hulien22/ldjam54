@@ -45,7 +45,7 @@ func start_phase():
 			$IntroBox.show();
 		COMBAT_PHASE.PICK_SIDE:
 			$IntroBox.hide();
-			$PickSideBox/Label.text = debate_question_.initial_prompt_;
+			$PickSideBox/Label.text = "Pick a side: " + debate_question_.initial_prompt_;
 			$PickSideBox/Button1.text = debate_question_.option1_;
 			$PickSideBox/Button2.text = debate_question_.option2_;
 			$PickSideBox/Button1.pressed.connect(Callable(self, "_select_prompt").bind(1));
@@ -169,7 +169,7 @@ func avg_score() -> float:
 var rng = RandomNumberGenerator.new()
 func get_random_desc_for_difficulty(difficulty : int):
 	var value = rng.randi_range(0, 2)
-	match difficulty: #lol at this
+	match difficulty: #lol at this #j: I lol-ed
 		0:
 			return ["You encounter a farmer who seems to be pondering something.",
 			"A soldier stops you to ask a question.",
