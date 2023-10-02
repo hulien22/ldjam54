@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_qjsu5"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="2_umcnr"]
 [ext_resource type="Texture2D" uid="uid://ix81xiamn422" path="res://art/Random Elements/Brain_Template.png" id="2_vjq2i"]
-[ext_resource type="PackedScene" uid="uid://bqv2hor1yt43r" path="res://scenes/marblebutton.tscn" id="3_kqmnt"]
+[ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="3_kqmnt"]
 [ext_resource type="PackedScene" uid="uid://dnv66lo7xwndp" path="res://scenes/main.tscn" id="6_1nro7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n14vy"]

@@ -59,8 +59,8 @@ func show_first_level():
 	node.connect("start_library_phase", _start_library_phase);
 	node.connect("end_library_phase", _end_library_phase);
 	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
-	$SceneHolder.add_child(node)
 	current_node = node
+	$SceneHolder.add_child(node)
 	
 
 func _on_button_pressed():
@@ -118,8 +118,8 @@ func _on_moved_to_location(location: Location):
 			node.connect("leave_forge_phase", _leave_forge_phase);
 
 	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
-	$SceneHolder.add_child(node)
 	current_node = node
+	$SceneHolder.add_child(node)
 	$SceneHolder.remove_child(map)
 
 func move_brain(global_posn:Vector2):
@@ -197,8 +197,8 @@ func _process_combat_rewards(score: float):
 	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
 	$SceneHolder.remove_child(current_node)
 	current_node.queue_free();
-	$SceneHolder.add_child(node)
 	current_node = node
+	$SceneHolder.add_child(node)
 
 func _process_combat_damage():
 	if on_boss:
@@ -368,8 +368,8 @@ func update_health(add: int, play_anim:bool = true):
 		$SceneHolder.remove_child(current_node);
 		current_node.queue_free();
 		$SceneHolder.remove_child(map);
-		$SceneHolder.add_child(node);
 		current_node = node;
+		$SceneHolder.add_child(node);
 		$UI/BrainBtn/Button.disabled = false;
 		$UI/BrainBtn.show();
 		$UI/MapBtn/Button.disabled = false;
