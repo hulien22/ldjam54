@@ -54,7 +54,7 @@ func start_phase():
 			$PickSideBox.hide();
 			$ConstructArgBox/Label.text = prompt_;
 			#show brain with words
-			var brain_posn = $ConstructArgBox.global_position + Vector2(553, 397);
+			var brain_posn = $ConstructArgBox.global_position + Vector2(965, 549);
 			emit_signal("start_combat_phase", brain_posn);
 			#enable clicking words
 #			$ConstructArgBox/Brain.set_click_only()

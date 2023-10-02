@@ -32,48 +32,46 @@ script = ExtResource("1_uqive")
 
 [node name="IntroBox" type="Node2D" parent="."]
 visible = false
-position = Vector2(382, 187)
 
 [node name="ColorRect" type="ColorRect" parent="IntroBox"]
 offset_left = 5.0
 offset_top = 5.0
-offset_right = 1144.0
-offset_bottom = 640.0
+offset_right = 1919.0
+offset_bottom = 1076.0
 color = Color(0.384314, 0.376471, 0.768627, 1)
 
 [node name="Label" type="Label" parent="IntroBox"]
 offset_left = 27.0
 offset_top = 23.0
-offset_right = 1126.0
-offset_bottom = 521.0
+offset_right = 1881.0
+offset_bottom = 888.0
 text = "Sample Text"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Button" type="Button" parent="IntroBox"]
-offset_left = 976.0
-offset_top = 567.0
-offset_right = 1129.0
-offset_bottom = 627.0
+offset_left = 880.0
+offset_top = 974.0
+offset_right = 1033.0
+offset_bottom = 1034.0
 size_flags_horizontal = 4
 text = "DEBATE!"
 
 [node name="PickSideBox" type="Node2D" parent="."]
 visible = false
-position = Vector2(382, 187)
 
 [node name="ColorRect" type="ColorRect" parent="PickSideBox"]
 offset_left = 5.0
 offset_top = 5.0
-offset_right = 1144.0
-offset_bottom = 640.0
+offset_right = 1914.0
+offset_bottom = 1076.0
 color = Color(0.25098, 0.454902, 0.627451, 1)
 
 [node name="Label" type="Label" parent="PickSideBox"]
-offset_left = 27.0
+offset_left = 35.0
 offset_top = 23.0
-offset_right = 1126.0
+offset_right = 1885.0
 offset_bottom = 92.0
 text = "Sample Text"
 horizontal_alignment = 1
@@ -81,30 +79,29 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Button1" type="Button" parent="PickSideBox"]
-offset_left = 42.0
+offset_left = 30.0
 offset_top = 133.0
-offset_right = 545.0
-offset_bottom = 531.0
+offset_right = 930.0
+offset_bottom = 933.0
 size_flags_horizontal = 4
 text = "DEBATE!"
 
 [node name="Button2" type="Button" parent="PickSideBox"]
-offset_left = 607.0
+offset_left = 990.0
 offset_top = 133.0
-offset_right = 1110.0
-offset_bottom = 531.0
+offset_right = 1890.0
+offset_bottom = 933.0
 size_flags_horizontal = 4
 text = "DEBATE!"
 
 [node name="ConstructArgBox" type="Node2D" parent="."]
 visible = false
-position = Vector2(382, 187)
 
 [node name="ColorRect" type="ColorRect" parent="ConstructArgBox"]
 offset_left = 5.0
 offset_top = 5.0
-offset_right = 1144.0
-offset_bottom = 640.0
+offset_right = 1918.0
+offset_bottom = 1072.0
 color = Color(0.215686, 0.486275, 0.490196, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="ConstructArgBox"]
@@ -116,9 +113,9 @@ offset_bottom = 510.0
 color = Color(1, 0.623529, 0.988235, 1)
 
 [node name="Label" type="Label" parent="ConstructArgBox"]
-offset_left = 27.0
+offset_left = 35.0
 offset_top = 23.0
-offset_right = 1126.0
+offset_right = 1885.0
 offset_bottom = 92.0
 text = "Sample Text"
 horizontal_alignment = 1
@@ -126,43 +123,43 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="ConstructArgBox"]
-offset_left = 27.0
-offset_top = 78.0
-offset_right = 1126.0
-offset_bottom = 147.0
-text = "APPLES ARE VERY TASTY"
+offset_left = 415.0
+offset_top = 137.0
+offset_right = 1514.0
+offset_bottom = 206.0
+text = "
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Button" type="Button" parent="ConstructArgBox"]
-offset_left = 930.0
-offset_top = 542.0
-offset_right = 1117.0
-offset_bottom = 615.0
+offset_left = 891.0
+offset_top = 922.0
+offset_right = 1078.0
+offset_bottom = 995.0
 size_flags_horizontal = 4
 text = "SUBMIT!"
 
 [node name="Brain" parent="ConstructArgBox" instance=ExtResource("4_kcjvg")]
 visible = false
-position = Vector2(553.754, 397.598)
+position = Vector2(964, 549)
 
 [node name="JudgingBox" type="Node2D" parent="."]
 visible = false
-position = Vector2(382, 187)
 
 [node name="ColorRect" type="ColorRect" parent="JudgingBox"]
 offset_left = 5.0
 offset_top = 5.0
-offset_right = 1144.0
-offset_bottom = 640.0
+offset_right = 1917.0
+offset_bottom = 1071.0
 color = Color(0.27451, 0.490196, 0.360784, 1)
 
 [node name="Label" type="Label" parent="JudgingBox"]
 offset_left = 22.0
-offset_top = 264.0
-offset_right = 1121.0
-offset_bottom = 333.0
+offset_top = 466.0
+offset_right = 1886.0
+offset_bottom = 535.0
 text = "Judging...."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -177,32 +174,30 @@ libraries = {
 
 [node name="ResultsBox" type="Node2D" parent="."]
 visible = false
-position = Vector2(382, 187)
 
 [node name="ColorRect" type="ColorRect" parent="ResultsBox"]
 offset_left = 5.0
 offset_top = 5.0
-offset_right = 1144.0
-offset_bottom = 640.0
+offset_right = 1918.0
+offset_bottom = 1081.0
 color = Color(0.533333, 0.411765, 0.227451, 1)
 
 [node name="Label" type="Label" parent="ResultsBox"]
-offset_left = 22.0
-offset_top = 15.0
-offset_right = 1121.0
-offset_bottom = 84.0
-text = "~ Results ~"
+offset_left = 35.0
+offset_top = 23.0
+offset_right = 1885.0
+offset_bottom = 92.0
+text = "~ RESULTS ~
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
-visible_characters = 0
-visible_ratio = 0.0
 
 [node name="Score1" type="Label" parent="ResultsBox"]
-offset_left = 85.0
-offset_top = 163.0
-offset_right = 299.0
-offset_bottom = 372.0
+offset_left = 453.0
+offset_top = 351.0
+offset_right = 667.0
+offset_bottom = 560.0
 size_flags_vertical = 1
 text = "1"
 label_settings = SubResource("LabelSettings_fkf4r")
@@ -211,10 +206,10 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Score2" type="Label" parent="ResultsBox"]
-offset_left = 465.0
-offset_top = 163.0
-offset_right = 679.0
-offset_bottom = 372.0
+offset_left = 833.0
+offset_top = 351.0
+offset_right = 1047.0
+offset_bottom = 560.0
 size_flags_vertical = 1
 text = "1"
 label_settings = SubResource("LabelSettings_fkf4r")
@@ -223,10 +218,10 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Score3" type="Label" parent="ResultsBox"]
-offset_left = 826.0
-offset_top = 163.0
-offset_right = 1040.0
-offset_bottom = 372.0
+offset_left = 1194.0
+offset_top = 351.0
+offset_right = 1408.0
+offset_bottom = 560.0
 size_flags_vertical = 1
 text = "1"
 label_settings = SubResource("LabelSettings_fkf4r")
@@ -235,10 +230,10 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Button" type="Button" parent="ResultsBox"]
-offset_left = 930.0
-offset_top = 542.0
-offset_right = 1117.0
-offset_bottom = 615.0
+offset_left = 851.0
+offset_top = 865.0
+offset_right = 1038.0
+offset_bottom = 938.0
 size_flags_horizontal = 4
 text = "CONTINUE"
 
