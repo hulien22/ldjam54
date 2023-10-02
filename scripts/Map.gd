@@ -20,18 +20,18 @@ var rng = RandomNumberGenerator.new()
 
 const location_scene = preload("res://scenes/location.tscn")
 
-func random_location() -> Location.LOCATION:
+func random_location(connections: Array[Location]) -> Location.LOCATION:
 	var value = rng.randi_range(1, 100)
-	if value <= 30:
-		return Location.LOCATION.COMBAT
-	elif value <= 30:
+	if value <= 30 and !connections.any(func(x): return x.location_type == Location.LOCATION.UPGRADE):
+		return Location.LOCATION.UPGRADE
+	elif value <= 30 and !connections.any(func(x): return x.location_type == Location.LOCATION.ORACLE):
 		return Location.LOCATION.ORACLE
-	elif value <= 50:
+	elif value <= 50 and !connections.any(func(x): return x.location_type == Location.LOCATION.LIBRARY):
 		return Location.LOCATION.LIBRARY
-	elif value <= 70:
+	elif value <= 70 and !connections.any(func(x): return x.location_type == Location.LOCATION.FORGE):
 		return Location.LOCATION.FORGE
 	else:
-		return Location.LOCATION.UPGRADE
+		return Location.LOCATION.COMBAT
 
 func _ready():
 	var total_length = get_viewport().get_visible_rect().size.x - right_margin - left_margin
@@ -56,12 +56,13 @@ func _ready():
 		var width_offset = center_height if rand_width == 1 else top_margin
 		var is_active = i == length -1
 		for j in rand_width:
+			var taken_types = {}
 			var connections: Array[Location] = []
 			for k in width_ratio:
 				connections.append(prev_layer[floor(j*connect_offset)+k])
 			var node = location_scene.instantiate()
 			var total_radius = (float(width-rand_width+1)/width * total_width)/2 * jitter_width_bias
-			node.init(random_location(), Vector2(length_offset + rng.randf_range(-jitter_length_radius, jitter_length_radius), width_offset + rng.randf_range(-total_radius, total_radius)), is_active, connections)
+			node.init(random_location(connections), Vector2(length_offset + rng.randf_range(-jitter_length_radius, jitter_length_radius), width_offset + rng.randf_range(-total_radius, total_radius)), is_active, connections)
 			$MapHolder.add_child(node)
 			node.moved_to_location.connect(_on_moved_to_location)
 			width_offset += total_width/(rand_width-1)
