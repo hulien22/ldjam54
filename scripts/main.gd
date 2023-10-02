@@ -176,7 +176,7 @@ func _process_combat_rewards(score: float):
 	# bad copy paste stuff here :/
 	if score < 5.0:
 		node = library_scene.instantiate();
-		node.title = "You lost, but you picked up some words from the opponent";
+		node.title = "You lost, but you picked up some words from the opponent's argument";
 		node.type = Library.LibraryType.UPGRADE;
 		node.connect("start_library_phase", _start_library_phase);
 		node.connect("end_library_phase", _end_library_phase);
@@ -360,6 +360,7 @@ func update_health(add: int, play_anim:bool = true):
 		$UI/Ego/AnimationPlayer.play("egotext")
 	else:
 		$UI/Ego/Label2.hide();
+	$UI/Ego/TextureProgressBar.value = health;
 	
 	# todo move this to after combat. only calculate then so player can see results screen.
 	if health == 0:

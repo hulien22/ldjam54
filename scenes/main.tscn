@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dnv66lo7xwndp"]
+[gd_scene load_steps=24 format=3 uid="uid://dnv66lo7xwndp"]
 
 [ext_resource type="PackedScene" uid="uid://dwychm67ltxst" path="res://scenes/map.tscn" id="1_6wptd"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_iij1i"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://opa8x4rqg2qi" path="res://art/Backgrounds/Main_BG.png" id="11_ft7ik"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="12_t31cu"]
 [ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="13_ta7i4"]
+[ext_resource type="Texture2D" uid="uid://ciptsucjjbx32" path="res://art/Ego Bar/InvMask.png" id="17_onc81"]
+[ext_resource type="Texture2D" uid="uid://dj62rnex0cchp" path="res://art/Ego Bar/Line1.png" id="18_0wyu5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eux2y"]
 font = ExtResource("12_t31cu")
@@ -145,8 +147,20 @@ offset_bottom = 65.0
 [node name="Ego" type="Node2D" parent="UI"]
 position = Vector2(73, 1002)
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/Ego"]
-texture = ExtResource("11_a2eth")
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Ego"]
+offset_left = -81.0
+offset_top = -146.0
+offset_right = 396.0
+offset_bottom = 526.0
+scale = Vector2(0.325098, 0.325098)
+max_value = 5.0
+value = 5.0
+fill_mode = 3
+texture_under = ExtResource("17_onc81")
+texture_over = ExtResource("18_0wyu5")
+texture_progress = ExtResource("17_onc81")
+tint_under = Color(0.384314, 0.384314, 0.384314, 1)
+tint_progress = Color(1, 0.745098, 0.360784, 1)
 
 [node name="Label" type="Label" parent="UI/Ego"]
 offset_left = 69.0
