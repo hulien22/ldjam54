@@ -17,10 +17,10 @@ func _ready():
 func activate(active: bool):
 	$button.disabled = !active
 
-func init(location_type: LOCATION, position: Vector2, active: bool, connections: Array[Location]):
+func init(stage: int, location_type: LOCATION, position: Vector2, active: bool, connections: Array[Location]):
 	self.location_type = location_type
 	if location_type == LOCATION.COMBAT:
-		debate_topic = Global.get_random_debate_question()
+		debate_topic = Global.get_random_debate_question(stage)
 		$label.text = debate_topic.hint_
 	else:
 		$label.text = LOCATION.keys()[location_type]
