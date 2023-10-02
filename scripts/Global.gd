@@ -5,6 +5,7 @@ var words_file: Resource = preload("res://text/words.json");
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var data
+var used_prompts: Dictionary
 
 func _ready():
 	var file = FileAccess.open(words_file.resource_path, FileAccess.READ)
@@ -15,6 +16,7 @@ func _ready():
 	print(get_word())
 	print(get_word())
 	print(get_word())
+	reset_used_prompts()
 	
 func get_word() -> String:
 	var value = rng.randi_range(1, 100)
@@ -40,8 +42,17 @@ func load_debate_questions():
 			debate_questions[s].append(DebateQuestion.new(d[0], d[1], d[2], d[3], d[4], d[5], d[6]));
 
 func get_random_debate_question(difficulty) -> DebateQuestion:
-	return debate_questions[difficulty][rng.randi() % debate_questions[difficulty].size()];
+	var d
+	while true:
+		d = debate_questions[difficulty][rng.randi() % debate_questions[difficulty].size()];
+		if !used_prompts.has(d):
+			used_prompts[d] = true
+			return d
+	return d
 
+func reset_used_prompts():
+	used_prompts = {}
+	
 enum TileState {
 	DRAGGABLE,
 	BEING_DRAGGED,
