@@ -24,9 +24,19 @@ func _ready():
 	stream = serenity
 	background_sound.stream = background
 	murmur_sound.stream = murmur
-	#background_sound.play()
-	#murmur_sound.play()
-	#play()
+	background_sound.play()
+	murmur_sound.play()
+	play()
+
+func change_music(combat: bool, boss: bool):
+	if combat:
+		if boss:
+			stream = boss_music
+		else:
+			stream = combat_music
+	else:
+		stream = serenity
+	play()
 
 func play_pop():
 	sound_effects.stream = concrete_pop

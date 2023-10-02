@@ -143,6 +143,7 @@ func _end_scene():
 	show_brain(false);
 	switch_to_game_scene_state(GameSceneState.ON_MAP);
 	$SceneHolder.add_child(map)
+	#AudioPlayer.change_music(false, false)
 
 func next_stage() -> bool:
 	on_boss = false

@@ -37,9 +37,12 @@ func init(topic: DebateQuestion, difficulty: int):
 func _ready():
 	# TODO REMOVE
 	#init(0);
+	
 	if is_boss:
 		$ConstructArgBox/Tutorial2.show();
-		
+		AudioPlayer.change_music(true, true)
+	else:
+		AudioPlayer.change_music(true, false)
 	assert(combat_phase_ == COMBAT_PHASE.INTRO);
 	start_phase();
 
