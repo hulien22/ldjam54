@@ -33,7 +33,7 @@ func _ready():
 	stage = 0
 	show_brain(false);
 	map = map_scene.instantiate()
-	map.length = 1;
+#	map.length = 1;
 	map.set_stage(stage);
 	map.connect("moved_to_location", _on_moved_to_location)
 	# hacky code to call ready
@@ -55,7 +55,7 @@ func show_first_level():
 #	for i in 15:
 #		# TODO don't spawn words too long to start with
 #		# maybe force a certain set of starting words?
-#		$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
+#		$Brain.spawn_new_word(Global.get_word(), Vector2(500,50 * i - 350));
 #	show_brain();
 	show_brain(false);
 	var node = library_scene.instantiate();
@@ -253,17 +253,17 @@ func _start_library_phase(global_posn:Vector2):
 		Library.LibraryType.REGULAR:
 			var n = randi_range(5,10);
 			for i in n:
-				$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
+				$Brain.spawn_new_word(Global.get_word(), Vector2(500,50 * i - 350));
 		Library.LibraryType.FIRST_ROOM:
 			for i in 15:
 				# TODO don't spawn words too long to start with
 				# maybe force a certain set of starting words?
-				$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
+				$Brain.spawn_new_word(Global.get_word(), Vector2(500,50 * i - 350));
 		Library.LibraryType.UPGRADE:
 			#TODO get category and spawn words from that
 			var n = randi_range(5,10);
 			for i in n:
-				$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
+				$Brain.spawn_new_word(Global.get_word(), Vector2(500,50 * i - 350));
 
 	show_brain(true);
 	$Brain.set_update_button_scene(current_node);
@@ -309,7 +309,7 @@ func _start_forge_phase():
 #	#spawn a bunch of words
 #	var n = randi_range(5,10);
 #	for i in n:
-#		$Brain.spawn_new_word(Global.get_word(), Vector2(200,40 * i - 300));
+#		$Brain.spawn_new_word(Global.get_word(), Vector2(500,50 * i - 350));
 #	show_brain(true);
 	pass
 
