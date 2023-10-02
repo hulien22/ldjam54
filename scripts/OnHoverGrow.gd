@@ -11,6 +11,7 @@ func _ready():
 
 func _on_enter():
 	if !disabled:
+		AudioPlayer.play_pop()
 		parent.scale = Vector2.ONE * grow_scale;
 
 func _on_exit():
