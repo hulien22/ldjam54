@@ -18,6 +18,7 @@ signal moved_to_location(Location)
 var current_location: Location
 var stage: int = 0
 var rng = RandomNumberGenerator.new()
+var boss_prompt: String
 
 const location_scene = preload("res://scenes/location.tscn")
 
@@ -36,6 +37,9 @@ func random_location(connections: Array[Location]) -> Location.LOCATION:
 	else:
 		return Location.LOCATION.COMBAT
 
+func get_boss_prompt() -> String:
+	return boss_prompt
+
 func _ready():
 	var total_length = get_viewport().get_visible_rect().size.x - right_margin - left_margin
 	var length_offset = total_length + left_margin
@@ -46,6 +50,7 @@ func _ready():
 	var boss = location_scene.instantiate()
 	var empty: Array[Location]
 	boss.init(stage, Location.LOCATION.BOSS, Vector2(length_offset, center_height), false, empty)
+	boss_prompt = boss.debate_topic.prompt1_
 	$MapHolder.add_child(boss)
 	boss.moved_to_location.connect(_on_moved_to_location)
 	
