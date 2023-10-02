@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1qd4jib7m856"]
+[gd_scene load_steps=13 format=3 uid="uid://b1qd4jib7m856"]
 
 [ext_resource type="Script" path="res://scripts/combat.gd" id="1_uqive"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="2_m3vsr"]
@@ -52,14 +52,6 @@ font_size = 100
 [sub_resource type="LabelSettings" id="LabelSettings_gr1hk"]
 font = ExtResource("2_m3vsr")
 font_size = 150
-
-[sub_resource type="Animation" id="Animation_13xc1"]
-resource_name = "results"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_u1kkl"]
-_data = {
-"results": SubResource("Animation_13xc1")
-}
 
 [node name="combat" type="Node2D"]
 script = ExtResource("1_uqive")
@@ -287,12 +279,4 @@ offset_bottom = 938.0
 size_flags_horizontal = 4
 text = "CONTINUE"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ResultsBox"]
-libraries = {
-"": SubResource("AnimationLibrary_u1kkl")
-}
-
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true

@@ -54,36 +54,36 @@ func _on_moved_to_location(location: Location):
 	var node
 	match location.location_type:
 		Location.LOCATION.COMBAT:
+			show_brain(false);
 			node = combat_scene.instantiate()
 			node.init(location.debate_topic, stage)
 			node.connect("start_combat_phase", _start_combat_phase);
 			node.connect("end_combat_phase", _end_combat_phase);
-			node.connect("end_scene", _end_scene)
-			show_brain(false);
+			node.connect("end_scene", _process_combat_rewards);
 		Location.LOCATION.BOSS:
+			show_brain(false);
 			node = boss_scene.instantiate()
 			on_boss = true
-			show_brain(false);
 		Location.LOCATION.LIBRARY:
+			show_brain(false);
 			node = library_scene.instantiate()
 			node.connect("start_library_phase", _start_library_phase);
 			node.connect("end_library_phase", _end_library_phase);
-			show_brain(false);
 		Location.LOCATION.ORACLE:
-			node = oracle_scene.instantiate()
 			show_brain(false);
+			node = oracle_scene.instantiate()
 		Location.LOCATION.UPGRADE:
+			show_brain(false);
 			node = upgrade_scene.instantiate()
 			node.num_upgrades_available = 3;
 			node.connect("start_upgrade_phase", _start_upgrade_phase);
 			node.connect("end_upgrade_phase", _end_upgrade_phase);
 			$Brain.set_upgrade_node(node); 
-			show_brain(false);
 		Location.LOCATION.FORGE:
+			show_brain(false);
 			node = forge_scene.instantiate()
 			node.connect("start_forge_phase", _start_forge_phase);
 			node.connect("end_forge_phase", _end_forge_phase);
-			show_brain(false);
 
 	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
 	$SceneHolder.add_child(node)
@@ -137,6 +137,17 @@ func _end_combat_phase():
 	# just hide the brain
 	show_brain(false);
 	# TODO reset the words that were selected? need another phase?
+
+func _process_combat_rewards(score: float):
+	$SceneHolder.remove_child(current_node)
+	current_node.queue_free();
+	var node
+	if score < 5.0:
+#		var l
+#		_on_moved_to_location(Location.LOCATION.LIBRARY);
+		pass
+
+	
 
 func _start_library_phase(global_posn:Vector2):
 	# set the brain to the correct phase

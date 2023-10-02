@@ -21,7 +21,7 @@ var word_tiles: Array = [];
 
 signal start_combat_phase(global_posn:Vector2);
 signal end_combat_phase();
-signal end_scene()
+signal end_scene(final_score: float);
 
 func init(topic: DebateQuestion, difficulty: int):
 	difficulty_ = difficulty;
@@ -145,7 +145,7 @@ func parse_results_from_response(body: PackedByteArray):
 	# TODO special handling for "[5, The argument is unrelated to the prompt.]", "[5, The argument does not address the prompt.]"
 
 func _return_to_map():
-	end_scene.emit()
+	end_scene.emit(avg_score());
 
 func add_word_tile(word_tile: WordTile, add: bool):
 	if add:
