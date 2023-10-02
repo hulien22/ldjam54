@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3kfysxmjxavd"]
+[gd_scene load_steps=6 format=3 uid="uid://c3kfysxmjxavd"]
 
 [ext_resource type="Script" path="res://scripts/Location.gd" id="1_14ir8"]
 [ext_resource type="Texture2D" uid="uid://caiiw0boachdi" path="res://art/icon.svg" id="2_vboih"]
+[ext_resource type="Script" path="res://scripts/OnHoverGrow.gd" id="3_6p4n0"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="3_whc1b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f1n22"]
@@ -10,27 +11,27 @@ font_size = 20
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="location" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="location" type="Node2D"]
 script = ExtResource("1_14ir8")
 
-[node name="button" type="TextureButton" parent="."]
-layout_mode = 0
+[node name="Holder" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="Holder"]
+position = Vector2(0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_vboih")
+
+[node name="button" type="Button" parent="Holder" node_paths=PackedStringArray("parent")]
+modulate = Color(1, 1, 1, 0)
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 96.0
 offset_bottom = 96.0
 scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("2_vboih")
-stretch_mode = 0
+script = ExtResource("3_6p4n0")
+parent = NodePath("..")
 
-[node name="label" type="Label" parent="."]
-layout_mode = 0
+[node name="label" type="Label" parent="Holder"]
 offset_left = -74.0
 offset_top = 33.0
 offset_right = 75.0
@@ -39,4 +40,4 @@ text = "test"
 label_settings = SubResource("LabelSettings_f1n22")
 horizontal_alignment = 1
 
-[connection signal="pressed" from="button" to="." method="_on_pressed"]
+[connection signal="pressed" from="Holder/button" to="." method="_on_pressed"]

@@ -10,7 +10,8 @@ func _ready():
 	assert(parent != null);
 
 func _on_enter():
-	parent.scale = Vector2.ONE * grow_scale;
+	if !disabled:
+		parent.scale = Vector2.ONE * grow_scale;
 
 func _on_exit():
 	parent.scale = Vector2.ONE;

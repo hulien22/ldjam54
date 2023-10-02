@@ -129,12 +129,13 @@ position = Vector2(1841, 999)
 position = Vector2(-2, -2)
 texture = ExtResource("11_a2eth")
 
-[node name="Button" type="Button" parent="UI/MapBtn"]
+[node name="Button" type="Button" parent="UI/MapBtn" node_paths=PackedStringArray("parent")]
 offset_left = -64.0
 offset_top = -64.0
 offset_right = 64.0
 offset_bottom = 65.0
 script = ExtResource("19_vyvuo")
+parent = NodePath("..")
 
 [node name="BrainBtn" type="Node2D" parent="UI"]
 position = Vector2(1842, 78)
