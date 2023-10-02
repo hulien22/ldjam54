@@ -30,12 +30,14 @@ func _ready():
 	stage = 0
 	show_brain(false);
 	map = map_scene.instantiate()
+	map.stage = 0
 	map.connect("moved_to_location", _on_moved_to_location)
 	brain_preview = brain_preview_scene.instantiate()
 	$UI/MapBtn/Button.pressed.connect(self.show_map_preview);
 	$UI/BrainBtn/Button.pressed.connect(self.show_brain_preview);
 	show_first_level()
 
+#TODO convert to an actual scene
 func show_first_level():
 	move_brain(get_viewport_rect().size / 2);
 	$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
@@ -53,36 +55,36 @@ func _on_moved_to_location(location: Location):
 	var node
 	match location.location_type:
 		Location.LOCATION.COMBAT:
+			show_brain(false);
 			node = combat_scene.instantiate()
-			node.init(location.debate_topic)
+			node.init(location.debate_topic, stage)
 			node.connect("start_combat_phase", _start_combat_phase);
 			node.connect("end_combat_phase", _end_combat_phase);
-			node.connect("end_scene", _end_scene)
-			show_brain(false);
+			node.connect("end_scene", _process_combat_rewards);
 		Location.LOCATION.BOSS:
+			show_brain(false);
 			node = boss_scene.instantiate()
 			on_boss = true
-			show_brain(false);
 		Location.LOCATION.LIBRARY:
+			show_brain(false);
 			node = library_scene.instantiate()
 			node.connect("start_library_phase", _start_library_phase);
 			node.connect("end_library_phase", _end_library_phase);
-			show_brain(false);
 		Location.LOCATION.ORACLE:
-			node = oracle_scene.instantiate()
 			show_brain(false);
+			node = oracle_scene.instantiate()
 		Location.LOCATION.UPGRADE:
+			show_brain(false);
 			node = upgrade_scene.instantiate()
 			node.num_upgrades_available = 3;
 			node.connect("start_upgrade_phase", _start_upgrade_phase);
 			node.connect("end_upgrade_phase", _end_upgrade_phase);
 			$Brain.set_upgrade_node(node); 
-			show_brain(false);
 		Location.LOCATION.FORGE:
+			show_brain(false);
 			node = forge_scene.instantiate()
 			node.connect("start_forge_phase", _start_forge_phase);
 			node.connect("end_forge_phase", _end_forge_phase);
-			show_brain(false);
 
 	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
 	$SceneHolder.add_child(node)
@@ -111,6 +113,7 @@ func next_stage():
 		$SceneHolder.remove_child(map)
 		map.queue_free()
 	map = map_scene.instantiate()
+	map.stage = stage
 	map.connect("moved_to_location", _on_moved_to_location)
 	map.get_node("AnimatedSprite2D").frame = stage
 	#$SceneHolder.add_child(map)
@@ -136,6 +139,28 @@ func _end_combat_phase():
 	# just hide the brain
 	show_brain(false);
 	# TODO reset the words that were selected? need another phase?
+
+func _process_combat_rewards(score: float):
+	var node
+	# bad copy paste stuff here :/
+	if score < 5.0:
+		node = library_scene.instantiate();
+		node.connect("start_library_phase", _start_library_phase);
+		node.connect("end_library_phase", _end_library_phase);
+		# change stuff in the node, description, category
+	else:
+		node = upgrade_scene.instantiate()
+		node.num_upgrades_available = 2;
+		node.connect("start_upgrade_phase", _start_upgrade_phase);
+		node.connect("end_upgrade_phase", _end_upgrade_phase);
+		$Brain.set_upgrade_node(node);
+
+	switch_to_game_scene_state(GameSceneState.IN_LEVEL);
+	$SceneHolder.remove_child(current_node)
+	current_node.queue_free();
+	$SceneHolder.add_child(node)
+	current_node = node
+
 
 func _start_library_phase(global_posn:Vector2):
 	# set the brain to the correct phase

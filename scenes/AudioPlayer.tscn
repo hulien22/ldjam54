@@ -1,10 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2t66apu50q7i"]
+[gd_scene load_steps=14 format=3 uid="uid://c2t66apu50q7i"]
 
 [ext_resource type="Script" path="res://scripts/AudioPlayer.gd" id="1_2bq1w"]
 [ext_resource type="AudioStream" uid="uid://bvge30pva76sy" path="res://audio/battle.ogg" id="2_tsi4l"]
 [ext_resource type="AudioStream" uid="uid://hyswgurcpq7r" path="res://audio/boss.ogg" id="3_dql21"]
+[ext_resource type="AudioStream" uid="uid://bfgvf80fc5teh" path="res://audio/serenity.ogg" id="4_haxg2"]
+[ext_resource type="AudioStream" uid="uid://b6x86t87qvits" path="res://audio/concrete.ogg" id="4_xnj84"]
+[ext_resource type="AudioStream" uid="uid://bwjiuhwerbrpd" path="res://audio/rando_dulcimer.ogg" id="5_0llgu"]
+[ext_resource type="AudioStream" uid="uid://boq2jodj41wkx" path="res://audio/concrete_pop.ogg" id="5_8mr4t"]
+[ext_resource type="AudioStream" uid="uid://c8qe3nnnwk1gk" path="res://audio/murmur.mp3" id="6_bdmmu"]
+[ext_resource type="AudioStream" uid="uid://boakd3fud6ne4" path="res://audio/dirt_rock.ogg" id="6_q3mf1"]
+[ext_resource type="AudioStream" uid="uid://d2cjn42yxqgxi" path="res://audio/rock_thing.ogg" id="7_hfb64"]
+[ext_resource type="AudioStream" uid="uid://bise2ydel5gwi" path="res://audio/background.ogg" id="7_n48h4"]
+[ext_resource type="AudioStream" uid="uid://bfjg4w5xjkxmi" path="res://audio/trumpet_fail.ogg" id="8_qerx7"]
+[ext_resource type="AudioStream" uid="uid://dmd5fm8oq4r18" path="res://audio/trumpet_success.ogg" id="9_q4jre"]
 
 [node name="AudioPlayer" type="AudioStreamPlayer"]
 script = ExtResource("1_2bq1w")
 combat_music = ExtResource("2_tsi4l")
 boss_music = ExtResource("3_dql21")
+serenity = ExtResource("4_haxg2")
+dulcimer = ExtResource("5_0llgu")
+murmur = ExtResource("6_bdmmu")
+background = ExtResource("7_n48h4")
+concrete = ExtResource("4_xnj84")
+concrete_pop = ExtResource("5_8mr4t")
+dirt_rock = ExtResource("6_q3mf1")
+rock_thing = ExtResource("7_hfb64")
+trumpet_fail = ExtResource("8_qerx7")
+trumpet_success = ExtResource("9_q4jre")
+
+[node name="SoundEffects" type="AudioStreamPlayer" parent="."]
+
+[node name="murmur" type="AudioStreamPlayer" parent="."]
+
+[node name="background" type="AudioStreamPlayer" parent="."]

@@ -31,10 +31,17 @@ func get_height():
 func get_width():
 	return $Rect.get_global_rect().size.x
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_button_pressed():
 	emit_signal("select_tile_click", posn)
+	$Plus.hide();
+
+
+func _on_button_mouse_entered():
+	if isLocked():
+		$Plus.show();
+	else:
+		$Plus.hide();
+
+func _on_button_mouse_exited():
+	$Plus.hide();

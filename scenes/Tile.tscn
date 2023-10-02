@@ -1,10 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccosysn4u6uvt"]
+[gd_scene load_steps=12 format=3 uid="uid://ccosysn4u6uvt"]
 
 [ext_resource type="Script" path="res://scripts/Tile.gd" id="1_0hu26"]
 [ext_resource type="Texture2D" uid="uid://dfcfy5wpc75du" path="res://art/gridblock.png" id="1_l5ifo"]
+[ext_resource type="Texture2D" uid="uid://dvr3xhw1dxudh" path="res://art/Marble Tiles/Tile_A.png" id="3_yt37q"]
+[ext_resource type="Texture2D" uid="uid://fw13gobd7410" path="res://art/Marble Tiles/Tile_B.png" id="4_mmoy2"]
+[ext_resource type="Texture2D" uid="uid://u7e3excshgvm" path="res://art/Marble Tiles/Tile_C.png" id="5_8ekcr"]
+[ext_resource type="Texture2D" uid="uid://bhspf74f3tm0y" path="res://art/Marble Tiles/Tile_D.png" id="6_xt31m"]
+[ext_resource type="Texture2D" uid="uid://xw55xkow1kd1" path="res://art/Marble Tiles/Tile_E.png" id="7_krusw"]
+[ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="8_mqyd4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_twjiv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yt37q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mmoy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8ekcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xt31m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_krusw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bbrv"]
 size = Vector2(600, 600)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dwnmc"]
+font = ExtResource("8_mqyd4")
+font_size = 500
+font_color = Color(0, 0, 0, 1)
 
 [node name="Tile" type="Node2D"]
 script = ExtResource("1_0hu26")
@@ -13,14 +47,29 @@ script = ExtResource("1_0hu26")
 modulate = Color(0.505882, 0.505882, 0.505882, 1)
 
 [node name="TileImage" type="Sprite2D" parent="Area2D"]
+visible = false
 position = Vector2(2.6226e-06, 1.3113e-06)
 texture = ExtResource("1_l5ifo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(18, 0)
+scale = Vector2(1.127, 1)
+sprite_frames = SubResource("SpriteFrames_twjiv")
+frame_progress = 0.50841
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Area2D"]
+visible = false
+position = Vector2(20, 4.00002)
+scale = Vector2(1.13478, 1.13636)
+sprite_frames = SubResource("SpriteFrames_twjiv")
+frame_progress = 0.50841
 
 [node name="TileColl" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 5.28991e-06)
 shape = SubResource("RectangleShape2D_0bbrv")
 
-[node name="TileText" type="RichTextLabel" parent="Area2D"]
+[node name="TileText2" type="RichTextLabel" parent="Area2D"]
+modulate = Color(0, 0, 0, 1)
 offset_left = -300.0
 offset_top = -300.0
 offset_right = 300.0
@@ -32,6 +81,16 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
+
+[node name="TileText" type="Label" parent="Area2D"]
+offset_left = -301.0
+offset_top = -426.0
+offset_right = 299.0
+offset_bottom = 495.0
+label_settings = SubResource("LabelSettings_dwnmc")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="Rect" type="ColorRect" parent="."]
 visible = false

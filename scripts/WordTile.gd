@@ -46,6 +46,12 @@ func set_word(w: String):
 	for i in len(word):
 		var char = word[i]
 		var tile = tileScene.instantiate()
+		if (len(word) == 1):
+			tile.set_first_and_last_letter();
+		elif (i == 0):
+			tile.set_first_letter();
+		elif (i == len(word) - 1):
+			tile.set_last_letter();
 		tile.scale = Vector2(tileScale,tileScale)
 		tile.letter = char
 		tile.connect("select_drag", set_selected);
@@ -55,7 +61,9 @@ func set_word(w: String):
 		tiles.append(tile);
 		add_child(tile);
 	
-	modulate = Color(word.hash() | 0x000000ff);
+	var rand_grey = Global.rng.randi_range(200,255);
+	modulate = Color8(rand_grey, rand_grey, rand_grey);
+#	modulate = Color(word.hash() | 0x000000ff);
 
 
 func on_grid():

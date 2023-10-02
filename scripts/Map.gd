@@ -16,6 +16,7 @@ extends Node
 signal moved_to_location(Location)
 
 var current_location: Location
+var stage: int = 0
 var rng = RandomNumberGenerator.new()
 
 const location_scene = preload("res://scenes/location.tscn")
@@ -42,7 +43,7 @@ func _ready():
 	
 	var boss = location_scene.instantiate()
 	var empty: Array[Location]
-	boss.init(Location.LOCATION.BOSS, Vector2(length_offset, center_height), false, empty)
+	boss.init(stage, Location.LOCATION.BOSS, Vector2(length_offset, center_height), false, empty)
 	$MapHolder.add_child(boss)
 	boss.moved_to_location.connect(_on_moved_to_location)
 	
@@ -62,7 +63,7 @@ func _ready():
 				connections.append(prev_layer[floor(j*connect_offset)+k])
 			var node = location_scene.instantiate()
 			var total_radius = (float(width-rand_width+1)/width * total_width)/2 * jitter_width_bias
-			node.init(random_location(connections), Vector2(length_offset + rng.randf_range(-jitter_length_radius, jitter_length_radius), width_offset + rng.randf_range(-total_radius, total_radius)), is_active, connections)
+			node.init(stage, random_location(connections), Vector2(length_offset + rng.randf_range(-jitter_length_radius, jitter_length_radius), width_offset + rng.randf_range(-total_radius, total_radius)), is_active, connections)
 			$MapHolder.add_child(node)
 			node.moved_to_location.connect(_on_moved_to_location)
 			width_offset += total_width/(rand_width-1)
@@ -70,7 +71,7 @@ func _ready():
 		prev_layer = cur_layer
 			
 	var start = location_scene.instantiate()
-	start.init(Location.LOCATION.START, Vector2(left_margin, center_height), false, prev_layer)
+	start.init(stage, Location.LOCATION.START, Vector2(left_margin, center_height), false, prev_layer)
 	$MapHolder.add_child(start)
 	start.moved_to_location.connect(_on_moved_to_location)
 	
