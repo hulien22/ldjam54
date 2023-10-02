@@ -60,6 +60,7 @@ script = ExtResource("1_uqive")
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="IntroBox"]
+visible = false
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 1919.0
@@ -88,6 +89,7 @@ text = "DEBATE!"
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="PickSideBox"]
+visible = false
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 1914.0
@@ -125,6 +127,7 @@ text = "DEBATE!"
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="ConstructArgBox"]
+visible = false
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 1918.0
@@ -178,6 +181,7 @@ position = Vector2(964, 549)
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="JudgingBox"]
+visible = false
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 1917.0
@@ -206,6 +210,7 @@ libraries = {
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="ResultsBox"]
+visible = false
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 1918.0

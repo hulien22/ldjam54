@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dwychm67ltxst"]
 
 [ext_resource type="Script" path="res://scripts/Map.gd" id="1_5iiuj"]
-[ext_resource type="PackedScene" uid="uid://bqj0ydbf1wtnw" path="res://scenes/PlayerMapMarker.tscn" id="2_ccopb"]
+[ext_resource type="PackedScene" path="res://scenes/PlayerMapMarker.tscn" id="2_ccopb"]
 [ext_resource type="Texture2D" uid="uid://b7rocvi63l84w" path="res://art/Maps/Stage_1_Map.png" id="2_vh05d"]
 [ext_resource type="Texture2D" uid="uid://byv1f1n8h2ufi" path="res://art/Maps/Stage_2_Map.png" id="3_gh0gf"]
 [ext_resource type="Texture2D" uid="uid://blg17ohiv8rle" path="res://art/Maps/Stage_3_Map.png" id="4_0oehf"]
@@ -37,6 +37,7 @@ jitter_length_radius = 20.0
 length_bias = 0.4
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 z_index = -20
 z_as_relative = false
 offset_right = 1924.0
