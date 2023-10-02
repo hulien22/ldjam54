@@ -56,7 +56,7 @@
 			["If you punch yourself and it hurts are you strong or weak?","Strong","Weak","You're weak if it hurts when you punch youself.","You're strong if it hurts when you punch youself.", "Philosophy", ["Strong", "Weak", "Punch", "Hurt"]],
 			["Do we have free will?","Yes","No", "We have free will", "We do not have free will", "Philosophy", ["Free", "Will", "Destiny"]],
 			["Will artificial intelligence ever become conscious?","Yes","No","Artificial intelligence will become conscious.","Artificial intelligence will not become conscious.", "Science", ["AI", "Conscious"]],
-			["Is the you at 7 year still the you at 90 years old?","Yes","No","The you at 7 years old is still the you at 90 years old.","The you at 7 year is not the you at 90 years old.", "Time", ["7 years", "90 years"]],
+			["Is the you at 7 years old still the you at 90 years old?","Yes","No","The you at 7 years old is still the you at 90 years old.","The you at 7 year is not the you at 90 years old.", "Time", ["7 years", "90 years"]],
 			["Which more important: security or freedom?","Security","Freedom","Security is more important than freedom.","Freedom is more important than security.", "Ethics", ["Freedom", "Security"]],
 			["Is perception of a color mostly the same for each person?","Yes","No","Perception of a color is mostly the same for each person.","Perception of a color is different for each person.", "Perception", ["Perception", "Color"]],
 			["A chariot is heading to run over either a family member or 3 close friends, who should you save?","Family Member","3 Close Friends","You should save your family member instead of 3 close friends.","You should save your 3 close friends instead of a family member.", "Ethics", ["Save", "Friends", "Family"] ],
