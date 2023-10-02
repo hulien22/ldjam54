@@ -1,20 +1,65 @@
-[gd_scene load_steps=23 format=3 uid="uid://b1qd4jib7m856"]
+[gd_scene load_steps=33 format=3 uid="uid://b1qd4jib7m856"]
 
 [ext_resource type="Script" path="res://scripts/combat.gd" id="1_uqive"]
 [ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="2_e6uob"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="2_m3vsr"]
 [ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="4_kcjvg"]
 [ext_resource type="Script" path="res://scripts/tutorial_obj.gd" id="4_oqwcj"]
+[ext_resource type="Script" path="res://scripts/PickSideBox.gd" id="4_oy33e"]
+[ext_resource type="Texture2D" uid="uid://dlbvcynpdeflc" path="res://art/Scales/Scale_Neutral_Pose.png" id="5_pbef7"]
 [ext_resource type="Texture2D" uid="uid://dn2f7nwpldeur" path="res://art/Judge Tablets/Tablet_A.png" id="6_baemm"]
+[ext_resource type="Texture2D" uid="uid://cqp4h3ljomw8k" path="res://art/Scales/Scale_LeftSide_Pose.png" id="6_hjja0"]
+[ext_resource type="Texture2D" uid="uid://c25vvi275x2di" path="res://art/Scales/Scale_RightSide_Pose.png" id="7_2n0td"]
 [ext_resource type="Texture2D" uid="uid://dvuneo3k5gnj" path="res://art/Judge Tablets/Tablet_B.png" id="7_8sv41"]
+[ext_resource type="Texture2D" uid="uid://bsqow5pc4pr7y" path="res://art/Scales/Scale_Holders_Neutral_Pose.png" id="8_b831g"]
 [ext_resource type="Texture2D" uid="uid://bwoiirijckt1s" path="res://art/Judge Tablets/Tablet_C.png" id="8_o20d8"]
+[ext_resource type="Texture2D" uid="uid://1dd4w2s42gsp" path="res://art/Scales/Scale_Holders_LeftSide_Pose.png" id="9_3vd8k"]
 [ext_resource type="Texture2D" uid="uid://b6ar2mngkm0xr" path="res://art/Judge Tablets/Tablet_Final_Results.png" id="9_n7bny"]
+[ext_resource type="Texture2D" uid="uid://b7807rd5xrjx0" path="res://art/Scales/Scale_Holders_RightSide_Pose.png" id="10_tpvqt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8kaqr"]
 font = ExtResource("2_m3vsr")
 font_size = 36
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_18o3k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_pbef7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hjja0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2n0td")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wftj6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_b831g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3vd8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tpvqt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="LabelSettings" id="LabelSettings_qpt4k"]
+font = ExtResource("2_m3vsr")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_q3fsl"]
 font = ExtResource("2_m3vsr")
 font_size = 40
 
@@ -199,6 +244,7 @@ text = "REPHRASE"
 
 [node name="PickSideBox" type="Node2D" parent="."]
 visible = false
+script = ExtResource("4_oy33e")
 
 [node name="ColorRect" type="ColorRect" parent="PickSideBox"]
 visible = false
@@ -207,6 +253,14 @@ offset_top = 5.0
 offset_right = 1914.0
 offset_bottom = 1076.0
 color = Color(0.25098, 0.454902, 0.627451, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PickSideBox"]
+position = Vector2(976, 570)
+sprite_frames = SubResource("SpriteFrames_18o3k")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="PickSideBox"]
+position = Vector2(976, 570)
+sprite_frames = SubResource("SpriteFrames_wftj6")
 
 [node name="Label" type="Label" parent="PickSideBox"]
 offset_left = 35.0
@@ -220,20 +274,42 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Button1" type="Button" parent="PickSideBox"]
+modulate = Color(1, 1, 1, 0.4)
 offset_left = 30.0
 offset_top = 133.0
 offset_right = 930.0
 offset_bottom = 933.0
 size_flags_horizontal = 4
-text = "DEBATE!"
 
 [node name="Button2" type="Button" parent="PickSideBox"]
+modulate = Color(1, 1, 1, 0.4)
 offset_left = 990.0
 offset_top = 133.0
 offset_right = 1890.0
 offset_bottom = 933.0
 size_flags_horizontal = 4
-text = "DEBATE!"
+
+[node name="Label2" type="Label" parent="PickSideBox"]
+offset_left = 35.0
+offset_top = 136.0
+offset_right = 930.0
+offset_bottom = 934.0
+text = "Sample Text"
+label_settings = SubResource("LabelSettings_q3fsl")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="PickSideBox"]
+offset_left = 990.0
+offset_top = 134.0
+offset_right = 1885.0
+offset_bottom = 932.0
+text = "Sample Text"
+label_settings = SubResource("LabelSettings_q3fsl")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="ConstructArgBox" type="Node2D" parent="."]
 visible = false
@@ -457,3 +533,8 @@ libraries = {
 }
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="mouse_entered" from="PickSideBox/Button1" to="PickSideBox" method="_on_button_1_mouse_entered"]
+[connection signal="mouse_exited" from="PickSideBox/Button1" to="PickSideBox" method="_on_button_1_mouse_exited"]
+[connection signal="mouse_entered" from="PickSideBox/Button2" to="PickSideBox" method="_on_button_2_mouse_entered"]
+[connection signal="mouse_exited" from="PickSideBox/Button2" to="PickSideBox" method="_on_button_2_mouse_exited"]
