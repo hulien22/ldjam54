@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dnv66lo7xwndp"]
+[gd_scene load_steps=27 format=3 uid="uid://dnv66lo7xwndp"]
 
 [ext_resource type="PackedScene" uid="uid://dwychm67ltxst" path="res://scenes/map.tscn" id="1_6wptd"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_iij1i"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://ix81xiamn422" path="res://art/Random Elements/Brain_Template.png" id="17_52vlk"]
 [ext_resource type="Texture2D" uid="uid://ciptsucjjbx32" path="res://art/Ego Bar/InvMask.png" id="17_onc81"]
 [ext_resource type="Texture2D" uid="uid://dj62rnex0cchp" path="res://art/Ego Bar/Line1.png" id="18_0wyu5"]
+[ext_resource type="Script" path="res://scripts/OnHoverGrow.gd" id="19_vyvuo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eux2y"]
 font = ExtResource("12_t31cu")
@@ -133,14 +134,10 @@ offset_left = -64.0
 offset_top = -64.0
 offset_right = 64.0
 offset_bottom = 65.0
+script = ExtResource("19_vyvuo")
 
 [node name="BrainBtn" type="Node2D" parent="UI"]
 position = Vector2(1842, 78)
-
-[node name="Dotfade" type="Sprite2D" parent="UI/BrainBtn"]
-visible = false
-scale = Vector2(0.185, 0.155)
-texture = ExtResource("17_0bto7")
 
 [node name="Dotfade2" type="Sprite2D" parent="UI/BrainBtn"]
 position = Vector2(13, -17)
@@ -152,12 +149,14 @@ position = Vector2(1, -5)
 scale = Vector2(0.121152, 0.121152)
 texture = ExtResource("17_52vlk")
 
-[node name="Button" type="Button" parent="UI/BrainBtn"]
+[node name="Button" type="Button" parent="UI/BrainBtn" node_paths=PackedStringArray("parent")]
 modulate = Color(1, 1, 1, 0)
 offset_left = -64.0
 offset_top = -64.0
 offset_right = 64.0
 offset_bottom = 65.0
+script = ExtResource("19_vyvuo")
+parent = NodePath("..")
 
 [node name="Ego" type="Node2D" parent="UI"]
 position = Vector2(73, 1002)
