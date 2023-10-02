@@ -75,6 +75,7 @@ func set_selected(isSel : bool):
 		picked_up_posn = global_position;
 		picked_up_rotation = rotation;
 		emit_signal("was_picked_up", self);
+		AudioPlayer.play_pop()
 	else:
 		emit_signal("was_dropped", self);
 		
