@@ -16,6 +16,10 @@ func _ready():
 
 func activate(active: bool):
 	$Holder/button.disabled = !active
+	if active:
+		$AnimationPlayer.play("pickme");
+	else:
+		$AnimationPlayer.stop();
 
 func init(stage: int, location_type: LOCATION, position: Vector2, active: bool, connections: Array[Location]):
 	self.location_type = location_type
