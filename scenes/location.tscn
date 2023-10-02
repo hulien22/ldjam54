@@ -1,9 +1,49 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3kfysxmjxavd"]
+[gd_scene load_steps=17 format=3 uid="uid://c3kfysxmjxavd"]
 
 [ext_resource type="Script" path="res://scripts/Location.gd" id="1_14ir8"]
 [ext_resource type="Texture2D" uid="uid://caiiw0boachdi" path="res://art/icon.svg" id="2_vboih"]
 [ext_resource type="Script" path="res://scripts/OnHoverGrow.gd" id="3_6p4n0"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="3_whc1b"]
+[ext_resource type="Texture2D" uid="uid://xkclkle1m167" path="res://art/Icons/Home_Icon.png" id="3_y40lk"]
+[ext_resource type="Texture2D" uid="uid://dn4td7uxqbxn4" path="res://art/Icons/Debate_Icon.png" id="4_qn50h"]
+[ext_resource type="Texture2D" uid="uid://ckux1v4iqegec" path="res://art/Icons/Oracle_Icon.png" id="5_svc1g"]
+[ext_resource type="Texture2D" uid="uid://cofohw0et2tfg" path="res://art/Icons/Library_Icon.png" id="6_g3v63"]
+[ext_resource type="Texture2D" uid="uid://jpyajstp7x8h" path="res://art/Icons/Brain_Upgrade_Icon.png" id="7_dngbw"]
+[ext_resource type="Texture2D" uid="uid://p5ekqvxmk8sc" path="res://art/Icons/Forge_Icon.png" id="8_ewh2x"]
+[ext_resource type="Texture2D" uid="uid://vbgorqgwhf6f" path="res://art/Icons/Campfire_Icon.png" id="9_4cqsq"]
+[ext_resource type="Texture2D" uid="uid://d0ft7q54meu4c" path="res://art/Icons/Boss_Icon.png" id="10_vrx0h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xh54e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_y40lk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qn50h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_svc1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_g3v63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dngbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ewh2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4cqsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vrx0h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f1n22"]
 font = ExtResource("3_whc1b")
@@ -39,9 +79,14 @@ script = ExtResource("1_14ir8")
 [node name="Holder" type="Node2D" parent="."]
 
 [node name="Icon" type="Sprite2D" parent="Holder"]
+visible = false
 position = Vector2(0, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_vboih")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Holder"]
+scale = Vector2(0.425, 0.425)
+sprite_frames = SubResource("SpriteFrames_xh54e")
 
 [node name="button" type="Button" parent="Holder" node_paths=PackedStringArray("parent")]
 modulate = Color(1, 1, 1, 0)

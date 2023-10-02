@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqj0ydbf1wtnw"]
+[gd_scene load_steps=3 format=3 uid="uid://dywu2qw5tfjdt"]
 
 [ext_resource type="Texture2D" uid="uid://caiiw0boachdi" path="res://art/icon.svg" id="1_xomq8"]
+[ext_resource type="Texture2D" uid="uid://b3a265ovp8qh2" path="res://art/Icons/Player_Icon.png" id="2_6ngd6"]
 
 [node name="PlayerMapMarker" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_xomq8")
+
+[node name="PlayerIcon" type="Sprite2D" parent="."]
+scale = Vector2(0.425, 0.425)
+texture = ExtResource("2_6ngd6")
