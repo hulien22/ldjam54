@@ -20,8 +20,10 @@ func _ready():
 	emit_signal("start_library_phase", get_viewport_rect().size / 2);
 	
 	if type == LibraryType.FIRST_ROOM:
-		#Show drag and drop and rotate help
-		pass
+		#Show drag and drop and rotate help 
+		$StartTutorial.show();
+	else:
+		$StartTutorial.hide();
 
 func update_button(num_on_grid: int):
 	if (num_on_grid >= 3):

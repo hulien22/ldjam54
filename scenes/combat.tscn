@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1qd4jib7m856"]
+[gd_scene load_steps=17 format=3 uid="uid://b1qd4jib7m856"]
 
 [ext_resource type="Script" path="res://scripts/combat.gd" id="1_uqive"]
 [ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="2_e6uob"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="2_m3vsr"]
 [ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="4_kcjvg"]
+[ext_resource type="Script" path="res://scripts/tutorial_obj.gd" id="4_oqwcj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8kaqr"]
 font = ExtResource("2_m3vsr")
@@ -12,6 +13,10 @@ font_size = 36
 [sub_resource type="LabelSettings" id="LabelSettings_qpt4k"]
 font = ExtResource("2_m3vsr")
 font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_7d5vn"]
+font = ExtResource("2_m3vsr")
+font_size = 36
 
 [sub_resource type="LabelSettings" id="LabelSettings_au43t"]
 font = ExtResource("2_m3vsr")
@@ -171,6 +176,20 @@ offset_top = 133.0
 offset_right = 485.0
 offset_bottom = 510.0
 color = Color(1, 0.623529, 0.988235, 1)
+
+[node name="Tutorial" type="Label" parent="ConstructArgBox"]
+modulate = Color(1, 0.843137, 0.615686, 1)
+offset_left = 8.0
+offset_top = 237.0
+offset_right = 609.0
+offset_bottom = 812.0
+text = "Click on words in your brain to make a compelling argument"
+label_settings = SubResource("LabelSettings_7d5vn")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("4_oqwcj")
+tut_name = "tutorial_cosntructarg"
 
 [node name="Label" type="Label" parent="ConstructArgBox"]
 offset_left = 35.0
