@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ciqlc0hn0m0uf"]
+[gd_scene load_steps=7 format=3 uid="uid://d1vg665ed1xjp"]
 
+[ext_resource type="Script" path="res://scripts/GameOver.gd" id="1_p0tnp"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="1_pm781"]
+[ext_resource type="PackedScene" uid="uid://ddw4wgpuy1cv7" path="res://scenes/mainmenu.tscn" id="2_a1mh4"]
+[ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="3_vwkuk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6odfe"]
 font = ExtResource("1_pm781")
@@ -11,6 +14,8 @@ font = ExtResource("1_pm781")
 font_size = 48
 
 [node name="scene" type="Node2D"]
+script = ExtResource("1_p0tnp")
+menu_scene = ExtResource("2_a1mh4")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 35.0
@@ -34,9 +39,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Button" type="Button" parent="."]
-offset_left = 851.0
-offset_top = 860.0
-offset_right = 1061.0
-offset_bottom = 974.0
+[node name="marblebutton" parent="." instance=ExtResource("3_vwkuk")]
+position = Vector2(950, 885)
 text = "Main Menu"
+
+[connection signal="on_pressed" from="marblebutton" to="." method="_on_pressed"]
