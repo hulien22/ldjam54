@@ -9,6 +9,7 @@ enum Direction {
 @export var tileScale: float=0.1
 @export var tileScene: PackedScene
 
+signal was_picked_up(word_tile: WordTile);
 signal was_dropped(word_tile: WordTile);
 signal was_clicked(word_tile: WordTile, selected:bool);
 
@@ -65,6 +66,7 @@ func set_selected(isSel : bool):
 	if isSel:
 		picked_up_posn = global_position;
 		picked_up_rotation = rotation;
+		emit_signal("was_picked_up", self);
 	else:
 		emit_signal("was_dropped", self);
 		

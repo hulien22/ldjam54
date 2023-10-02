@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwychm67ltxst"]
+[gd_scene load_steps=6 format=3 uid="uid://dwychm67ltxst"]
 
 [ext_resource type="Script" path="res://scripts/Map.gd" id="1_5iiuj"]
 [ext_resource type="PackedScene" path="res://scenes/PlayerMapMarker.tscn" id="2_ccopb"]
+[ext_resource type="Texture2D" uid="uid://b7rocvi63l84w" path="res://art/Maps/Stage_1_Map.png" id="2_vh05d"]
+[ext_resource type="Texture2D" uid="uid://byv1f1n8h2ufi" path="res://art/Maps/Stage_2_Map.png" id="3_gh0gf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_umcyr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vh05d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gh0gf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="map" type="Node2D"]
 script = ExtResource("1_5iiuj")
@@ -16,6 +32,20 @@ jitter_width_bias = 0.8
 jitter_length_radius = 20.0
 length_bias = 0.4
 
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -20
+z_as_relative = false
+offset_right = 1924.0
+offset_bottom = 1082.0
+color = Color(0.54902, 0.54902, 0.54902, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -10
+position = Vector2(958.222, 543.812)
+scale = Vector2(1.0022, 1.0022)
+sprite_frames = SubResource("SpriteFrames_umcyr")
+
+[node name="MapHolder" type="Node2D" parent="."]
+
 [node name="PlayerMapMarker" parent="." instance=ExtResource("2_ccopb")]
 modulate = Color(0.772549, 0, 0.52549, 1)
-z_index = 100

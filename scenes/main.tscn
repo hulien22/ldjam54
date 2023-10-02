@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnv66lo7xwndp"]
+[gd_scene load_steps=16 format=3 uid="uid://dnv66lo7xwndp"]
 
 [ext_resource type="PackedScene" uid="uid://dwychm67ltxst" path="res://scenes/map.tscn" id="1_6wptd"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_iij1i"]
@@ -9,7 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://ryagmgt1vqsb" path="res://scenes/upgrade.tscn" id="7_l25g6"]
 [ext_resource type="PackedScene" uid="uid://bd8ck0os5fgp" path="res://scenes/forge.tscn" id="8_3set1"]
 [ext_resource type="PackedScene" uid="uid://c2t66apu50q7i" path="res://scenes/AudioPlayer.tscn" id="9_d1na7"]
+[ext_resource type="PackedScene" uid="uid://cim8agmfowbt3" path="res://scenes/PlainScene.tscn" id="9_d7rch"]
+[ext_resource type="PackedScene" uid="uid://bdwqktdp0bssu" path="res://scenes/BrainPreview.tscn" id="10_aulcq"]
 [ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="10_m2vja"]
+[ext_resource type="Texture2D" uid="uid://caiiw0boachdi" path="res://art/icon.svg" id="11_a2eth"]
+[ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="12_t31cu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eux2y"]
+font = ExtResource("12_t31cu")
+font_size = 60
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_iij1i")
@@ -20,6 +28,8 @@ library_scene = ExtResource("5_6lbyg")
 oracle_scene = ExtResource("6_pvrvx")
 upgrade_scene = ExtResource("7_l25g6")
 forge_scene = ExtResource("8_3set1")
+plain_scene = ExtResource("9_d7rch")
+brain_preview_scene = ExtResource("10_aulcq")
 
 [node name="SceneHolder" type="Node2D" parent="."]
 
@@ -29,10 +39,59 @@ offset_bottom = 123.0
 
 [node name="AudioPlayer" parent="." instance=ExtResource("9_d1na7")]
 
+[node name="BrainPreviewHolder" type="Node2D" parent="."]
+
 [node name="Brain" parent="." instance=ExtResource("10_m2vja")]
+visible = false
 z_index = 50
 z_as_relative = false
 starting_size = Vector2(8, 6)
 starting_offset = Vector2(2, 3)
+
+[node name="MapPreviewHolder" type="Node2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MapBtn" type="Node2D" parent="UI"]
+position = Vector2(73, 196)
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/MapBtn"]
+texture = ExtResource("11_a2eth")
+
+[node name="Button" type="Button" parent="UI/MapBtn"]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 65.0
+
+[node name="BrainBtn" type="Node2D" parent="UI"]
+position = Vector2(73, 332)
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/BrainBtn"]
+texture = ExtResource("11_a2eth")
+
+[node name="Button" type="Button" parent="UI/BrainBtn"]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 65.0
+
+[node name="Ego" type="Node2D" parent="UI"]
+position = Vector2(73, 1002)
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Ego"]
+texture = ExtResource("11_a2eth")
+
+[node name="Label" type="Label" parent="UI/Ego"]
+offset_left = 69.0
+offset_top = -44.0
+offset_right = 152.0
+offset_bottom = 54.0
+text = "99"
+label_settings = SubResource("LabelSettings_eux2y")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

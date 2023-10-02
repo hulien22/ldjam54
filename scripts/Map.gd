@@ -43,7 +43,7 @@ func _ready():
 	var boss = location_scene.instantiate()
 	var empty: Array[Location]
 	boss.init(Location.LOCATION.BOSS, Vector2(length_offset, center_height), false, empty)
-	add_child(boss)
+	$MapHolder.add_child(boss)
 	boss.moved_to_location.connect(_on_moved_to_location)
 	
 	var prev_layer: Array[Location] = [boss]
@@ -62,7 +62,7 @@ func _ready():
 			var node = location_scene.instantiate()
 			var total_radius = (float(width-rand_width+1)/width * total_width)/2 * jitter_width_bias
 			node.init(random_location(), Vector2(length_offset + rng.randf_range(-jitter_length_radius, jitter_length_radius), width_offset + rng.randf_range(-total_radius, total_radius)), is_active, connections)
-			add_child(node)
+			$MapHolder.add_child(node)
 			node.moved_to_location.connect(_on_moved_to_location)
 			width_offset += total_width/(rand_width-1)
 			cur_layer.append(node)
@@ -70,7 +70,7 @@ func _ready():
 			
 	var start = location_scene.instantiate()
 	start.init(Location.LOCATION.START, Vector2(left_margin, center_height), false, prev_layer)
-	add_child(start)
+	$MapHolder.add_child(start)
 	start.moved_to_location.connect(_on_moved_to_location)
 	
 	current_location = start
@@ -83,3 +83,8 @@ func _on_moved_to_location(location: Location):
 	$PlayerMapMarker.position = location.position
 	moved_to_location.emit(location)
 	print(location.position)
+
+func set_enabled(enabled: bool = true):
+	for connection in current_location.connections:
+		connection.activate(enabled)
+
