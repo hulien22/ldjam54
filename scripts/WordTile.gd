@@ -61,7 +61,7 @@ func set_word(w: String):
 		tiles.append(tile);
 		add_child(tile);
 	
-	var rand_grey = Global.rng.randi_range(126,255);
+	var rand_grey = Global.rng.randi_range(200,255);
 	modulate = Color8(rand_grey, rand_grey, rand_grey);
 #	modulate = Color(word.hash() | 0x000000ff);
 
