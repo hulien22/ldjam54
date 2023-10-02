@@ -33,7 +33,7 @@ func _ready():
 	stage = 0
 	show_brain(false);
 	map = map_scene.instantiate()
-	map.length = 1;
+#	map.length = 1;
 	map.set_stage(stage);
 	map.connect("moved_to_location", _on_moved_to_location)
 	brain_preview = brain_preview_scene.instantiate()
