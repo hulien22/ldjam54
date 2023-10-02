@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://ddw4wgpuy1cv7"]
+
+[ext_resource type="Texture2D" uid="uid://opa8x4rqg2qi" path="res://art/Backgrounds/Main_BG.png" id="1_68ut4"]
+[ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_qjsu5"]
+[ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="2_umcnr"]
+[ext_resource type="Texture2D" uid="uid://ix81xiamn422" path="res://art/Random Elements/Brain_Template.png" id="2_vjq2i"]
+[ext_resource type="PackedScene" uid="uid://bqv2hor1yt43r" path="res://scenes/marblebutton.tscn" id="3_kqmnt"]
+[ext_resource type="PackedScene" uid="uid://dnv66lo7xwndp" path="res://scenes/main.tscn" id="6_1nro7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n14vy"]
+font = ExtResource("2_umcnr")
+font_size = 100
+
+[sub_resource type="Animation" id="Animation_5fooc"]
+resource_name = "brain hover"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BrainTemplate:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1.5, 0.5, 1.5, 0.5),
+"update": 0,
+"values": [Vector2(952, 532), Vector2(952, 542), Vector2(952, 532), Vector2(952, 522), Vector2(952, 532)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqv0f"]
+_data = {
+"brain hover": SubResource("Animation_5fooc")
+}
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_qjsu5")
+game_scene = ExtResource("6_1nro7")
+
+[node name="MainBg" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_68ut4")
+
+[node name="BrainTemplate" type="Sprite2D" parent="."]
+position = Vector2(952, 534.497)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_vjq2i")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 35.0
+offset_top = 23.0
+offset_right = 1885.0
+offset_bottom = 92.0
+text = "Minimus Brainius"
+label_settings = SubResource("LabelSettings_n14vy")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" parent="." instance=ExtResource("3_kqmnt")]
+position = Vector2(938, 978)
+text = "PLAY"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gqv0f")
+}
+
+[connection signal="on_pressed" from="Button" to="." method="_on_pressed"]

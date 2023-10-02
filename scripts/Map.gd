@@ -23,11 +23,13 @@ const location_scene = preload("res://scenes/location.tscn")
 
 func random_location(connections: Array[Location]) -> Location.LOCATION:
 	var value = rng.randi_range(1, 100)
-	if value <= 30 and !connections.any(func(x): return x.location_type == Location.LOCATION.UPGRADE):
-		return Location.LOCATION.UPGRADE
-	elif value <= 30 and !connections.any(func(x): return x.location_type == Location.LOCATION.ORACLE):
+	if value <= 5 and !connections.any(func(x): return x.location_type == Location.LOCATION.MEDITATE):
+		return Location.LOCATION.MEDITATE
+	elif value <= 10 and !connections.any(func(x): return x.location_type == Location.LOCATION.ORACLE):
 		return Location.LOCATION.ORACLE
-	elif value <= 50 and !connections.any(func(x): return x.location_type == Location.LOCATION.LIBRARY):
+	elif value <= 25 and !connections.any(func(x): return x.location_type == Location.LOCATION.UPGRADE):
+		return Location.LOCATION.UPGRADE
+	elif value <= 55 and !connections.any(func(x): return x.location_type == Location.LOCATION.LIBRARY):
 		return Location.LOCATION.LIBRARY
 	elif value <= 70 and !connections.any(func(x): return x.location_type == Location.LOCATION.FORGE):
 		return Location.LOCATION.FORGE
@@ -90,3 +92,6 @@ func set_enabled(enabled: bool = true):
 	for connection in current_location.connections:
 		connection.activate(enabled)
 
+func set_stage(s:int):
+	stage = s;
+	$AnimatedSprite2D.frame = stage

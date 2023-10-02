@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl5583scn3tew"]
+[gd_scene load_steps=6 format=3 uid="uid://cl5583scn3tew"]
 
 [ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="1_y0332"]
+[ext_resource type="Texture2D" uid="uid://dvr3xhw1dxudh" path="res://art/Marble Tiles/Tile_A.png" id="2_q2pxy"]
+[ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="3_k1uyk"]
+[ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="4_xg0i1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3qwxl"]
+font = ExtResource("3_k1uyk")
+font_size = 48
 
 [node name="braintesting" type="Node2D"]
 
@@ -10,3 +17,44 @@ size = Vector2(16, 16)
 starting_size = Vector2(8, 6)
 starting_offset = Vector2(4, 5)
 state_ = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
+offset_right = 15.0
+offset_bottom = 15.0
+texture = ExtResource("2_q2pxy")
+region_rect = Rect2(20, 20, 540, 540)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 35.0
+offset_top = 400.0
+offset_right = 1885.0
+offset_bottom = 560.0
+text = "Your ego has been shattered"
+label_settings = SubResource("LabelSettings_3qwxl")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+offset_left = 695.0
+offset_top = 913.0
+offset_right = 1106.0
+offset_bottom = 1024.0
+texture = ExtResource("2_q2pxy")
+region_rect = Rect2(20, 20, 540, 540)
+patch_margin_right = 12
+patch_margin_bottom = 15
+
+[node name="marblebutton" parent="." instance=ExtResource("4_xg0i1")]
+position = Vector2(1539, 829)
+
+[node name="marblebutton2" parent="." instance=ExtResource("4_xg0i1")]
+position = Vector2(1527, 676)
+
+[node name="marblebutton3" parent="." instance=ExtResource("4_xg0i1")]
+position = Vector2(1565, 519)
+enabled = false
+
+[node name="marblebutton4" parent="." instance=ExtResource("4_xg0i1")]
+position = Vector2(1550, 357)

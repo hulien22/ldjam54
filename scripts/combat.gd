@@ -7,6 +7,7 @@ enum COMBAT_PHASE {
 	JUDGING,
 	RESULTS,
 	REWARDS,
+	RETRY,
 }
 
 var difficulty_: int = 0;
@@ -16,12 +17,15 @@ var description_: String = "You encounter a farmer who seems to be pondering som
 var prompt_: String;
 var result_scores: Array;
 
+var is_boss: bool = false;
+
 # this will compose the argument.
 var word_tiles: Array = [];
 
 signal start_combat_phase(global_posn:Vector2);
 signal end_combat_phase();
 signal end_scene(final_score: float);
+signal take_damage();
 
 func init(topic: DebateQuestion, difficulty: int):
 	difficulty_ = difficulty;
@@ -41,11 +45,11 @@ func start_phase():
 	match combat_phase_:
 		COMBAT_PHASE.INTRO:
 			$IntroBox/Label.text = description_;
-			$IntroBox/Button.pressed.connect(self._move_to_next_phase);
+			$IntroBox/Button.connect("on_pressed", self._move_to_next_phase);
 			$IntroBox.show();
 		COMBAT_PHASE.PICK_SIDE:
 			$IntroBox.hide();
-			$PickSideBox/Label.text = debate_question_.initial_prompt_;
+			$PickSideBox/Label.text = "Pick a side: " + debate_question_.initial_prompt_;
 			$PickSideBox/Button1.text = debate_question_.option1_;
 			$PickSideBox/Button2.text = debate_question_.option2_;
 			$PickSideBox/Button1.pressed.connect(Callable(self, "_select_prompt").bind(1));
@@ -59,7 +63,10 @@ func start_phase():
 			emit_signal("start_combat_phase", brain_posn);
 			#enable clicking words
 #			$ConstructArgBox/Brain.set_click_only()
-			$ConstructArgBox/Button.pressed.connect(self._submit_debate);
+			word_tiles.clear();
+			render_argument();
+			if !$ConstructArgBox/Button.is_connected("on_pressed", self._submit_debate):
+				$ConstructArgBox/Button.connect("on_pressed", self._submit_debate);
 			$ConstructArgBox.show();
 		COMBAT_PHASE.JUDGING:
 			$ConstructArgBox.hide();
@@ -74,8 +81,17 @@ func start_phase():
 			$ResultsBox/Score2.text = str(result_scores[1]);
 			$ResultsBox/Score3.text = str(result_scores[2]);
 			$ResultsBox/ScoreTotal.text = str(avg_score());
-			$ResultsBox/Button.pressed.connect(self._return_to_map);
+			if !$ResultsBox/Button.is_connected("on_pressed", self._after_results):
+				$ResultsBox/Button.connect("on_pressed", self._after_results);
+			# really need this on a delay for game overs..
+			if avg_score() < 5.0:
+				emit_signal("take_damage");
 			$ResultsBox.show();
+		COMBAT_PHASE.RETRY:
+			$ResultsBox.hide();
+			if !$RetryBox/Button.is_connected("on_pressed", self._try_rephrase):
+				$RetryBox/Button.connect("on_pressed", self._try_rephrase);
+			$RetryBox.show();
 
 func _move_to_next_phase():
 	combat_phase_ += 1;
@@ -144,8 +160,18 @@ func parse_results_from_response(body: PackedByteArray):
 
 	# TODO special handling for "[5, The argument is unrelated to the prompt.]", "[5, The argument does not address the prompt.]"
 
-func _return_to_map():
-	end_scene.emit(avg_score());
+func _after_results():
+	if is_boss && avg_score() < 5.0:
+		# try again
+		combat_phase_ = COMBAT_PHASE.RETRY;
+		start_phase();
+	else:
+		end_scene.emit(avg_score());
+
+func _try_rephrase():
+	combat_phase_ = COMBAT_PHASE.CONSTRUCT_ARGUMENT;
+	start_phase();
+	$RetryBox.hide();
 
 func add_word_tile(word_tile: WordTile, add: bool):
 	if add:
@@ -159,6 +185,10 @@ func render_argument():
 	for word_tile in word_tiles:
 		s += word_tile.word + " ";
 	$ConstructArgBox/Label2.text = s;
+	if s == "":
+		$ConstructArgBox/Button.set_enabled(false);
+	else:
+		$ConstructArgBox/Button.set_enabled(true);
 
 func avg_score() -> float:
 	if result_scores.size() < 3:
@@ -168,8 +198,12 @@ func avg_score() -> float:
 
 var rng = RandomNumberGenerator.new()
 func get_random_desc_for_difficulty(difficulty : int):
+	if is_boss:
+		return ["You stumble into your old school teacher. \n\n\"I heard you're trying to become a philosopher?\" \n\n\"Show me what you have learned\"", 
+				"You find yourself face to face with a pensive of philosophers. \n\nThey turn towards you while pensively stroking their beards. \n\n\"You've done well to make it this far.. \" \n\n\"But if you want to make it to Olympus, you'll have to make it through us first!\"", 
+				"As you climb up the last steps of Olympus, you enter into a large temple. \n\nA massive form apparates in front of you. \n\n\"I am Zeus, King of Gods, ruler of Olympus.\"\n\n\"You have proven your worth, now it is time for your final test!\""][difficulty];
 	var value = rng.randi_range(0, 2)
-	match difficulty: #lol at this
+	match difficulty: #lol at this #j: I lol-ed
 		0:
 			return ["You encounter a farmer who seems to be pondering something.",
 			"A soldier stops you to ask a question.",

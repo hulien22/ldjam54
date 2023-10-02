@@ -1,7 +1,7 @@
 class_name Location
 extends Control
 
-enum LOCATION {START, COMBAT, ORACLE, LIBRARY, UPGRADE, FORGE, BOSS}
+enum LOCATION {START, COMBAT, ORACLE, LIBRARY, UPGRADE, FORGE, MEDITATE, BOSS}
 var line_texture = load("res://art/tactic 1.png")
 
 signal moved_to_location(Location)
@@ -19,7 +19,7 @@ func activate(active: bool):
 
 func init(stage: int, location_type: LOCATION, position: Vector2, active: bool, connections: Array[Location]):
 	self.location_type = location_type
-	if location_type == LOCATION.COMBAT:
+	if location_type == LOCATION.COMBAT || location_type == LOCATION.BOSS:
 		debate_topic = Global.get_random_debate_question(stage)
 		$label.text = debate_topic.hint_
 	else:

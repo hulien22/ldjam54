@@ -1,36 +1,89 @@
-[gd_scene load_steps=17 format=3 uid="uid://dnv66lo7xwndp"]
+[gd_scene load_steps=22 format=3 uid="uid://dnv66lo7xwndp"]
 
 [ext_resource type="PackedScene" uid="uid://dwychm67ltxst" path="res://scenes/map.tscn" id="1_6wptd"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_iij1i"]
 [ext_resource type="PackedScene" uid="uid://b1qd4jib7m856" path="res://scenes/combat.tscn" id="2_f0e2t"]
-[ext_resource type="PackedScene" uid="uid://dvsqs64munlvc" path="res://scenes/boss.tscn" id="4_ekeoq"]
 [ext_resource type="PackedScene" uid="uid://ccb7ydon7aoh7" path="res://scenes/library.tscn" id="5_6lbyg"]
 [ext_resource type="PackedScene" uid="uid://3gi5l01y0hvo" path="res://scenes/oracle.tscn" id="6_pvrvx"]
 [ext_resource type="PackedScene" uid="uid://ryagmgt1vqsb" path="res://scenes/upgrade.tscn" id="7_l25g6"]
+[ext_resource type="PackedScene" uid="uid://dr1xxh3dnv6mq" path="res://scenes/meditate.tscn" id="7_p0mtb"]
 [ext_resource type="PackedScene" uid="uid://bd8ck0os5fgp" path="res://scenes/forge.tscn" id="8_3set1"]
 [ext_resource type="PackedScene" uid="uid://c2t66apu50q7i" path="res://scenes/AudioPlayer.tscn" id="9_d1na7"]
 [ext_resource type="PackedScene" uid="uid://cim8agmfowbt3" path="res://scenes/PlainScene.tscn" id="9_d7rch"]
 [ext_resource type="PackedScene" uid="uid://bdwqktdp0bssu" path="res://scenes/BrainPreview.tscn" id="10_aulcq"]
 [ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="10_m2vja"]
+[ext_resource type="PackedScene" uid="uid://ciqlc0hn0m0uf" path="res://scenes/GameOver.tscn" id="11_2kgep"]
 [ext_resource type="Texture2D" uid="uid://caiiw0boachdi" path="res://art/icon.svg" id="11_a2eth"]
 [ext_resource type="Texture2D" uid="uid://opa8x4rqg2qi" path="res://art/Backgrounds/Main_BG.png" id="11_ft7ik"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="12_t31cu"]
+[ext_resource type="PackedScene" uid="uid://c7krcwyoak4cs" path="res://scenes/marblebutton.tscn" id="13_ta7i4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eux2y"]
 font = ExtResource("12_t31cu")
 font_size = 60
 
+[sub_resource type="LabelSettings" id="LabelSettings_os2gm"]
+font = ExtResource("12_t31cu")
+font_size = 40
+
+[sub_resource type="Animation" id="Animation_bme24"]
+resource_name = "egotext"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 2.07053, 1),
+"update": 0,
+"values": [Vector2(150, -48), Vector2(150, -48), Vector2(150, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iiotm"]
+_data = {
+"egotext": SubResource("Animation_bme24")
+}
+
 [node name="main" type="Node2D"]
 script = ExtResource("1_iij1i")
 map_scene = ExtResource("1_6wptd")
 combat_scene = ExtResource("2_f0e2t")
-boss_scene = ExtResource("4_ekeoq")
+boss_scene = ExtResource("2_f0e2t")
 library_scene = ExtResource("5_6lbyg")
 oracle_scene = ExtResource("6_pvrvx")
+meditate_scene = ExtResource("7_p0mtb")
 upgrade_scene = ExtResource("7_l25g6")
 forge_scene = ExtResource("8_3set1")
 plain_scene = ExtResource("9_d7rch")
 brain_preview_scene = ExtResource("10_aulcq")
+game_over_scene = ExtResource("11_2kgep")
 
 [node name="MainBg" type="Sprite2D" parent="."]
 z_index = -999
@@ -39,9 +92,10 @@ texture = ExtResource("11_ft7ik")
 
 [node name="SceneHolder" type="Node2D" parent="."]
 
-[node name="Button" type="Button" parent="."]
-offset_right = 307.0
-offset_bottom = 123.0
+[node name="Button" parent="." instance=ExtResource("13_ta7i4")]
+visible = false
+position = Vector2(197, 48)
+text = "REPLACE ME"
 
 [node name="AudioPlayer" parent="." instance=ExtResource("9_d1na7")]
 
@@ -51,8 +105,9 @@ offset_bottom = 123.0
 visible = false
 z_index = 50
 z_as_relative = false
+size = Vector2(16, 12)
 starting_size = Vector2(8, 6)
-starting_offset = Vector2(2, 3)
+starting_offset = Vector2(4, 3)
 
 [node name="MapPreviewHolder" type="Node2D" parent="."]
 
@@ -63,9 +118,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="MapBtn" type="Node2D" parent="UI"]
-position = Vector2(73, 196)
+position = Vector2(1841, 999)
 
 [node name="Sprite2D" type="Sprite2D" parent="UI/MapBtn"]
+position = Vector2(-2, -2)
 texture = ExtResource("11_a2eth")
 
 [node name="Button" type="Button" parent="UI/MapBtn"]
@@ -75,7 +131,7 @@ offset_right = 64.0
 offset_bottom = 65.0
 
 [node name="BrainBtn" type="Node2D" parent="UI"]
-position = Vector2(73, 332)
+position = Vector2(1842, 78)
 
 [node name="Sprite2D" type="Sprite2D" parent="UI/BrainBtn"]
 texture = ExtResource("11_a2eth")
@@ -100,4 +156,19 @@ offset_bottom = 54.0
 text = "99"
 label_settings = SubResource("LabelSettings_eux2y")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Label2" type="Label" parent="UI/Ego"]
+visible = false
+offset_left = 150.0
+offset_top = -48.0
+offset_right = 792.0
+offset_bottom = 50.0
+text = "Your EGO takes a hit"
+label_settings = SubResource("LabelSettings_os2gm")
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Ego"]
+libraries = {
+"": SubResource("AnimationLibrary_iiotm")
+}
+
+[connection signal="on_pressed" from="Button" to="." method="_on_button_pressed"]
