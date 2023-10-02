@@ -33,7 +33,7 @@ func _ready():
 	stage = 0
 	show_brain(false);
 	map = map_scene.instantiate()
-	map.stage = 0
+	map.set_stage(stage);
 	map.connect("moved_to_location", _on_moved_to_location)
 	brain_preview = brain_preview_scene.instantiate()
 	$UI/MapBtn/Button.pressed.connect(self.show_map_preview);
@@ -137,9 +137,8 @@ func next_stage():
 		$SceneHolder.remove_child(map)
 		map.queue_free()
 	map = map_scene.instantiate()
-	map.stage = stage
+	map.set_stage(stage);
 	map.connect("moved_to_location", _on_moved_to_location)
-	map.get_node("AnimatedSprite2D").frame = stage
 	#$SceneHolder.add_child(map)
 	
 func show_brain(show: bool = true):

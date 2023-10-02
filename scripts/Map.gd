@@ -92,3 +92,6 @@ func set_enabled(enabled: bool = true):
 	for connection in current_location.connections:
 		connection.activate(enabled)
 
+func set_stage(s:int):
+	stage = s;
+	$AnimatedSprite2D.frame = stage

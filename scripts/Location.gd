@@ -19,7 +19,7 @@ func activate(active: bool):
 
 func init(stage: int, location_type: LOCATION, position: Vector2, active: bool, connections: Array[Location]):
 	self.location_type = location_type
-	if location_type == LOCATION.COMBAT:
+	if location_type == LOCATION.COMBAT || location_type == LOCATION.BOSS:
 		debate_topic = Global.get_random_debate_question(stage)
 		$label.text = debate_topic.hint_
 	else:
