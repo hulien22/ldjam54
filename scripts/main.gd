@@ -7,14 +7,27 @@ extends Node2D
 @export var oracle_scene: PackedScene
 @export var upgrade_scene: PackedScene
 @export var forge_scene: PackedScene
+@export var plain_scene: PackedScene
+@export var brain_preview_scene: PackedScene
+
+enum GameSceneState {
+	PREVIEW_MAP,
+	PREVIEW_BRAIN,
+	ON_MAP,
+	IN_LEVEL,
+};
+
+var scene_state_: GameSceneState = GameSceneState.IN_LEVEL;
 
 var map
+var brain_preview
 var current_node
 
 func _ready():
 	show_brain(false);
 	map = map_scene.instantiate()
 	map.connect("moved_to_location", _on_moved_to_location)
+	brain_preview = brain_preview_scene.instantiate()
 	$UI/MapBtn/Button.pressed.connect(self.show_map_preview);
 	$UI/BrainBtn/Button.pressed.connect(self.show_brain_preview);
 	show_first_level()
@@ -65,6 +78,7 @@ func _on_moved_to_location(location: Location):
 			node.connect("start_forge_phase", _start_forge_phase);
 			node.connect("end_forge_phase", _end_forge_phase);
 			show_brain(false);
+	scene_state_ = GameSceneState.IN_LEVEL
 	$SceneHolder.add_child(node)
 	current_node = node
 	$SceneHolder.remove_child(map)
@@ -79,16 +93,17 @@ func _end_scene():
 		$SceneHolder.remove_child(current_node)
 		current_node.queue_free();
 	show_brain(false);
+	scene_state_ = GameSceneState.ON_MAP
 	$SceneHolder.add_child(map)
 	
 func show_brain(show: bool = true):
 	$Brain.visible = show;
 	if show:
 		$UI/BrainBtn/Button.disabled = true;
-		$UI/BrainBtn.modulate = Color.DIM_GRAY;
+		$UI/BrainBtn.hide();
 	else:
 		$UI/BrainBtn/Button.disabled = false;
-		$UI/BrainBtn.modulate = Color.WHITE;
+		$UI/BrainBtn.show();
 
 func _start_combat_phase(global_posn:Vector2):
 	# set the brain to the correct phase
@@ -150,8 +165,44 @@ func _end_forge_phase(global_posn:Vector2, w: String):
 	$Brain.spawn_new_word(w, Vector2(200,40));
 	show_brain(true);
 
+
+var map_preview_was_brain_visible:bool = false;
 func show_map_preview():
-	pass
+	# hide and show brain? need to recall where brain was?
+	match scene_state_:
+		GameSceneState.IN_LEVEL:
+			$SceneHolder.remove_child(current_node);
+			$MapPreviewHolder.add_child(map);
+			map.set_enabled(false);
+			map_preview_was_brain_visible = $Brain.visible;
+			$Brain.hide();
+			scene_state_ = GameSceneState.PREVIEW_MAP;
+		GameSceneState.PREVIEW_MAP:
+			$MapPreviewHolder.remove_child(map);
+			$SceneHolder.add_child(current_node);
+			map.set_enabled(true);
+			$Brain.visible = map_preview_was_brain_visible;
+			scene_state_ = GameSceneState.IN_LEVEL;
+
 
 func show_brain_preview():
-	pass
+	match scene_state_:
+		GameSceneState.IN_LEVEL:
+#			$SceneHolder.remove_child(current_node);
+			$BrainPreviewHolder.add_child(brain_preview);
+			$Brain.global_position = get_viewport_rect().size / 2;
+			$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
+			$Brain.show();
+			scene_state_ = GameSceneState.PREVIEW_BRAIN;
+		GameSceneState.ON_MAP:
+#			$SceneHolder.remove_child(map);
+			$BrainPreviewHolder.add_child(brain_preview);
+			$Brain.set_state(Global.BrainState.ADDING_NEW_WORDS);
+			$Brain.global_position = get_viewport_rect().size / 2;
+			$Brain.show();
+			scene_state_ = GameSceneState.PREVIEW_BRAIN;
+		GameSceneState.PREVIEW_BRAIN:
+			$BrainPreviewHolder.remove_child(brain_preview);
+#			$SceneHolder.add_child(current_node);
+			$Brain.hide();
+			scene_state_ = GameSceneState.IN_LEVEL;

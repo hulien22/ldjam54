@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnv66lo7xwndp"]
+[gd_scene load_steps=16 format=3 uid="uid://dnv66lo7xwndp"]
 
 [ext_resource type="PackedScene" uid="uid://dwychm67ltxst" path="res://scenes/map.tscn" id="1_6wptd"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_iij1i"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ryagmgt1vqsb" path="res://scenes/upgrade.tscn" id="7_l25g6"]
 [ext_resource type="PackedScene" uid="uid://bd8ck0os5fgp" path="res://scenes/forge.tscn" id="8_3set1"]
 [ext_resource type="PackedScene" uid="uid://c2t66apu50q7i" path="res://scenes/AudioPlayer.tscn" id="9_d1na7"]
+[ext_resource type="PackedScene" uid="uid://cim8agmfowbt3" path="res://scenes/PlainScene.tscn" id="9_d7rch"]
+[ext_resource type="PackedScene" uid="uid://bdwqktdp0bssu" path="res://scenes/BrainPreview.tscn" id="10_aulcq"]
 [ext_resource type="PackedScene" uid="uid://bcagiv8ky6l6c" path="res://scenes/Brain.tscn" id="10_m2vja"]
 [ext_resource type="Texture2D" uid="uid://caiiw0boachdi" path="res://art/icon.svg" id="11_a2eth"]
 [ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="12_t31cu"]
@@ -26,6 +28,8 @@ library_scene = ExtResource("5_6lbyg")
 oracle_scene = ExtResource("6_pvrvx")
 upgrade_scene = ExtResource("7_l25g6")
 forge_scene = ExtResource("8_3set1")
+plain_scene = ExtResource("9_d7rch")
+brain_preview_scene = ExtResource("10_aulcq")
 
 [node name="SceneHolder" type="Node2D" parent="."]
 
@@ -35,12 +39,16 @@ offset_bottom = 123.0
 
 [node name="AudioPlayer" parent="." instance=ExtResource("9_d1na7")]
 
+[node name="BrainPreviewHolder" type="Node2D" parent="."]
+
 [node name="Brain" parent="." instance=ExtResource("10_m2vja")]
 visible = false
 z_index = 50
 z_as_relative = false
 starting_size = Vector2(8, 6)
 starting_offset = Vector2(2, 3)
+
+[node name="MapPreviewHolder" type="Node2D" parent="."]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

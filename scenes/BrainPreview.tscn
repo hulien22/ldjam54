@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdwqktdp0bssu"]
+
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_ckehs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omvxa"]
+shader = ExtResource("1_ckehs")
+shader_parameter/blur_amount = 2.0
+
+[node name="scene" type="Node2D"]
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_omvxa")
+offset_right = 1921.0
+offset_bottom = 1077.0
+color = Color(0.462745, 0.462745, 0.462745, 0.435294)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_right = 1921.0
+offset_bottom = 1077.0
+color = Color(0, 0, 0, 0.435294)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
+offset_left = 280.0
+offset_top = 137.0
+offset_right = 1626.0
+offset_bottom = 922.0
+color = Color(0.462745, 0.462745, 0.462745, 1)
