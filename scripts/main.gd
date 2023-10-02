@@ -95,7 +95,7 @@ func _on_moved_to_location(location: Location):
 		Location.LOCATION.ORACLE:
 			show_brain(false);
 			node = oracle_scene.instantiate()
-			node.prompt = "pls send help"
+			node.prompt = map.get_boss_prompt()
 			node.connect("leave_oracle_phase", _leave_oracle_phase);
 		Location.LOCATION.MEDITATE:
 			show_brain(false);
