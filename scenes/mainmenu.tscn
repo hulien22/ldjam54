@@ -40,7 +40,7 @@ position = Vector2(960, 540)
 texture = ExtResource("1_68ut4")
 
 [node name="BrainTemplate" type="Sprite2D" parent="."]
-position = Vector2(952, 527.346)
+position = Vector2(952, 534.497)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_vjq2i")
 

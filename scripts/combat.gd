@@ -16,6 +16,8 @@ var description_: String = "You encounter a farmer who seems to be pondering som
 var prompt_: String;
 var result_scores: Array;
 
+var is_boss: bool = false;
+
 # this will compose the argument.
 var word_tiles: Array = [];
 
@@ -171,6 +173,10 @@ func avg_score() -> float:
 
 var rng = RandomNumberGenerator.new()
 func get_random_desc_for_difficulty(difficulty : int):
+	if is_boss:
+		return ["You stumble into your old school teacher. \n\n\"I heard you're trying to become a philosopher?\" \n\n\"Show me what you have learned\"", 
+				"You find yourself face to face with a pensive of philosophers. \n\nThey turn towards you while pensively stroking their beards. \n\n\"You've done well to make it this far.. \" \n\n\"But if you want to make it to Olympus, you'll have to make it through us first!\"", 
+				"As you climb up the last steps of Olympus, you enter into a large temple. \n\nA massive form apparates in front of you. \n\n\"I am Zeus, King of Gods, ruler of Olympus.\"\n\n\"You have proven your worth, now it is time for your final test!\""][difficulty];
 	var value = rng.randi_range(0, 2)
 	match difficulty: #lol at this #j: I lol-ed
 		0:

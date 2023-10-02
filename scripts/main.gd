@@ -79,6 +79,7 @@ func _on_moved_to_location(location: Location):
 		Location.LOCATION.BOSS:
 			show_brain(false);
 			node = boss_scene.instantiate()
+			node.is_boss = true;
 			on_boss = true
 		Location.LOCATION.LIBRARY:
 			show_brain(false);
