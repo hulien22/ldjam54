@@ -1,8 +1,138 @@
-[gd_scene format=3 uid="uid://cim8agmfowbt3"]
+[gd_scene load_steps=10 format=3 uid="uid://cim8agmfowbt3"]
+
+[ext_resource type="Texture2D" uid="uid://d0ft7q54meu4c" path="res://art/Icons/Boss_Icon.png" id="1_b2s72"]
+[ext_resource type="Texture2D" uid="uid://vbgorqgwhf6f" path="res://art/Icons/Campfire_Icon.png" id="2_o45jn"]
+[ext_resource type="Texture2D" uid="uid://dn4td7uxqbxn4" path="res://art/Icons/Debate_Icon.png" id="3_10iuh"]
+[ext_resource type="Texture2D" uid="uid://p5ekqvxmk8sc" path="res://art/Icons/Forge_Icon.png" id="4_oyqh5"]
+[ext_resource type="Texture2D" uid="uid://cofohw0et2tfg" path="res://art/Icons/Library_Icon.png" id="5_xxog6"]
+[ext_resource type="Texture2D" uid="uid://ckux1v4iqegec" path="res://art/Icons/Oracle_Icon.png" id="6_ue8eo"]
+[ext_resource type="FontFile" uid="uid://cshv7yax3y1kc" path="res://fonts/DIOGENES.ttf" id="7_m3rgy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_srcg6"]
+font = ExtResource("7_m3rgy")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_v0nov"]
+font = ExtResource("7_m3rgy")
+font_size = 32
 
 [node name="scene" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1921.0
 offset_bottom = 1077.0
-color = Color(0.462745, 0.462745, 0.462745, 1)
+color = Color(0.317647, 0.133333, 0.00392157, 1)
+
+[node name="BossIcon" type="Sprite2D" parent="."]
+position = Vector2(1101, 182)
+texture = ExtResource("1_b2s72")
+
+[node name="CampfireIcon" type="Sprite2D" parent="."]
+position = Vector2(289, 470)
+texture = ExtResource("2_o45jn")
+
+[node name="DebateIcon" type="Sprite2D" parent="."]
+position = Vector2(299, 162)
+texture = ExtResource("3_10iuh")
+
+[node name="ForgeIcon" type="Sprite2D" parent="."]
+position = Vector2(278, 817)
+texture = ExtResource("4_oyqh5")
+
+[node name="LibraryIcon" type="Sprite2D" parent="."]
+position = Vector2(1095, 492)
+texture = ExtResource("5_xxog6")
+
+[node name="OracleIcon" type="Sprite2D" parent="."]
+position = Vector2(1077, 840)
+texture = ExtResource("6_ue8eo")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 382.0
+offset_top = 93.0
+offset_right = 1918.0
+offset_bottom = 197.0
+text = " Debate                                 Boss Debate"
+label_settings = SubResource("LabelSettings_srcg6")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 394.0
+offset_top = 174.0
+offset_right = 981.0
+offset_bottom = 278.0
+text = "Fight! Has a hint about the topic"
+label_settings = SubResource("LabelSettings_v0nov")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 382.0
+offset_top = 398.0
+offset_right = 1918.0
+offset_bottom = 502.0
+text = " Meditate                               Library"
+label_settings = SubResource("LabelSettings_srcg6")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 382.0
+offset_top = 720.0
+offset_right = 1918.0
+offset_bottom = 824.0
+text = " Word Smith                           Oracle"
+label_settings = SubResource("LabelSettings_srcg6")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 1207.0
+offset_top = 174.0
+offset_right = 1794.0
+offset_bottom = 278.0
+text = "Bigger fight! Has a hint about the topic"
+label_settings = SubResource("LabelSettings_v0nov")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 394.0
+offset_top = 478.0
+offset_right = 981.0
+offset_bottom = 582.0
+text = "Recover any lost EGO"
+label_settings = SubResource("LabelSettings_v0nov")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 1207.0
+offset_top = 478.0
+offset_right = 1794.0
+offset_bottom = 582.0
+text = "Learn new words"
+label_settings = SubResource("LabelSettings_v0nov")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label8" type="Label" parent="."]
+offset_left = 394.0
+offset_top = 807.0
+offset_right = 981.0
+offset_bottom = 911.0
+text = "Forge a new word"
+label_settings = SubResource("LabelSettings_v0nov")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label9" type="Label" parent="."]
+offset_left = 1207.0
+offset_top = 807.0
+offset_right = 1794.0
+offset_bottom = 911.0
+text = "Get a hint about the upcoming Boss Debate"
+label_settings = SubResource("LabelSettings_v0nov")
+vertical_alignment = 1
+autowrap_mode = 3

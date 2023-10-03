@@ -14,7 +14,7 @@ config/name="Minimus Brainius"
 run/main_scene="res://scenes/mainmenu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/image="res://art/Backgrounds/Main_BG.png"
-config/icon="res://art/Icons/Brain_Icon.png"
+config/icon="res://art/icon.png"
 
 [autoload]
 
