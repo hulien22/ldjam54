@@ -43,6 +43,13 @@ func load_debate_questions():
 
 func get_random_debate_question(difficulty) -> DebateQuestion:
 	var d
+	var filled = true
+	for q in debate_questions[difficulty]:
+		if !used_prompts.has(q):
+			filled = false
+			break
+	if filled:
+		reset_used_prompts()
 	while true:
 		d = debate_questions[difficulty][rng.randi() % debate_questions[difficulty].size()];
 		if !used_prompts.has(d):

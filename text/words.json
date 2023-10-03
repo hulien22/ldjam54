@@ -47,6 +47,11 @@
 			["Which blue pigment material is better?", "Lapis Lazuli", "Azurite", "Lapis Lazuli is a better blue pigment material than azurite.", "Azurite is a better blue pigment material than lapis lazuli.", "Art", ["Lapis", "Lazuli", "Azurite", "Blue"]],
 			["Which shape is better?", "Circle", "Triangle", "Circles are better shapes than triangles.", "Triangles are better shapes than circles.", "Architecture", ["Triangle", "Circle"]],
 			["Is it better to try, and fail, or to not try at all?", "Try and fail", "Not try at all", "It is better to try and fail than to not try at all.", "It is better to not try at all than to try and fail.", "Ethics", ["Try", "Fail"]],
+			["Is a rewarding job better than a fulfilling job?", "Rewarding", "Fulfilling", "A rewarding job is better than a fulfilling job.", "A fulfilling job is better than a rewarding job.", "Ethics", ["Rewarding", "Fulfilling"]],
+			["Which is the better form theatre?", "Tragedies", "Comedies", "Tragedies are a better form of theatre than comedies", "Comedies are a better form of theatre than tragedies", "Theatre", ["Comedy", "Tragedy"]],
+			["Which is more enjoyable?", "An evening at a symposium", "A stargazing session", "An evening at a symposium is more enjoyable than a stargazing session.", "A stargazing session is more enjoyable than an evening at a symposium.", "Society", ["Symposium", "Stargazing"]],
+			["Is it more fun to participate in a chariot race or to watch from the stands?", "Participate", "Watch", "It is more fun to participate in a chariot race than to watch.", "It is more fun to watch a chariot race than to participate.", "Society", ["Participate", "Watch", "Chariot"]],
+			["Should the Olympic Games include poetry recitation?", "Yes", "No", "Poetry recitation should be included in the ancient olympic games.", "Poetry recitation should not be included in the ancient olympic games.", "Society", ["Poetry", "Olympics"]],
 		],	
 		[
 			["Which would win in a fight?", "Cerberus", "Minotaur", "Cerberus would beat minotaur in a fight.", "Minotaur would beat cerberus in a fight.", "Mythos", ["Minotaur", "Cerberus"]],
@@ -61,6 +66,16 @@
 			["Is perception of a color mostly the same for each person?","Yes","No","Perception of a color is mostly the same for each person.","Perception of a color is different for each person.", "Perception", ["Perception", "Color"]],
 			["A chariot is heading to run over either a family member or 3 close friends, who should you save?","Family Member","3 Close Friends","You should save your family member instead of 3 close friends.","You should save your 3 close friends instead of a family member.", "Ethics", ["Save", "Friends", "Family"] ],
 			["Is what we currently perceive the truth of our reality or are they just shadows on a wall in a cave?","Truth","Shadows on a Wall","We percieve the real reality.","We percieve the Prisoners' Reality.", "Perception", ["Reality", "Real"]],
+			["Which is a higher form of intelligence?","Creativity","Reasoning","Creativity is a higher form of thinking than reasoning.","Reasoning is a higher form of thinking than creativity.", "Perception", ["Creativity", "Reasoning"]],
+			["Are humans limited by their minds?","Yes","No","Humans are limited by their minds.","Humans are not limited by their minds.", "Perception", ["Humans", "Minds"]],
+			["Are humans inherently good or evil?", "Good", "Evil", "Humans are inherently good.", "Humans are inherently evil.", "Ethics", ["Humans", "Evil"]],
+			["Which Greek god or goddess throws the best parties?", "Dionysus", "Aphrodite", "Dionysus would throw a better party than Aphrodite.", "Aphrodite would throw a better party than Dionysus.", "Mythos", ["Dionysus", "Aphrodite"]],
+			["Who is the greatest hero of Greek mythology?", "Hercules", "Achilles", "Hercules is a greater hero than Achilles", "Achilles is a greater hero than Hercules", "Mythos", ["Hercules", "Achilles"]],
+			["Which beast is more majestic?", "Griffin", "Phoenix", "A griffin is more majaestic than a phoenix.", "A Phoenix is more majaestic than a griffin.", "Mythos", ["Griffin", "Phoenix"]],
+			["Which is the more impressive feat?", "Taming a wild Pegasus", "Capturing the Golden Fleece", "Taming a wild Pegasus is more impressive than capturing the Golden Fleece.", "Capturing the Golden Fleece is more impressive than taming a wild Pegasus.", "Mythos", ["Pegasus", "Golden", "Fleece"]],
+			["Which is the more desirable food of the gods?", "Ambrosia", "Nectar", "Ambrosia is the more desirable food than nectar to the gods.", "Nectar is the more desirable food than ambrosia to the gods.", "Food", ["Ambrosia", "Nectar"]],
+			["Which is more formidable?", "Kraken", "Medusa", "The kraken is more formidable than Medusa.", "Medusa is more formidable than a kraken.", "Mythos", ["Kraken", "Medusa"]],
+			["Which god would you rather meet?", "Poseidon", "Hades", "I would rather meet Poseidon rather than Hades.", "I would rather meet Hades rather than Poseidon.", "Mythos", ["Poseidon", "Hades"]],
 		]
 	]
 }
