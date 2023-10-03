@@ -30,7 +30,7 @@ var health:int = 5;
 
 func _ready():
 	on_boss = false
-	stage = 0
+	stage = 2
 	show_brain(false);
 	map = map_scene.instantiate()
 #	map.length = 1;

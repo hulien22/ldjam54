@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccb7ydon7aoh7" path="res://scenes/library.tscn" id="5_6lbyg"]
 [ext_resource type="PackedScene" uid="uid://3gi5l01y0hvo" path="res://scenes/oracle.tscn" id="6_pvrvx"]
 [ext_resource type="PackedScene" uid="uid://ryagmgt1vqsb" path="res://scenes/upgrade.tscn" id="7_l25g6"]
-[ext_resource type="PackedScene" uid="uid://dr1xxh3dnv6mq" path="res://scenes/meditate.tscn" id="7_p0mtb"]
+[ext_resource type="PackedScene" path="res://scenes/meditate.tscn" id="7_p0mtb"]
 [ext_resource type="PackedScene" uid="uid://bd8ck0os5fgp" path="res://scenes/forge.tscn" id="8_3set1"]
 [ext_resource type="PackedScene" uid="uid://cim8agmfowbt3" path="res://scenes/PlainScene.tscn" id="9_d7rch"]
 [ext_resource type="PackedScene" uid="uid://bdwqktdp0bssu" path="res://scenes/BrainPreview.tscn" id="10_aulcq"]
