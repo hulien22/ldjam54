@@ -75,7 +75,7 @@
 			["Which is the more impressive feat?", "Taming a wild Pegasus", "Capturing the Golden Fleece", "Taming a wild Pegasus is more impressive than capturing the Golden Fleece.", "Capturing the Golden Fleece is more impressive than taming a wild Pegasus.", "Mythos", ["Pegasus", "Golden", "Fleece"]],
 			["Which is the more desirable food of the gods?", "Ambrosia", "Nectar", "Ambrosia is the more desirable food than nectar to the gods.", "Nectar is the more desirable food than ambrosia to the gods.", "Food", ["Ambrosia", "Nectar"]],
 			["Which is more formidable?", "Kraken", "Medusa", "The kraken is more formidable than Medusa.", "Medusa is more formidable than a kraken.", "Mythos", ["Kraken", "Medusa"]],
-			["Which god would you rather meet?", "Poseidon", "Hades", "I would meet Poseidon rather than Hades.", "I would meet Hades rather than Poseidon.", "Mythos", ["Poseidon", "Hades"]],
+			["Which god would you rather meet?", "Poseidon", "Hades", "I would rather meet Poseidon rather than Hades.", "I would rather meet Hades rather than Poseidon.", "Mythos", ["Poseidon", "Hades"]],
 		]
 	]
 }
