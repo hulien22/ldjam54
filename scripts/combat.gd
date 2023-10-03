@@ -133,7 +133,7 @@ func _on_request_completed(result, response_code, headers, body):
 		push_error("Returned error!", result, response_code, body);
 		generate_random_results();
 
-	print(body.get_string_from_utf8())
+#	print(body.get_string_from_utf8())
 	print(result_scores)
 
 	_move_to_next_phase();

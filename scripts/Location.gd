@@ -46,7 +46,7 @@ func init(stage: int, location_type: LOCATION, position: Vector2, active: bool, 
 		add_child(line)
 
 func _on_pressed():
-	print("here")
+	#print("here")
 	activate(false)
 	moved_to_location.emit(self)
 	for connection in connections:
