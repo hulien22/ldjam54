@@ -10,7 +10,7 @@ font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_l4v06"]
 font = ExtResource("2_cwlvh")
-font_size = 32
+font_size = 36
 
 [node name="upgrade" type="Node2D"]
 script = ExtResource("1_30evq")

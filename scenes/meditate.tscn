@@ -6,11 +6,11 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_b35bt"]
 font = ExtResource("2_4rno8")
-font_size = 40
+font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_l31hs"]
 font = ExtResource("2_4rno8")
-font_size = 24
+font_size = 40
 
 [node name="meditate" type="Node2D"]
 script = ExtResource("1_vm58p")

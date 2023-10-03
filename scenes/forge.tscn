@@ -7,11 +7,11 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_d2653"]
 font = ExtResource("2_d8e6t")
-font_size = 40
+font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_re1rw"]
 font = ExtResource("2_d8e6t")
-font_size = 32
+font_size = 40
 
 [node name="forge" type="Node2D"]
 script = ExtResource("1_4se2y")
@@ -29,9 +29,9 @@ autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="."]
 offset_left = 32.0
-offset_top = 89.0
+offset_top = 317.0
 offset_right = 1882.0
-offset_bottom = 158.0
+offset_bottom = 386.0
 text = "Forge (type) a new word to add to your brain!"
 label_settings = SubResource("LabelSettings_re1rw")
 horizontal_alignment = 1
@@ -50,7 +50,7 @@ TYPE A NEW WORD TO ADD TO YOUR BRAIN"
 horizontal_alignment = 1
 
 [node name="WordTile" parent="." instance=ExtResource("2_fcoqw")]
-position = Vector2(747, 232)
+position = Vector2(747, 462)
 word = ""
 
 [node name="Button" parent="." instance=ExtResource("4_op7ct")]

@@ -6,15 +6,15 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_b35bt"]
 font = ExtResource("2_tx8c8")
-font_size = 40
+font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_l31hs"]
 font = ExtResource("2_tx8c8")
-font_size = 24
+font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_k5o5b"]
 font = ExtResource("2_tx8c8")
-font_size = 24
+font_size = 64
 
 [node name="oracle" type="Node2D"]
 script = ExtResource("1_x7vmi")
@@ -32,9 +32,9 @@ autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="."]
 offset_left = 32.0
-offset_top = 139.0
+offset_top = 337.0
 offset_right = 1882.0
-offset_bottom = 217.0
+offset_bottom = 415.0
 text = "You see the possibility of arguing for the prompt:"
 label_settings = SubResource("LabelSettings_l31hs")
 horizontal_alignment = 1
@@ -43,9 +43,9 @@ autowrap_mode = 3
 
 [node name="Label4" type="Label" parent="."]
 offset_left = 32.0
-offset_top = 232.0
+offset_top = 460.0
 offset_right = 1882.0
-offset_bottom = 310.0
+offset_bottom = 564.0
 text = "???"
 label_settings = SubResource("LabelSettings_k5o5b")
 horizontal_alignment = 1
