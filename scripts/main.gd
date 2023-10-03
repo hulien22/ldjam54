@@ -209,6 +209,8 @@ func _end_combat_phase():
 	# TODO reset the words that were selected? need another phase?
 
 func _process_combat_rewards(score: float):
+	if health == 0:
+		return;
 	var node
 	# bad copy paste stuff here :/
 	if score < 5.0:
